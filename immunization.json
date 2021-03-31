@@ -1,3 +1,99 @@
 {
-  "name": "hello world"
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://schema.opencerta.org/proof",
+    "https://schema.opencerta.org/fhir/202009"
+  ],
+  "type": ["VerifiableCredential", "FHIRCredential"],
+  "uuid": "{{uuid}}",
+  "issuanceDate": "{{issueDate}}",
+  "credentialSubject": {
+    "type": "FHIRCredential",
+    "id": "urn:fhir:{{uuid}}",
+    "givenName": "{{firstName}}",
+    "familyName": "{{lastName}}",
+    "birthDate": "{{dob}}",
+    "gender": "{{gender}}",
+    "honorificPrefix": "",
+    "honorificSuffix": "",
+    "photograph": "{{photo}}",
+    "fhirVersion": "3.5a.0",
+    "fhirSource": {
+      "id": "{{uuid}}",
+      "contained": [
+        {
+          "resourceType": "Patient",
+          "id": "p1",
+          "name": [
+            {
+              "family": "{{lastName}}",
+              "given": ["{{firstName}}"]
+            }
+          ],
+          "birthDate": "{{dob}}",
+          "gender": "{{gender}}"
+        },
+        {
+          "resourceType": "Organization",
+          "id": "manufacturer1",
+          "name": "organizationName"
+        },
+        {
+          "resourceType": "Location",
+          "id": "address1",
+          "address": {
+            "city": "organizationCity",
+            "state": "organizationState",
+            "country": "organizationCountry"
+          }
+        },
+        {
+          "resourceType": "Practitioner",
+          "id": "Dr.1",
+          "name": [
+            {
+              "family": "issuerLastname",
+              "given": ["{{issuerFirstname}}"],
+              "prefix": [""]
+            }
+          ]
+        }
+      ],
+      "resourceType": "Immunization",
+      "status": "completed",
+      "vaccineCode": {
+        "coding": [
+          {
+            "system": "urn:oid:1.2.36.1.2001.1005.17",
+            "code": "{{templateName}}"
+          }
+        ],
+        "text": "{{templateDescription}}"
+      },
+      "patient": {
+        "reference": "#p1",
+        "type": "Patient"
+      },
+      "date": "{{issuanceDate}}",
+      "primarySource": true,
+      "manufacturer": {
+        "reference": "#manufacturer1",
+        "type": "Organization"
+      },
+      "lotNumber": "{{lot}}",
+      "expirationDate": "{{expirtaionDate}}",
+      "location": {
+        "reference": "#address1",
+        "type": "Location"
+      },
+      "practitioner": [
+        {
+          "id": "#performer1",
+          "actor": {
+            "reference": "#Dr.1"
+          }
+        }
+      ]
+    }
+  }
 }

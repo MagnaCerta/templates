@@ -1,3 +1,119 @@
 {
-  "name": "hello world"
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://schema.opencerta.org/proof",
+    "https://schema.opencerta.org/fhir/202009"
+  ],
+  "type": ["VerifiableCredential", "FHIRCredential"],
+  "uuid": "{{uuid}}",
+  "issuanceDate": "{{issueDate}}",
+  "credentialSubject": {
+    "type": "FHIRCredential",
+    "id": "urn:fhir:{{uuid}}",
+    "givenName": "{{firstName}}",
+    "familyName": "{{lastName}}",
+    "birthDate": "{{dob}}",
+    "gender": "{{gender}}",
+    "honorificPrefix": "",
+    "honorificSuffix": "",
+    "photograph": "{{photo}}",
+    "externalReference": "{{externalReference}}",
+    "fhirVersion": "3.5a.0",
+    "fhirSource": {
+      "id": "{{uuid}}",
+      "category": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/v2/0074",
+            "code": "LAB"
+          }
+        ]
+      },
+      "subject": {
+        "reference": "Patient/{{uuid}}"
+      },
+      "effectiveDateTime": "{{issueDate}}",
+      "resourceType": "DiagnosticReport",
+      "contained": [
+        {
+          "id": "1",
+          "category": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          },
+          "subject": {
+            "reference": "Patient/{{uuid}}"
+          },
+          "effectiveDateTime": "{{issueDate}}",
+          "resourceType": "Observation",
+          "code": {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "display": "{{templateName}}",
+                "code": "94563-4"
+              }
+            ]
+          },
+          "interpretation": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/v2/0078",
+                "code": "{{result}}"
+              }
+            ]
+          },
+          "referenceRange": [
+            {
+              "text": "{{result}}"
+            }
+          ],
+          "meta": {
+            "profile": [
+              "http://fhir.org/guides/argonaut/StructureDefinition/argo-observationresults"
+            ]
+          },
+          "valueString": "{{result}}",
+          "status": "final",
+          "issued": "{{issueDate}}"
+        }
+      ],
+      "identifier": [
+        {
+          "id": "{{uuid}}",
+          "system": "http://labcorp.com/ers/diagnosticReport"
+        }
+      ],
+      "code": {
+        "text": "{{templateName}}",
+        "coding": [
+          {
+            "system": "{{organizationName}}",
+            "display": "{{templateName}}",
+            "code": "{{organizationId}}"
+          }
+        ]
+      },
+      "performer": {
+        "display": "{{organizationName}}"
+      },
+      "meta": {
+        "profile": [
+          "http://fhir.org/guides/argonaut/StructureDefinition/argo-diagnosticreport"
+        ],
+        "lastUpdated": "{{issueDate}}"
+      },
+      "result": [
+        {
+          "reference": "#1"
+        }
+      ],
+      "status": "final",
+      "issued": "{{issueDate}}"
+    }
+  }
 }

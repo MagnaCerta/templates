@@ -1,0 +1,87 @@
+{
+  "properties": [
+    {
+      "label": "Given Name",
+      "path": "credentialSubject.givenName",
+      "id": "name"
+    },
+    {
+      "label": "Surname",
+      "path": "credentialSubject.familyName",
+      "id": "lastname"
+    },
+    {
+      "label": "Gender",
+      "path": "credentialSubject.gender",
+      "default": ""
+    },
+    {
+      "label": "Date Of Birth",
+      "path": "credentialSubject.birthDate",
+      "type": "date",
+      "format": "YYYY-MM-DD"
+    },
+    {
+      "label": "Photo",
+      "path": "credentialSubject.photograph",
+      "default": "",
+      "id": "photo",
+      "listable": false
+    },
+    {
+      "label": "spacer",
+      "path": ""
+    },
+    {
+      "label": "Status",
+      "path": "",
+      "default": "",
+      "id": "status"
+    },
+    {
+      "label": "spacer",
+      "path": ""
+    },
+    {
+      "label": "Organization",
+      "path": "credentialSubject.fhirSource.contained.1.name"
+    },
+    {
+      "label": "Country of issuance",
+      "path": "credentialSubject.fhirSource.contained.2.address.country"
+    },
+    {
+      "label": "spacer",
+      "path": ""
+    },
+    {
+      "label": "Vaccine",
+      "path": "credentialSubject.fhirSource.vaccineCode.text"
+    },
+    {
+      "label": "Trade name",
+      "path": "credentialSubject.fhirSource.vaccineCode.coding.0.code"
+    },
+    {
+      "label": "Batch Number",
+      "path": "credentialSubject.fhirSource.lotNumber"
+    },
+    {
+      "label": "Manufacturer",
+      "path": "credentialSubject.fhirSource.contained.1.name"
+    },
+    {
+      "label": "Issuance Date",
+      "path": "issuanceDate",
+      "type": "date",
+      "format": "YYYY-MM-DD",
+      "id": "issuanceDate"
+    },
+    {
+      "label": "Expiration Date",
+      "path": "credentialSubject.fhirSource.expirationDate",
+      "type": "date",
+      "format": "YYYY-MM-DD"
+    }
+  ]
+}

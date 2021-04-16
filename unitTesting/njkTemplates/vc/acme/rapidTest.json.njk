@@ -7,7 +7,7 @@
   ],
   "type": ["VerifiableCredential", "FHIRCredential"],
   "id": "urn:uuid:{{ credential.id }}",
-  "issuer": "https://issuers.{{baseUrl}}/{{certificate.authorityKeyIdentifier | trim}}/{{certificate.02c8cd9605206f2726e063819a81d431bdcf9094}}",
+  "issuer": "https://issuers.{{baseUrl}}/{{certificate.authorityKeyIdentifier | trim}}/{{certificate.subjectKeyIdentifier | trim }}",
   "credentialSubject": {
     "type": "FHIRCredential",
     "id": "urn:uuid:{{ subject.id }}",

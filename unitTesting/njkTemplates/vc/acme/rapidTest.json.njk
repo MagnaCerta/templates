@@ -1,0 +1,333 @@
+{# based on: http://build.fhir.org/ig/dvci/vaccine-credential-ig/branches/main/Bundle-Scenario3Bundle.json.html #}
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://schema.opencerta.org/proof",
+    "https://schema.opencerta.org/fhir/202009"
+  ],
+  "type": ["VerifiableCredential", "FHIRCredential"],
+  "id": "urn:uuid:{{ credential.id }}",
+  "issuer": "https://issuers.{{baseUrl}}/{{certificate.authorityKeyIdentifier | trim}}/{{certificate.02c8cd9605206f2726e063819a81d431bdcf9094}}",
+  "credentialSubject": {
+    "type": "FHIRCredential",
+    "id": "urn:uuid:{{ subject.id }}",
+    "givenName": "{{ subject.formData.givenName | trim }}",
+    {% if subject.formData.middleName | trim %}
+    "additionalName": "{{ subject.formData.middleName | trim }}",
+    {% endif -%}
+    "familyName": "{{ subject.formData.familyName | trim }}",
+    {% if subject.formData.birthDate %}
+    "birthDate": "{{ subject.formData.birthDate | date('yyyy-MM-DD') }}",
+    {% endif -%}
+    {% if subject.formData.gender | trim %}
+    "gender": "{{ subject.formData.gender | trim }}",
+    {% endif -%}
+    {% if subject.formData.honorificPrefix | trim %}
+    "honorificPrefix": "{{ subject.formData.honorificPrefix | trim }}",
+    {% endif -%}
+    {% if subject.formData.honorificSuffix | trim %}
+    "honorificSuffix": "{{ subject.formData.honorificSuffix | trim }}",
+    {% endif -%}
+    {% if subject.formData.externalReference | trim %}
+    "externalReference": "{{subject.formData.externalReference}}",
+    {% endif -%}
+    "fhirVersion": "4.0.1",
+    "fhirSource": {
+      "resourceType": "Bundle",
+      "id": "https://creds.magnacerta.com/{{ credential.id }}/bundle",
+      "type": "collection",
+      "entry": [
+        {
+            "fullUrl": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0",
+            "resource": {
+                "resourceType": "Patient",
+                {% if (subject.formData.passportNumber | trim) and (subject.formData.driversLicense) %}
+                "identifier" : [
+                    {
+                    {% if subject.formData.citizenshipCountry | trim %}
+                    "extension" : [{
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "extension" : [{
+                        "url" : "code",
+                        "valueCodeableConcept" : {
+                            "coding" : [{
+                            "system" : "urn:iso:std:iso:3166",
+                            "code" : "{{ subject.formData.citizenshipCountry | trim}}"
+                            }]
+                        }
+                        }, 
+                        {
+                        "url" : "period",
+                        "valuePeriod" : {
+                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                        }
+                        }]
+                        }
+                    {% if subject.formData.citizenshipState | trim %}
+                    ,
+                    {
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "extension" : [{
+                        "url" : "code",
+                        "valueCodeableConcept" : {
+                            "coding" : [{
+                            "system" : "urn:iso:std:iso:3166:-2",
+                            "code" : "{{ subject.formData.citizenshipState | trim}}"
+                            }]
+                        }
+                        }, 
+                        {
+                        "url" : "period",
+                        "valuePeriod" : {
+                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                        }
+                        }]
+                        }
+                    {% endif -%}
+                    ],
+                    {% endif -%}
+                    "type": {
+                        "coding": {
+                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                        "code": "PPN"
+                        }
+                    },
+                    "value": "{{ subject.formData.passportNumber | trim }}"
+                    },
+                    {
+                    {% if subject.formData.citizenshipCountry | trim %}
+                    "extension" : [{
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "extension" : [{
+                        "url" : "code",
+                        "valueCodeableConcept" : {
+                            "coding" : [{
+                            "system" : "urn:iso:std:iso:3166",
+                            "code" : "{{ subject.formData.citizenshipCountry | trim}}"
+                            }]
+                        }
+                        }, 
+                        {
+                        "url" : "period",
+                        "valuePeriod" : {
+                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                        }
+                        }]
+                        }
+                    {% if subject.formData.citizenshipState | trim %}
+                    ,
+                    {
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "extension" : [{
+                        "url" : "code",
+                        "valueCodeableConcept" : {
+                            "coding" : [{
+                            "system" : "urn:iso:std:iso:3166:-2",
+                            "code" : "{{ subject.formData.citizenshipState | trim}}"
+                            }]
+                        }
+                        }, 
+                        {
+                        "url" : "period",
+                        "valuePeriod" : {
+                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                        }
+                        }]
+                        }
+                    {% endif -%}
+                    ],
+                    {% endif -%}
+                    "type": {
+                        "coding": {
+                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                        "code": "DL"
+                        }
+                    },
+                    "value": "{{ subject.formData.driversLicense | trim }}"
+                    }
+                ],
+                {% elif subject.formData.passportNumber | trim %}
+                "identifier" : [
+                    {
+                    {% if subject.formData.citizenshipCountry | trim %}
+                    "extension" : [{
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "extension" : [{
+                        "url" : "code",
+                        "valueCodeableConcept" : {
+                            "coding" : [{
+                            "system" : "urn:iso:std:iso:3166",
+                            "code" : "{{ subject.formData.citizenshipCountry | trim}}"
+                            }]
+                        }
+                        }, 
+                        {
+                        "url" : "period",
+                        "valuePeriod" : {
+                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                        }
+                        }]
+                        }
+                    {% if subject.formData.citizenshipState | trim %}
+                    ,
+                    {
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "extension" : [{
+                        "url" : "code",
+                        "valueCodeableConcept" : {
+                            "coding" : [{
+                            "system" : "urn:iso:std:iso:3166:-2",
+                            "code" : "{{ subject.formData.citizenshipState | trim}}"
+                            }]
+                        }
+                        }, 
+                        {
+                        "url" : "period",
+                        "valuePeriod" : {
+                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                        }
+                        }]
+                        }
+                    {% endif -%}
+                    ],
+                    {% endif -%}
+                    "type": {
+                        "coding": {
+                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                        "code": "PPN"
+                        }
+                    },
+                    "value": "{{ subject.formData.passportNumber | trim }}"
+                    }
+                ],
+                {% elif subject.formData.driversLicense | trim %}
+                "identifier" : [
+                    {
+                    {% if subject.formData.citizenshipCountry | trim %}
+                    "extension" : [{
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "extension" : [{
+                        "url" : "code",
+                        "valueCodeableConcept" : {
+                            "coding" : [{
+                            "system" : "urn:iso:std:iso:3166",
+                            "code" : "{{ subject.formData.citizenshipCountry | trim}}"
+                            }]
+                        }
+                        }, 
+                        {
+                        "url" : "period",
+                        "valuePeriod" : {
+                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                        }
+                        }]
+                        }
+                    {% if subject.formData.citizenshipState | trim %}
+                    ,
+                    {
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "extension" : [{
+                        "url" : "code",
+                        "valueCodeableConcept" : {
+                            "coding" : [{
+                            "system" : "urn:iso:std:iso:3166:-2",
+                            "code" : "{{ subject.formData.citizenshipState | trim}}"
+                            }]
+                        }
+                        }, 
+                        {
+                        "url" : "period",
+                        "valuePeriod" : {
+                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                        }
+                        }]
+                        }
+                    {% endif -%}
+                    ],
+                    {% endif -%}
+                    "type": {
+                        "coding": {
+                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                        "code": "PPN"
+                        }
+                    },
+                    "value": "{{ subject.formData.driversLicense | trim }}"
+                    }
+                ],
+                {% endif -%}
+                {% if subject.formData.mobilePhone | trim %}
+                "telecom": [{
+                    "system": "phone",
+                    "value": "{{ subject.formData.mobilePhone | trim }}",
+                    "use": "mobile"
+                }],
+                {% endif -%}
+                {% if subject.formData.birthDate %}
+                "birthDate": "{{ subject.formData.birthDate | date('yyyy-MM-DD') }}",
+                {% endif -%}
+                "name": [{
+                    "family": "{{ subject.formData.familyName | trim }}",
+                    "given": ["{{ subject.formData.givenName | trim }}"{% if subject.formData.middleName | trim %}, "{{ subject.formData.middleName | trim }}"{% endif %}]
+                }],
+                "gender": "{% if subject.formData.gender | trim %}{{ subject.formData.gender | trim }}{% else %}unknown{% endif %}"
+            }
+        }, 
+        {
+            "fullUrl": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/1",
+            "resource": {
+                "resourceType": "Observation",
+                "status": "final",
+                "category": [{
+                    "coding": [{
+                    "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "code": "laboratory"
+                    }]
+                }],
+                {# https://loinc.org/94558-4/ - COVID-19 Rapid immunoassay #}
+                "code": {
+                    "coding": [{
+                    "system": "http://loinc.org",
+                    "code": "94558-4"
+                    }]
+                },
+                "subject": {
+                    "reference": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0"
+                },
+                {% if subject.formData.sampleCollectionDate %}
+                "effectiveDateTime": "{{ subject.formData.sampleCollectionDate | date('yyyy-MM-DD') }}",
+                {% endif -%}
+                {% if subject.formData.performer | trim %}
+                "performer": [{
+                    "display": "{{ subject.formData.performer | trim }}"
+                }],
+                {% endif -%}
+                {% if subject.formData.observation | trim == "detected" %}
+                {# https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=260373001 #}
+                "valueCodeableConcept": {
+                    "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "260373001"
+                    }]
+                }
+                {% elif subject.formData.observation | trim == "undetected" %}
+                {# https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=260415000 #}
+                "valueCodeableConcept": {
+                    "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "260415000"
+                    }]
+                }
+                {% else %}
+                {# https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=276727009 #}
+                "valueCodeableConcept": {
+                    "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "276727009"
+                    }]
+                }
+                {% endif -%}
+            }
+        }]
+    }
+  }
+}

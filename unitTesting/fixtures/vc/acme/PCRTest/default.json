@@ -1,0 +1,17 @@
+{
+  "givenName": "Javier",
+  "middleName": "Eduardo",
+  "familyName": "Lopez Ramirez",
+  "birthDate": "2021-04-14T17:13:55.073Z",
+  "gender": "Male",
+  "honorificPrefix": "Mr.",
+  "honorificSuffix": "II",
+  "passportNumber": "G111",
+  "driversLicense": "",
+  "citizenshipCountry": "MEX",
+  "citizenshipState": "",
+  "mobilePhone": "+525566666666",
+  "sampleCollectionDate": "2021-04-14T17:13:55.073Z",
+  "performer": "Dr. House",
+  "observation": "detected"
+}

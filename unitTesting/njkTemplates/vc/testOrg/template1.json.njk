@@ -1,0 +1,20 @@
+{# based on: http://build.fhir.org/ig/dvci/vaccine-credential-ig/branches/main/Bundle-Scenario3Bundle.json.html #}
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://schema.opencerta.org/proof",
+    "https://schema.opencerta.org/fhir/202009"
+  ],
+  "type": ["VerifiableCredential", "FHIRCredential"],
+  "id": "urn:uuid:{{ credential.id }}",
+  "issuer": "https://issuers.{{baseUrl}}/{{certificate.authorityKeyIdentifier | trim}}/{{certificate.subjectKeyIdentifier}}",
+  "credentialSubject": {
+    "type": "FHIRCredential",
+    "id": "urn:uuid:{{ subject.id }}",
+    "givenName": "{{ subject.formData.givenName | trim }}",
+    {% if subject.formData.middleName | trim %}
+    "additionalName": "{{ subject.formData.middleName | trim }}",
+    {% endif -%}
+    "familyName": "{{ subject.formData.familyName | trim }}"
+  }
+}

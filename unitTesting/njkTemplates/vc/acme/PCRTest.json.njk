@@ -296,11 +296,9 @@
                 {% if subject.formData.sampleCollectionDate %}
                 "effectiveDateTime": "{{ subject.formData.sampleCollectionDate | date('yyyy-MM-DD') }}",
                 {% endif -%}
-                {% if subject.formData.performer | trim %}
                 "performer": [{
-                    "display": "{{ subject.formData.performer | trim }}"
+                    "display": "{{ digitalPen.legalName }}"
                 }],
-                {% endif -%}
                 {% if subject.formData.observation | trim == "detected" %}
                 {# https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=260373001 #}
                 "valueCodeableConcept": {

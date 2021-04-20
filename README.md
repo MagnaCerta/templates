@@ -104,7 +104,10 @@ use jwt library to parse claims in token
 
 ## UI Context
 
-const certaContext: CertaContext = {
+This is the information available that is fed as context to nunjucks templates
+
+{
+logo: base64,
 template: {
 id: template.id,
 name: template.name,

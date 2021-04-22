@@ -1,4 +1,4 @@
-{# based on: http://build.fhir.org/ig/dvci/vaccine-credential-ig/branches/main/Bundle-Scenario3Bundle.json.html #}
+{# based on: http://build.fhir.org/ig/dvci/vaccine-credential-ig/branches/main/StructureDefinition-vaccination-credential-immunization-examples.html #}
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
@@ -12,24 +12,28 @@
     "type": "FHIRCredential",
     "id": "urn:uuid:{{ subject.id }}",
     "givenName": "{{ subject.formData.givenName | trim }}",
-    {% if subject.formData.middleName | trim %}
+    {% if subject.formData.middleName and (subject.formData.middleName | trim) %}
     "additionalName": "{{ subject.formData.middleName | trim }}",
     {% endif -%}
     "familyName": "{{ subject.formData.familyName | trim }}",
     {% if subject.formData.birthDate %}
     "birthDate": "{{ subject.formData.birthDate | date('yyyy-MM-DD') }}",
     {% endif -%}
-    {% if subject.formData.gender | trim %}
+    {% if subject.formData.gender and (subject.formData.gender | trim) %}
     "gender": "{{ subject.formData.gender | trim }}",
     {% endif -%}
-    {% if subject.formData.honorificPrefix | trim %}
+    {% if subject.formData.honorificPrefix and (subject.formData.honorificPrefix | trim) %}
     "honorificPrefix": "{{ subject.formData.honorificPrefix | trim }}",
     {% endif -%}
-    {% if subject.formData.honorificSuffix | trim %}
+    {% if subject.formData.honorificSuffix and (subject.formData.honorificSuffix | trim) %}
     "honorificSuffix": "{{ subject.formData.honorificSuffix | trim }}",
     {% endif -%}
-    {% if subject.formData.externalReference | trim %}
-    "externalReference": "{{subject.formData.externalReference}}",
+    {% if subject.formData.externalReference and (subject.formData.externalReference | trim) %}
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "External Reference",
+      "value":  "{{subject.formData.externalReference | trim}}"
+    },
     {% endif -%}
     "fhirVersion": "4.0.1",
     "fhirSource": {
@@ -41,10 +45,10 @@
                 "fullUrl": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0",
                 "resource": {
                     "resourceType": "Patient",
-                    {% if (subject.formData.passportNumber | trim) and (subject.formData.driversLicense) %}
+                    {% if (subject.formData.passportNumber and (subject.formData.passportNumber | trim)) and (subject.formData.driversLicense and (subject.formData.driversLicense | trim)) %}
                     "identifier" : [
                         {
-                        {% if subject.formData.citizenshipCountry | trim %}
+                        {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
                         "extension" : [{
                             "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
                             "extension" : [{
@@ -63,7 +67,7 @@
                             }
                             }]
                             }
-                        {% if subject.formData.citizenshipState | trim %}
+                        {% if subject.formData.citizenshipState and (subject.formData.citizenshipState | trim) %}
                         ,
                         {
                             "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
@@ -95,7 +99,7 @@
                         "value": "{{ subject.formData.passportNumber | trim }}"
                         },
                         {
-                        {% if subject.formData.citizenshipCountry | trim %}
+                        {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
                         "extension" : [{
                             "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
                             "extension" : [{
@@ -114,7 +118,7 @@
                             }
                             }]
                             }
-                        {% if subject.formData.citizenshipState | trim %}
+                        {% if subject.formData.citizenshipState and (subject.formData.citizenshipState | trim) %}
                         ,
                         {
                             "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
@@ -146,10 +150,10 @@
                         "value": "{{ subject.formData.driversLicense | trim }}"
                         }
                     ],
-                    {% elif subject.formData.passportNumber | trim %}
+                    {% elif subject.formData.passportNumber and (subject.formData.passportNumber | trim) %}
                     "identifier" : [
                         {
-                        {% if subject.formData.citizenshipCountry | trim %}
+                        {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
                         "extension" : [{
                             "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
                             "extension" : [{
@@ -168,7 +172,7 @@
                             }
                             }]
                             }
-                        {% if subject.formData.citizenshipState | trim %}
+                        {% if subject.formData.citizenshipState and (subject.formData.citizenshipState | trim) %}
                         ,
                         {
                             "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
@@ -200,10 +204,10 @@
                         "value": "{{ subject.formData.passportNumber | trim }}"
                         }
                     ],
-                    {% elif subject.formData.driversLicense | trim %}
+                    {% elif subject.formData.driversLicense and (subject.formData.driversLicense | trim) %}
                     "identifier" : [
                         {
-                        {% if subject.formData.citizenshipCountry | trim %}
+                        {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
                         "extension" : [{
                             "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
                             "extension" : [{
@@ -222,7 +226,7 @@
                             }
                             }]
                             }
-                        {% if subject.formData.citizenshipState | trim %}
+                        {% if subject.formData.citizenshipState and (subject.formData.citizenshipState | trim) %}
                         ,
                         {
                             "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
@@ -255,7 +259,7 @@
                         }
                     ],
                     {% endif -%}
-                    {% if subject.formData.mobilePhone | trim %}
+                    {% if subject.formData.mobilePhone and (subject.formData.mobilePhone | trim) %}
                     "telecom": [{
                         "system": "phone",
                         "value": "{{ subject.formData.mobilePhone | trim }}",
@@ -267,13 +271,13 @@
                     {% endif -%}
                     "name": [{
                         "family": "{{ subject.formData.familyName | trim }}",
-                        "given": ["{{ subject.formData.givenName | trim }}"{% if subject.formData.middleName | trim %}, "{{ subject.formData.middleName | trim }}"{% endif %}]
+                        "given": ["{{ subject.formData.givenName | trim }}"{% if subject.formData.middleName and (subject.formData.middleName | trim) %}, "{{ subject.formData.middleName | trim }}"{% endif %}]
                     }],
-                    "gender": "{% if subject.formData.gender | trim %}{{ subject.formData.gender | trim }}{% else %}unknown{% endif %}"
+                    "gender": "{% if subject.formData.gender and (subject.formData.gender | trim) %}{{ subject.formData.gender | trim }}{% else %}unknown{% endif %}"
                 }
             },
             {
-                "fullUrl": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/1",
+                "fullUrl": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/immunization/1/dose/1",
                 "resource": {
                     "resourceType": "Immunization",
                     "status": "completed",
@@ -281,15 +285,15 @@
                     "coding": [
                         {
                         "system": "http://hl7.org/fhir/sid/cvx",
-                        "code": "207"
+                        "code": "212"
                         }
                     ]
                     },
                     "manufacturer": {
-                        "display": "Moderna, Inc"
+                        "display": "Janssen Pharmaceuticals Companies of Johnson & Johnson"
                     },
                     "patient": {
-                    "reference": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0"
+                        "reference": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0"
                     },
                     "occurrenceDateTime": "{{ subject.formData.ocurrenceDate | date('yyyy-MM-DD') }}",
                     "performer": [

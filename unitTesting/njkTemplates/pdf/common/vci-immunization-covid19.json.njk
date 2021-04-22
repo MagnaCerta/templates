@@ -64,7 +64,7 @@
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{subject.formData.givenName}}",
+                  "text": "{{subject.formData.givenName | trim}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim}}{% endif %}",
                   "fontSize": 9
                 },
                 {

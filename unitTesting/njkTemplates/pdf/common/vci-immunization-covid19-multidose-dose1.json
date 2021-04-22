@@ -82,7 +82,7 @@
                   "fontSize": 12
                 },
                 {
-                  "text": "\nPRODECURE TYPE:",
+                  "text": "\nPROCEDURE TYPE:",
                   "fontSize": 6,
                   "opacity": 0.5
                 },
@@ -111,12 +111,12 @@
                   "fontSize": 9
                 },
                 {
-                  "text": "\n\n\n\n\nVACCINE DOSES:",
+                  "text": "\n\n\n\n\nVACCINE DOSE:",
                   "fontSize": 6,
                   "opacity": 0.5
                 },
                 {
-                  "text": "Multiple 1/2",
+                  "text": "{{subject.formData.dose}}",
                   "fontSize": 9
                 }
               ]

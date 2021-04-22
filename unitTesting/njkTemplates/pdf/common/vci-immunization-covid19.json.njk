@@ -183,12 +183,12 @@
               ],
               [
                 {
-                  "text": "ISSUANCE DATE:",
+                  "text": "VACCINE ADMINISTRATION DATE:",
                   "fontSize": 6,
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{credential.createdAt | date('yyyy-MM-DD hh:mm a') | upper}}",
+                  "text": "{{subject.formData.occurrenceDateTime | date('yyyy-MM-DD hh:mm a') | upper}}",
                   "fontSize": 9
                 },
                 {
@@ -207,6 +207,15 @@
 {% else %}
                   "text": "{{organization.country}}",
 {% endif -%}
+                  "fontSize": 9
+                },
+                {
+                  "text": "ISSUANCE DATE:",
+                  "fontSize": 6,
+                  "opacity": 0.5
+                },
+                {
+                  "text": "{{credential.createdAt | date('yyyy-MM-DD hh:mm a') | upper}}",
                   "fontSize": 9
                 }
               ]

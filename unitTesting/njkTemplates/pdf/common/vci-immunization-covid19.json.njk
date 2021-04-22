@@ -87,7 +87,7 @@
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{template.name}}",
+                  "text": "{{template.name | safe }}",
                   "fontSize": 9
                 }
               ],
@@ -177,7 +177,7 @@
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{organization.name}}",
+                  "text": "{{organization.name | safe }}",
                   "fontSize": 9
                 }
               ],
@@ -202,7 +202,11 @@
                   "opacity": 0.5
                 },
                 {
+{% if subject.formData.countryName and (subject.formData.countryName | trim) %}
+                  "text": "{{subject.formData.countryName | trim }}",
+{% else %}
                   "text": "{{organization.country}}",
+{% endif -%}
                   "fontSize": 9
                 }
               ]

@@ -64,7 +64,7 @@
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{subject.formData.givenName}}",
+                  "text": "{{subject.formData.givenName | trim}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim}}{% endif %}",
                   "fontSize": 9
                 },
                 {
@@ -87,7 +87,7 @@
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{template.name}}",
+                  "text": "{{template.name | safe }}",
                   "fontSize": 9
                 }
               ],
@@ -116,7 +116,7 @@
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{subject.formData.sampleDate | date('yyyy-MM-DD hh:mm a') | upper}}",
+                  "text": "{{subject.formData.sampleDate | date('yyyy-MM-DD')}}",
                   "fontSize": 9
                 }
               ]
@@ -148,15 +148,7 @@
                   "text": "{{subject.formData.resultOfTheTest}}",
                   "fontSize": 9
                 },
-                {
-                  "text": "\nTRADE NAME:",
-                  "fontSize": 6,
-                  "opacity": 0.5
-                },
-                {
-                  "text": "{{subject.formData.reagent}}",
-                  "fontSize": 9
-                },
+                
                 {
                   "text": "\nCertificate Issuance Details :",
                   "bold": true,
@@ -182,27 +174,32 @@
                 }
               ],
               [
-                {
-                  "text": "ISSUANCE DATE:",
-                  "fontSize": 6,
-                  "opacity": 0.5
-                },
-                {
-                  "text": "{{credential.createdAt | date('yyyy-MM-DD hh:mm a') | upper}}",
-                  "fontSize": 9
-                },
+                
                 {
                   "text": "\n ",
                   "bold": true,
                   "fontSize": 12
                 },
                 {
-                  "text": "\n\n\n\n\nCOUNTRY OF ISSUANCE:",
+                  "text": "\n\n\n\nCOUNTRY OF ISSUANCE:",
                   "fontSize": 6,
                   "opacity": 0.5
                 },
                 {
+{% if subject.formData.countryName and (subject.formData.countryName | trim) %}
+                  "text": "{{subject.formData.countryName | trim }}",
+{% else %}
                   "text": "{{organization.country}}",
+{% endif -%}
+                  "fontSize": 9
+                },
+                {
+                  "text": "\nISSUANCE DATE:",
+                  "fontSize": 6,
+                  "opacity": 0.5
+                },
+                {
+                  "text": "{{credential.createdAt | date('yyyy-MM-DD hh:mm a') | upper}}",
                   "fontSize": 9
                 }
               ]

@@ -145,7 +145,13 @@
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{subject.formData.resultOfTheTest}}",
+{% if subject.formData.resultOfTheTest | trim == "detected" %}
+                  "text": "Detected",
+{% elif subject.formData.resultOfTheTest | trim == "undetected" %}
+                  "text": "Not detected",
+{% else %}
+                  "text": "No result",
+{% endif -%}
                   "fontSize": 9
                 },
                 

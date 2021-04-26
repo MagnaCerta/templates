@@ -111,12 +111,12 @@
                   "fontSize": 9
                 },
                 {
-                  "text": "\n\n\n\n\nDATE OF SAMPLE COLLECTION:",
+                  "text": "\n\n\n\n\nVACCINE DOSE:",
                   "fontSize": 6,
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{subject.formData.sampleDate | date('yyyy-MM-DD')}}",
+                  "text": "{{subject.formData.dose}}",
                   "fontSize": 9
                 }
               ]
@@ -140,21 +140,23 @@
             "columns": [
               [
                 {
-                  "text": "DIAGNOSTIC RESULT:",
+                  "text": "LOT NUMBER:",
                   "fontSize": 6,
                   "opacity": 0.5
                 },
                 {
-{% if subject.formData.resultOfTheTest | trim == "detected" %}
-                  "text": "Detected",
-{% elif subject.formData.resultOfTheTest | trim == "undetected" %}
-                  "text": "Not detected",
-{% else %}
-                  "text": "No result",
-{% endif -%}
+                  "text": "{{subject.formData.lotNumber}}",
                   "fontSize": 9
                 },
-                
+                {
+                  "text": "\nTRADE NAME:",
+                  "fontSize": 6,
+                  "opacity": 0.5
+                },
+                {
+                  "text": "{{subject.formData.tradeName}}",
+                  "fontSize": 9
+                },
                 {
                   "text": "\nCertificate Issuance Details :",
                   "bold": true,
@@ -175,18 +177,28 @@
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{organization.name | safe }}",
+                  "text":[ "{{organization.name | safe }}",
+                  "\n1080 W. Patrick St, Unit 10 Frederick, MD 21703"],
                   "fontSize": 9
                 }
               ],
               [
+                {
+                  "text": "VACCINE ADMINISTRATION DATE:",
+                  "fontSize": 6,
+                  "opacity": 0.5
+                },
+                {
+                  "text": "{{subject.formData.occurrenceDateTime | date('yyyy-MM-DD') | upper}}",
+                  "fontSize": 9
+                },
                 {
                   "text": "\n ",
                   "bold": true,
                   "fontSize": 12
                 },
                 {
-                  "text": "\n\n\n\nCOUNTRY OF ISSUANCE:",
+                  "text": "\n\n\n\n\nCOUNTRY OF ISSUANCE:",
                   "fontSize": 6,
                   "opacity": 0.5
                 },

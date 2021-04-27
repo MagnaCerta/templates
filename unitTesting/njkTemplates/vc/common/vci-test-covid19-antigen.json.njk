@@ -29,7 +29,11 @@
     "honorificSuffix": "{{ subject.formData.honorificSuffix | trim }}",
     {% endif -%}
     {% if subject.formData.externalReference and (subject.formData.externalReference | trim) %}
-    "externalReference": "{{subject.formData.externalReference}}",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "External Reference",
+      "value":  "{{subject.formData.externalReference | trim}}"
+    },
     {% endif -%}
     "fhirVersion": "4.0.1",
     "fhirSource": {
@@ -283,7 +287,7 @@
                     "code": "laboratory"
                     }]
                 }],
-                {# https://loinc.org/94558-4/ - COVID-19 probe detection #}
+                {# https://loinc.org/94558-4/ - SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory specimen by Rapid immunoassay #}
                 "code": {
                     "coding": [{
                     "system": "http://loinc.org",
@@ -299,7 +303,7 @@
                 "performer": [{
                     "display": "{{ digitalPen.legalName }}"
                 }],
-                {% if subject.formData.resultOfTheTest | trim == "detected" %}
+                {% if subject.formData.observation | trim == "detected" %}
                 {# https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=260373001 #}
                 "valueCodeableConcept": {
                     "coding": [{
@@ -307,7 +311,7 @@
                     "code": "260373001"
                     }]
                 }
-                {% elif subject.formData.resultOfTheTest | trim == "undetected" %}
+                {% elif subject.formData.observation | trim == "undetected" %}
                 {# https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=260415000 #}
                 "valueCodeableConcept": {
                     "coding": [{

@@ -1,7 +1,7 @@
 import { readdirSync, statSync } from "fs";
 import * as path from "path";
 
-// return recursive list of .proto files in the given directory
+// return recursive list of files in the given directory
 export default function getTemplates(baseDir: string): string[] {
   const subdirs = readdirSync(baseDir);
   return subdirs.reduce((accF: string[], subdir: string) => {

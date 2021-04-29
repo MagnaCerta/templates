@@ -1,0 +1,118 @@
+{
+  "properties": [
+    {
+      "id": "title",
+      "listable": false,
+      "value": "SARS-CoV-2 IgG Antibody Test"
+    },
+{% if credential.commonName %}
+    {
+      "value": "{{credential.commonName | trim}}",
+      "listable": false,
+      "id": "subtitle"
+    },
+{% else %}
+    {
+      "value": "{{credential.organization}}",
+      "listable": false,
+      "id": "subtitle"
+    },
+{% endif %}
+    {
+      "label": "Subject Details",
+      "value": "Subject Details",
+      "id": "subjectDetailsTitle",
+      "header": true,
+      "type": "title"
+    },
+    {
+      "label": "Given Name",
+      "value": "{{credential.credentialSubject.givenName}}{% if credential.credentialSubject.additionalName %} {{ credential.credentialSubject.additionalName }}{% endif %}",
+      "id": "name",
+      "header": true,
+      "type": "subtitleTop",
+      "tags": ["header", "front"]
+    },
+    {
+      "label": "Last Name",
+      "value": "{{credential.credentialSubject.familyName}}",
+      "id": "lastname",
+      "header": true,
+      "type": "subtitleBottom",
+      "tags": ["header", "front"]
+    },
+    {
+      "label": "spacerFront",
+      "value": "", 
+      "type": "spacerFront", 
+      "tags": ["front"]
+    },
+    {
+      "label": "Date Of Birth",
+      "value": "{{credential.credentialSubject.birthDate}}",
+      "id": "dob",
+      "type": "date",
+      "format": "YYYY-MM-DD",
+      "header": true
+    },
+    {
+      "label": "Gender",
+      "value": "{{credential.credentialSubject.gender}}",
+      "default": "",
+      "id": "gender",
+      "header": true
+    },
+    {% if credential.credentialSubject.fhirSource.entry[0].resource.identifier[0].value %}
+      {
+        "label": "Passport",
+        "value": "{{credential.credentialSubject.fhirSource.entry[0].resource.identifier[0].value}}",
+        "id": "passport",
+        "header": true
+      },
+    {% endif -%}
+    {% if credential.credentialSubject.fhirSource.entry[0].resource.identifier[1].value %}
+      {
+        "label": "Drivers license",
+        "value": "{{credential.credentialSubject.fhirSource.entry[0].resource.identifier[1].value}}",
+        "id": "driversLicense",
+        "header": true
+      },
+    {% endif -%}
+    {
+      "label": "Procedure Details",
+      "value": "Procedure Details",
+      "id": "procedureDetailsTitle",
+      "header": false,
+      "type": "title"
+    },
+    {
+      "label": "Procedure Type",
+      "value": "SARS-CoV-2 IgG Antibody Test",
+      "id": "procedureType",
+      "header": false,
+      "type": "text",
+      "tags": ["header", "front"]
+    },
+    {
+      "label": "Sample Collection Date",
+      "value": "{{credential.credentialSubject.fhirSource.entry[1].resource.effectiveDateTime}}",
+      "type": "date",
+      "format": "YYYY-MM-DD",
+      "id": "sampleDate",
+      "header": false
+    },
+    {
+      "label": "Diagnostic Result",
+      {% if credential.credentialSubject.fhirSource.entry[1].resource.valueCodeableConcept.coding[0].code == "260373001" %}
+        "value": "Detected",
+      {% elif credential.credentialSubject.fhirSource.entry[1].resource.valueCodeableConcept.coding[0].code =="260415000" %}
+        "value": "Undetected",
+      {% else %}
+        "value": "Unknown",
+      {% endif -%}
+      "id": "diagnosticResult",
+      "header": false,
+      "tags": ["header", "front"]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://schema.opencerta.org/proof",
+    "https://schema.opencerta.org/fhir/202009"
+  ],
+  "type": ["VerifiableCredential", "FHIRCredential"],
+  "id": "urn:uuid:1e1ce1d3-3d40-4a92-acad-e8c2bd71b3b3",
+  "issuer": "https://issuers.uat.magnacerta.io/4bc914bf12107f0f3895bc0ddba59eaf1998b75e/f73f78b532e04ee26427cb08bf2dd8a481515d15",
+  "credentialSubject": {
+    "type": "FHIRCredential",
+    "id": "urn:uuid:261f5670-2c32-40f5-aaf7-e8b56c2c688d",
+    "givenName": "Hugo",
+    "additionalName": "Jose",
+    "familyName": "Salazar",
+    "birthDate": "1988-03-03",
+    "gender": "Male",
+    "fhirVersion": "4.0.1",
+    "fhirSource": {
+      "resourceType": "Bundle",
+      "id": "https://creds.magnacerta.com/1e1ce1d3-3d40-4a92-acad-e8c2bd71b3b3/bundle",
+      "type": "collection",
+      "entry": [
+        {
+          "fullUrl": "https://creds.magnacerta.com/1e1ce1d3-3d40-4a92-acad-e8c2bd71b3b3/bundle/resource/0",
+          "resource": {
+            "resourceType": "Patient",
+            "identifier": [
+              {
+                "type": {
+                  "coding": {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                    "code": "PPN"
+                  }
+                },
+                "value": "PPN24234234"
+              },
+              {
+                "type": {
+                  "coding": {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                    "code": "DL"
+                  }
+                },
+                "value": "DL234234234"
+              }
+            ],
+            "birthDate": "1988-03-03",
+            "name": [
+              {
+                "family": "Salazar",
+                "given": ["Hugo", "Jose"]
+              }
+            ],
+            "gender": "Male"
+          }
+        },
+        {
+          "fullUrl": "https://creds.magnacerta.com/1e1ce1d3-3d40-4a92-acad-e8c2bd71b3b3/bundle/resource/1",
+          "resource": {
+            "resourceType": "Observation",
+            "status": "final",
+            "category": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "code": "laboratory"
+                  }
+                ]
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "94661-6"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "https://creds.magnacerta.com/1e1ce1d3-3d40-4a92-acad-e8c2bd71b3b3/bundle/resource/0"
+            },
+            "effectiveDateTime": "2021-04-29",
+            "performer": [
+              {
+                "display": "Mr Alfonso Olvera"
+              }
+            ],
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "260415000"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "proof": {
+    "created": "2021-04-29T17:20:34.449Z",
+    "jws": "eyJhbGciOiJFUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..MEQCIGPWEOdSJZ2R1OXtkKvrP1MRYhpfdvguC9Ab6cka6-GWAiA6xCv_sKLdh0MDpEUYhKKBp_SQu1LFPeFauMjigTIu-w",
+    "proofPurpose": "assertionMethod",
+    "type": "EcdsaSecp256r1Signature2019",
+    "verificationMethod": "https://issuers.uat.magnacerta.io/4bc914bf12107f0f3895bc0ddba59eaf1998b75e/f73f78b532e04ee26427cb08bf2dd8a481515d15"
+  }
+}

@@ -64,7 +64,7 @@
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{subject.formData.givenName | trim}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim}}{% endif %}",
+                  "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}",
                   "fontSize": 9
                 },
                 {
@@ -73,7 +73,7 @@
                   "opacity": 0.5
                 },
                 {
-                  "text": "{{subject.formData.familyName}}",
+                  "text": "{{subject.formData.familyName | title}}",
                   "fontSize": 9
                 },
                 {

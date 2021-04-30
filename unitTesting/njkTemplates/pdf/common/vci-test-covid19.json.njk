@@ -145,9 +145,9 @@
                   "opacity": 0.5
                 },
                 {
-{% if subject.formData.resultOfTheTest | trim == "detected" %}
+{% if subject.formData.observation | trim == "detected" %}
                   "text": "Detected",
-{% elif subject.formData.resultOfTheTest | trim == "undetected" %}
+{% elif subject.formData.observation | trim == "undetected" %}
                   "text": "Not detected",
 {% else %}
                   "text": "No result",

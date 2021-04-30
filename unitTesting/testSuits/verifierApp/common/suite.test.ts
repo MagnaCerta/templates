@@ -35,10 +35,10 @@ describe("Templates Unit Tests", () => {
         // Render template
         const rawVc = env.render(templatePath, { credential });
 
-        console.log(rawVc);
-
         // Parse generated vc
         const parsedVc = JSON.parse(rawVc);
+
+        console.log(parsedVc);
       });
     }
   });

@@ -297,8 +297,8 @@
                 "subject": {
                     "reference": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0"
                 },
-                {% if subject.formData.sampleCollectionDate %}
-                "effectiveDateTime": "{{ subject.formData.sampleCollectionDate | date('yyyy-MM-DD') }}",
+                {% if subject.formData.sampleDate %}
+                "effectiveDateTime": "{{ subject.formData.sampleDate | date('yyyy-MM-DD') }}",
                 {% endif -%}
                 "performer": [{
                     "display": "{{ digitalPen.legalName }}"

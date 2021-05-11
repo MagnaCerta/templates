@@ -13,7 +13,7 @@
         "text": [
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n__________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n____________________________________________________________             ",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
@@ -27,14 +27,14 @@
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________             ",
             "fontSize": 8,
             "alignment": "right",
             "color": "#2665FF"
@@ -52,11 +52,11 @@
       {
         "columns": [
             [
-              {
-                  "text": "",
-                  "width": "50%"
-              },
-              {% if logo.legth > 0 %}
+                {
+                    "text": "",
+                    "width": "50%"
+                },
+                {% if logo.length > 0 %}
                 {
                   "image": "{{logo}}",
                   "width": 120,
@@ -68,7 +68,7 @@
                   "width": 120,
                   "height": 40
                 }
-              {% endif -%}
+            {% endif -%}
             ],
           {
             "text": [
@@ -112,7 +112,7 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\nGIVEN NAME | NOMBRE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nGIVEN NAME | NOMBRE:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "fontSize": 8 },
                     {
                       "text": "\n\nLAST NAME | APELLIDO:\n",
@@ -125,7 +125,7 @@
                 },
                 {
                   "text": [
-                    { "text": "\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.gender}}", "fontSize": 8 },
                     {
                       "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO::\n",
@@ -163,7 +163,7 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{template.name | safe }}", "fontSize": 8 },
                     {
                       "text": "\n\nSAMPLE COLLECTION DATE | FECHA DE RECOLECCIÓN DE MUESTRA:\n",
@@ -176,7 +176,7 @@
                 },
                 {
                   "text": [
-                    { "text": "\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
                     {
                       {% if subject.formData.observation | trim == "detected" %}
                         "text": "Detected",
@@ -224,7 +224,7 @@
           {
             "text": [
               
-              { "text": "\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\n\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
               { "text": "\n\nORGANIZATION | ORGANIZACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{organization.name | safe }}", "fontSize": 8 }
@@ -234,7 +234,7 @@
           {
             "text": [
               {
-                "text": "\nCOUNTRY OF ISSUANCE | PAÍS DE EMISIÓN:\n",
+                "text": "\n\nCOUNTRY OF ISSUANCE | PAÍS DE EMISIÓN:\n",
                 "fontSize": 5,
                 "opacity": 0.5
               },
@@ -246,7 +246,7 @@
                 {% endif -%}
                   "fontSize": 8 },
               { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{credential.createdAt | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
             ]
           },
           {}
@@ -296,9 +296,13 @@
               }
             ]
           }
-        ]
+        ],
+        "columnGap": 45
       },
-      "\n\n\n\n\n\n\n\n\n\n\n",
+      {
+        "text": "\n\n\n\n\n\n\n\n\n\n\n\n",
+        "fontSize": 10
+      },
       {
         "columns": [
           {

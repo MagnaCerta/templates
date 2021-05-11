@@ -13,7 +13,7 @@
         "text": [
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n__________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n____________________________________________________________             ",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
@@ -27,14 +27,14 @@
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________             ",
             "fontSize": 8,
             "alignment": "right",
             "color": "#2665FF"
@@ -51,44 +51,45 @@
     "content": [
       {
         "columns": [
-          [
-            {
-                "text": "",
-                "width": "50%"
-            },
-            {% if logo.legth > 0 %}
-              {
-                "image": "{{logo}}",
-                "width": 120,
-                "height": 40
-              }
-            {% else %}
-              {
-                "text": "SIN LOGO",
-                "width": 120,
-                "height": 40
-              }
+            [
+                {
+                    "text": "",
+                    "width": "50%"
+                },
+                {% if logo.length > 0 %}
+                {
+                  "image": "{{logo}}",
+                  "width": 120,
+                  "height": 40
+                }
+              {% else %}
+                {
+                  "text": "SIN LOGO",
+                  "width": 120,
+                  "height": 40
+                }
             {% endif -%}
-          ],
+            ],
           {
             "text": [
-              {
-              "bold": true,
-              "text": "VERIFIABLE HEALTH CERTIFICATE",
-              "alignment": "left",
-              "fontSize": 14
-              },
-              {
-              "bold": true,
-              "text": "\nCERTIFICADO DE SALUD VERIFICABLE",
-              "alignment": "left",
-              "fontSize": 10
-              }
+                {
+                "bold": true,
+                "text": "VERIFIABLE HEALTH CERTIFICATE",
+                "alignment": "left",
+                "fontSize": 14
+                },
+                {
+                "bold": true,
+                "text": "\nCERTIFICADO DE SALUD VERIFICABLE",
+                "alignment": "left",
+                "fontSize": 10
+                }
             ]
           }
         ],
         "columnGap": 15
-      },"\n",
+      },
+      "\n",
       {
         "columns": [
           {
@@ -111,7 +112,7 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\nGIVEN NAME | NOMBRE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nGIVEN NAME | NOMBRE:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "fontSize": 8 },
                     {
                       "text": "\n\nLAST NAME | APELLIDO:\n",
@@ -124,7 +125,7 @@
                 },
                 {
                   "text": [
-                    { "text": "\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.gender}}", "fontSize": 8 },
                     {
                       "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO::\n",
@@ -162,25 +163,25 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{template.name | safe }}", "fontSize": 8 },
                     {
                       "text": "\n\nVACCINE ADMINISTRATION DATE | FECHA VACUNACIÓN:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    { "text": "{{subject.formData.ocurrenceDate | date('yyyy-MM-DD')}}", "fontSize": 8 }
-                    { "text": "\nLOT NUMBER | NUMERO DE LOTE:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{template.name | safe }}", "fontSize": 8 },
+                    { "text": "{{subject.formData.ocurrenceDate | date('yyyy-MM-DD')}}", "fontSize": 8 },
+                    { "text": "\n\nLOT NUMBER | NUMERO DE LOTE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.lotNumber}}", "fontSize": 8 }
                   ],
                   "width": "50%"
                 },
                 {
                   "text": [
-                    { "text": "\nTRADE NAME | NOMBRE COMERCIAL:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nTRADE NAME | NOMBRE COMERCIAL:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.tradeName}}", "fontSize": 8 },
-                    { "text": "\nMANUFACTURER | FABRICANTE:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.tradeName}}", "fontSize": 8 },
+                    { "text": "\n\nMANUFACTURER | FABRICANTE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.manufacturer | safe}}", "fontSize": 8 }
                   ]
                 }
               ],
@@ -190,18 +191,18 @@
         ]
       },
       {
-       "text": [
-         {
-           "text":
-           "\nPlease be careful not to wrinkle the QR codes when folding so readability is not compromised",
-           "fontSize": 5.6
-         },
-         {
-           "text":
-           "\nPor favor, procure no doblar los códigos QR para que la legibilidad no se vea comprometida",
-           "fontSize": 5.6
-         }
-       ]
+        "text": [
+          {
+            "text":
+            "\nPlease be careful not to wrinkle the QR codes when folding so readability is not compromised",
+            "fontSize": 5.6
+          },
+          {
+            "text":
+            "\nPor favor, procure no doblar los códigos QR para que la legibilidad no se vea comprometida",
+            "fontSize": 5.6
+          }
+        ]
       },
       {
         "text": "\n",
@@ -218,7 +219,7 @@
           {
             "text": [
               
-              { "text": "\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\n\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
               { "text": "\n\nORGANIZATION | ORGANIZACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{organization.name | safe }}", "fontSize": 8 }
@@ -228,7 +229,7 @@
           {
             "text": [
               {
-                "text": "\nCOUNTRY OF ISSUANCE | PAÍS DE EMISIÓN:\n",
+                "text": "\n\nCOUNTRY OF ISSUANCE | PAÍS DE EMISIÓN:\n",
                 "fontSize": 5,
                 "opacity": 0.5
               },
@@ -240,7 +241,7 @@
                 {% endif -%}
                   "fontSize": 8 },
               { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{credential.createdAt | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
             ]
           },
           {}
@@ -290,9 +291,13 @@
               }
             ]
           }
-        ]
+        ],
+        "columnGap": 45
       },
-      "\n\n\n\n\n\n\n\n\n\n\n",
+      {
+        "text": "\n\n\n\n\n\n\n\n\n\n\n\n",
+        "fontSize": 10
+      },
       {
         "columns": [
           {

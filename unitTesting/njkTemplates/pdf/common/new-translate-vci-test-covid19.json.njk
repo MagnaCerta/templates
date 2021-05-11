@@ -242,7 +242,7 @@
                 {% if subject.formData.countryName and (subject.formData.countryName | trim) %}
                   "text": "{{subject.formData.countryName | trim }}",
                 {% else %}
-                  text": "{{organization.country}}",
+                  "text": "{{organization.country}}",
                 {% endif -%}
                   "fontSize": 8 },
               { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },

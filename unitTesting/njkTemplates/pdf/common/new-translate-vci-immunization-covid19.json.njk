@@ -56,11 +56,19 @@
                 "text": "",
                 "width": "50%"
             },
-            {
+            {% if logo.legth > 0 %}
+              {
                 "image": "{{logo}}",
                 "width": 120,
                 "height": 40
-            }
+              }
+            {% else %}
+              {
+                "text": "SIN LOGO",
+                "width": 120,
+                "height": 40
+              }
+            {% endif -%}
           ],
           {
             "text": [

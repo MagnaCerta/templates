@@ -52,15 +52,23 @@
       {
         "columns": [
             [
+              {
+                  "text": "",
+                  "width": "50%"
+              },
+              {% if logo.legth > 0 %}
                 {
-                    "text": "",
-                    "width": "50%"
-                },
-                {
-                    "image": "{{logo}}",
-                    "width": 120,
-                    "height": 40
+                  "image": "{{logo}}",
+                  "width": 120,
+                  "height": 40
                 }
+              {% else %}
+                {
+                  "text": "SIN LOGO",
+                  "width": 120,
+                  "height": 40
+                }
+              {% endif -%}
             ],
           {
             "text": [
@@ -188,18 +196,18 @@
         ]
       },
       {
-       "text": [
-         {
-           "text":
-           "\nPlease be careful not to wrinkle the QR codes when folding so readability is not compromised",
-           "fontSize": 5.6
-         },
-         {
-           "text":
-           "\nPor favor, procure no doblar los códigos QR para que la legibilidad no se vea comprometida",
-           "fontSize": 5.6
-         }
-       ]
+        "text": [
+          {
+            "text":
+            "\nPlease be careful not to wrinkle the QR codes when folding so readability is not compromised",
+            "fontSize": 5.6
+          },
+          {
+            "text":
+            "\nPor favor, procure no doblar los códigos QR para que la legibilidad no se vea comprometida",
+            "fontSize": 5.6
+          }
+        ]
       },
       {
         "text": "\n",

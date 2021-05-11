@@ -29,11 +29,7 @@
     "honorificSuffix": "{{ subject.formData.honorificSuffix | trim }}",
     {% endif -%}
     {% if subject.formData.externalReference and (subject.formData.externalReference | trim) %}
-    "identifier": {
-      "@type": "PropertyValue",
-      "propertyID": "External Reference",
-      "value":  "{{subject.formData.externalReference | trim}}"
-    },
+    "identifier": "{{subject.formData.externalReference | trim}}",
     {% endif -%}
     "fhirVersion": "4.0.1",
     "fhirSource": {

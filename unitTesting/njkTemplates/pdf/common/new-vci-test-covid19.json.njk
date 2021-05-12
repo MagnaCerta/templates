@@ -165,16 +165,7 @@
                     "fontSize": 5,
                     "opacity": 0.5
                   },
-                  {
-                  {% if subject.formData.observation | trim == "detected" %}
-                    "text": "Detected",
-                  {% elif subject.formData.observation | trim == "undetected" %}
-                    "text": "Not detected",
-                  {% else %}
-                    "text": "No result",
-                  {% endif -%}
-                  "fontSize": 9
-                }
+                  { "text": "{{subject.formData.observation | title}}", "fontSize": 9 }
                 ]
               }
             ]

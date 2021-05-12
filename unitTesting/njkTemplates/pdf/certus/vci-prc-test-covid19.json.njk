@@ -177,7 +177,18 @@
                 {
                   "text": [
                     { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
+                    {
+                      {% if subject.formData.observation | trim == "detected" %}
+                        "text": "Detected",
+                      {% elif subject.formData.observation | trim == "undetected" %}
+                        "text": "Not detected",
+                      {% else %}
+                        "text": "No result",
+                      {% endif -%}
+                      "fontSize": 8
+                    },
+                    { "text": "\n\nREAGENT | REACTIVO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.tradeName | safe }}", "fontSize": 8 }
                   ]
                 }
               ],
@@ -240,7 +251,12 @@
               { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
             ]
           },
-          {}
+          {
+            "text": [
+              { "text": "\n\nFOLIO NUMBER | FOLIO:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{subject.formData.externalReference}}", "fontSize": 8 }
+            ]
+          }
         ]
       },
       {

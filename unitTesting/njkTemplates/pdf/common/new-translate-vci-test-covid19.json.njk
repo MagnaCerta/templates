@@ -125,14 +125,14 @@
                 },
                 {
                   "text": [
-                    { "text": "\n\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.gender}}", "fontSize": 8 },
                     {
                       "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO::\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 }
+                    { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 },
+                    { "text": "\n\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.gender}}", "fontSize": 8 }
                   ]
                 }
               ],
@@ -214,16 +214,16 @@
         "columns": [
           {
             "text": [
-              
               { "text": "\n\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
-              { "text": "\n\nORGANIZATION | ORGANIZACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{organization.name | safe }}", "fontSize": 8 }
-            ],
-            "width": "40%"
+              { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+            ]
           },
           {
             "text": [
+              { "text": "\n\nORGANIZATION | ORGANIZACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{organization.name | safe }}", "fontSize": 8 },
               {
                 "text": "\n\nCOUNTRY OF ISSUANCE | PAÍS DE EMISIÓN:\n",
                 "fontSize": 5,
@@ -235,9 +235,7 @@
                 {% else %}
                   "text": "{{organization.country}}",
                 {% endif -%}
-                  "fontSize": 8 },
-              { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+                  "fontSize": 8 }
             ]
           },
           {}

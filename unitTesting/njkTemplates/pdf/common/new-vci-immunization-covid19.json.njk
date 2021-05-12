@@ -99,17 +99,18 @@
                 },
                 {
                   "text": [
-                    { "text": "\n\nGENDER:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.gender}}", "fontSize": 8 },
                     {
                       "text": "\n\nDATE OF BIRTH:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 }
+                    { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 },
+                    { "text": "\n\nGENDER:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.gender}}", "fontSize": 8 }
                   ]
                 }
-              ]
+              ],
+              "columnGap": 10
             }
           ]
         ]
@@ -168,7 +169,8 @@
                     { "text": "{{subject.formData.tradeName}}", "fontSize": 8 }
                   ]
                 }
-              ]
+              ],
+              "columnGap": 10
             }
           ]
         ]
@@ -189,12 +191,14 @@
             "text": [
               { "text": "\n\nISSUED BY:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
-              { "text": "\n\nORGANIZATION:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{organization.name | safe }}", "fontSize": 8 }
+              { "text": "\n\nISSUANCE DATE:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
             ]
           },
           {
             "text": [
+              { "text": "\n\nORGANIZATION:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{organization.name | safe }}", "fontSize": 8 },
               {
                 "text": "\n\nCOUNTRY OF ISSUANCE:\n",
                 "fontSize": 5,
@@ -206,9 +210,8 @@
                 {% else %}
                   "text": "{{organization.country}}",
                 {% endif -%}
-                  "fontSize": 8 },
-              { "text": "\n\nISSUANCE DATE:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+                "fontSize": 8 
+              }
             ]
           },
           {}

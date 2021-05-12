@@ -13,7 +13,7 @@
         "text": [
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n____________________________________________________________             ",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
@@ -27,14 +27,14 @@
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________             ",
             "fontSize": 8,
             "alignment": "right",
             "color": "#2665FF"
@@ -77,45 +77,42 @@
             "fit": [130, 130],
             "width": "28%"
           },
-          {
-            "columns": [
-              {
-                "text": [
-                  {
-                    "text": "\nSUBJECT DETAILS",
-                    "bold": true,
-                    "fontSize": 9
-                  },
-                  { "text": "\n\nGIVEN NAME:\n", "fontSize": 5, "opacity": 0.5 },
-                  { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "fontSize": 8 },
-                  {
-                    "text": "\n\nLAST NAME:\n",
-                    "fontSize": 5,
-                    "opacity": 0.5
-                  },
-                  { "text": "{{subject.formData.familyName | title}}", "fontSize": 8 }
-                ],
-                "width": "50%"
-              },
-              {
-                "text": [
-                  {
-                    "text": "\n\n",
-                    "bold": true,
-                    "fontSize": 9
-                  },
-                  { "text": "\nGENDER:\n", "fontSize": 5, "opacity": 0.5 },
-                  { "text": "{{subject.formData.gender}}", "fontSize": 8 },
-                  {
-                    "text": "\n\nDATE OF BIRTH:\n",
-                    "fontSize": 5,
-                    "opacity": 0.5
-                  },
-                  { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 }
-                ]
-              }
-            ]
-          }
+          [
+            {
+              "text": "\nSUBJECT DETAILS",
+              "bold": true,
+              "fontSize": 9
+            },
+            {
+              "columns": [
+                {
+                  "text": [
+                    { "text": "\n\nGIVEN NAME:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "fontSize": 8 },
+                    {
+                      "text": "\n\nLAST NAME:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { "text": "{{subject.formData.familyName | title}}", "fontSize": 8 }
+                  ],
+                  "width": "50%"
+                },
+                {
+                  "text": [
+                    { "text": "\n\nGENDER:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.gender}}", "fontSize": 8 },
+                    {
+                      "text": "\n\nDATE OF BIRTH:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 }
+                  ]
+                }
+              ]
+            }
+          ]
         ]
       },
       {
@@ -130,46 +127,43 @@
             "fit": [130, 130],
             "width": "28%"
           },
-          {
-            "columns": [
-              {
-                "text": [
-                  {
-                    "text": "\nPROCEDURE DETAILS",
-                    "bold": true,
+          [
+            {
+              "text": "\nPROCEDURE DETAILS",
+              "bold": true,
+              "fontSize": 9
+            },
+            {
+              "columns": [
+                {
+                  "text": [
+                    { "text": "\n\nPROCEDURE TYPE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{template.name | safe }}", "fontSize": 8 },
+                    {
+                      "text": "\n\nSAMPLE COLLECTION DATE:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { 
+                    "text": "{{subject.formData.sampleDate | date('yyyy-MM-DD')}}",
                     "fontSize": 9
-                  },
-                  { "text": "\n\nPROCEDURE TYPE:\n", "fontSize": 5, "opacity": 0.5 },
-                  { "text": "{{template.name | safe }}", "fontSize": 8 },
-                  {
-                    "text": "\n\nSAMPLE COLLECTION DATE:\n",
-                    "fontSize": 5,
-                    "opacity": 0.5
-                  },
-                  { 
-                  "text": "{{subject.formData.sampleDate | date('yyyy-MM-DD')}}",
-                  "fontSize": 9
-                  }
-                ],
-                "width": "50%"
-              },
-              {
-                "text": [
-                  {
-                    "text": "\n\n",
-                    "bold": true,
-                    "fontSize": 9
-                  },
-                  {
-                    "text": "\nDIASNOSTIC RESULT:\n",
-                    "fontSize": 5,
-                    "opacity": 0.5
-                  },
-                  { "text": "{{subject.formData.observation | title}}", "fontSize": 9 }
-                ]
-              }
-            ]
-          }
+                    }
+                  ],
+                  "width": "50%"
+                },
+                {
+                  "text": [
+                    {
+                      "text": "\n\nDIASNOSTIC RESULT:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
+                  ]
+                }
+              ]
+            }
+          ]
         ]
       },
       {
@@ -178,30 +172,24 @@
         "fontSize": 5.6
       },
       {
+        "text": "\n\nCERTIFICATE ISSUANCE DETAILS",
+        "bold": true,
+        "fontSize": 9
+      },
+      {
         "columns": [
           {
             "text": [
-              {
-                "text": "\n\nCERTIFICATE ISSUANCE DETAILS",
-                "bold": true,
-                "fontSize": 9
-              },
               { "text": "\n\nISSUED BY:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
               { "text": "\n\nORGANIZATION:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{organization.name | safe }}", "fontSize": 8 }
-            ],
-            "width": "40%"
+            ]
           },
           {
             "text": [
               {
-                "text": "\n\n\n",
-                "bold": true,
-                "fontSize": 9
-              },
-              {
-                "text": "\nCOUNTRY OF ISSUANCE:\n",
+                "text": "\n\nCOUNTRY OF ISSUANCE:\n",
                 "fontSize": 5,
                 "opacity": 0.5
               },
@@ -213,7 +201,7 @@
                 {% endif -%}
                   "fontSize": 8 },
               { "text": "\n\nISSUANCE DATE:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{credential.createdAt | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
             ]
           },
           {}
@@ -240,7 +228,7 @@
           }
         ]
       },
-      "\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "\n\n\n\n\n\n\n\n\n\n\n\n\n",
       {
         "columns": [
           {

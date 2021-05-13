@@ -119,40 +119,32 @@
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    {% if subject.formData.citizenship and (subject.formData.citizenship | trim) %}
-                      { "text": "{{subject.formData.familyName | title}}", "fontSize": 8 },
-                      {
-                        "text": "\n\nCITIZENSHIP | NACIONALIDAD:\n",
-                        "fontSize": 5,
-                        "opacity": 0.5
-                      },
-                      { "text": "{{subject.formData.citizenship | title}}", "fontSize": 8 }
-                    {% else %}
-                      { "text": "{{subject.formData.familyName | title}}", "fontSize": 8 }
-                    {% endif -%}
-                  ],
-                  "width": "50%"
-                },
-                {
-                  "text": [
+                    { "text": "{{subject.formData.familyName | title}}", "fontSize": 8 },
                     {
                       "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO::\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 },
+                    { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 }
+                  ],
+                  "width": "50%"
+                },
+                {
+                  "text": [
                     { "text": "\n\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
-                    {% if subject.formData.passportNumber and (subject.formData.passportNumber | trim) %}
-                      { "text": "{{subject.formData.gender}}", "fontSize": 8 },
-                      {
-                        "text": "\n\nPASSPORT | PASAPORTE:\n",
-                        "fontSize": 5,
-                        "opacity": 0.5
-                      },
-                      { "text": "{{subject.formData.passportNumber | title}}", "fontSize": 8 }
-                    {% else %}
-                      { "text": "{{subject.formData.gender | title}}", "fontSize": 8 }
-                    {% endif -%}
+                    { "text": "{{subject.formData.gender}}", "fontSize": 8 },
+                    {
+                      "text": "\n\nPASSPORT | PASAPORTE:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { "text": "{{subject.formData.passportNumber | title}}", "fontSize": 8 },
+                    {
+                      "text": "\n\nCITIZENSHIP | NACIONALIDAD:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { "text": "{{subject.formData.citizenship | title}}", "fontSize": 8 }
                   ]
                 }
               ],
@@ -190,7 +182,13 @@
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    { "text": "{{subject.formData.sampleDate | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+                    {% if subject.formData.laboratory and (subject.formData.laboratory | trim) %}
+                      { "text": "{{subject.formData.sampleDate | timezone(subject.formData.timezone) | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 },
+                      { "text": "\n\nLABORATORY | LABORATORIO:\n", "fontSize": 5, "opacity": 0.5 },
+                      { "text": "{{subject.formData.laboratory | title}}", "fontSize": 8 }
+                    {% else %}
+                      { "text": "{{subject.formData.sampleDate | timezone(subject.formData.timezone) | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+                    {% endif -%}
                   ],
                   "width": "50%"
                 },
@@ -206,8 +204,9 @@
                       { "text": "\n\nLABORATORY | LABORATORIO:\n", "fontSize": 5, "opacity": 0.5 },
                       { "text": "{{subject.formData.laboratory | title}}", "fontSize": 8 }
                     {% else %}
-                      { "text": "{{subject.formData.sensitivity | title}}", "fontSize": 8 }
+                      
                     {% endif -%}
+                    { "text": "{{subject.formData.sensitivity | title}}", "fontSize": 8 }
                   ]
                 }
               ],
@@ -247,7 +246,7 @@
               { "text": "\n\nISSUED BY:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
               { "text": "\n\nISSUANCE DATE:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+              { "text": "{{credential.created | timezone(subject.formData.timezone) | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
             ]
           },
           {
@@ -268,7 +267,12 @@
                   "fontSize": 8 }
             ]
           },
-          {}
+          {
+            "text": [
+              { "text": "\n\nTIME ZONE:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{subject.formData.timezone}}", "fontSize": 8 }
+            ]
+          }
         ]
       },
       {

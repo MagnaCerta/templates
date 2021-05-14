@@ -12,24 +12,24 @@
     "type": "FHIRCredential",
     "id": "urn:uuid:{{ subject.id }}",
     "givenName": "{{ subject.formData.givenName | trim }}",
-    {% if subject.formData.middleName | trim %}
+    {% if subject.formData.middleName and (subject.formData.middleName | trim) %}
     "additionalName": "{{ subject.formData.middleName | trim }}",
     {% endif -%}
     "familyName": "{{ subject.formData.familyName | trim }}",
     {% if subject.formData.birthDate %}
     "birthDate": "{{ subject.formData.birthDate | date('yyyy-MM-DD') }}",
     {% endif -%}
-    {% if subject.formData.gender | trim %}
+    {% if subject.formData.gender and (subject.formData.gender | trim) %}
     "gender": "{{ subject.formData.gender | trim }}",
     {% endif -%}
-    {% if subject.formData.honorificPrefix | trim %}
+    {% if subject.formData.honorificPrefix and (subject.formData.honorificPrefix | trim) %}
     "honorificPrefix": "{{ subject.formData.honorificPrefix | trim }}",
     {% endif -%}
-    {% if subject.formData.honorificSuffix | trim %}
+    {% if subject.formData.honorificSuffix and (subject.formData.honorificSuffix | trim) %}
     "honorificSuffix": "{{ subject.formData.honorificSuffix | trim }}",
     {% endif -%}
-    {% if subject.formData.externalReference | trim %}
-    "externalReference": "{{subject.formData.externalReference}}",
+    {% if subject.formData.externalReference and (subject.formData.externalReference | trim) %}
+    "externalReference": "{{subject.formData.externalReference | trim}}",
     {% endif -%}
     "fhirVersion": "4.0.1",
     "fhirSource": {
@@ -41,10 +41,10 @@
             "fullUrl": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0",
             "resource": {
                 "resourceType": "Patient",
-                {% if (subject.formData.passportNumber | trim) and (subject.formData.driversLicense) %}
+                {% if (subject.formData.passportNumber and (subject.formData.passportNumber | trim)) and (subject.formData.driversLicense and (subject.formData.driversLicense | trim)) %}
                 "identifier" : [
                     {
-                    {% if subject.formData.citizenshipCountry | trim %}
+                    {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
                     "extension" : [{
                         "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
                         "extension" : [{
@@ -55,7 +55,7 @@
                             "code" : "{{ subject.formData.citizenshipCountry | trim}}"
                             }]
                         }
-                        }, 
+                        },
                         {
                         "url" : "period",
                         "valuePeriod" : {
@@ -63,7 +63,7 @@
                         }
                         }]
                         }
-                    {% if subject.formData.citizenshipState | trim %}
+                    {% if subject.formData.citizenshipState and (subject.formData.citizenshipState | trim) %}
                     ,
                     {
                         "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
@@ -75,7 +75,7 @@
                             "code" : "{{ subject.formData.citizenshipState | trim}}"
                             }]
                         }
-                        }, 
+                        },
                         {
                         "url" : "period",
                         "valuePeriod" : {
@@ -95,7 +95,7 @@
                     "value": "{{ subject.formData.passportNumber | trim }}"
                     },
                     {
-                    {% if subject.formData.citizenshipCountry | trim %}
+                    {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
                     "extension" : [{
                         "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
                         "extension" : [{
@@ -106,7 +106,7 @@
                             "code" : "{{ subject.formData.citizenshipCountry | trim}}"
                             }]
                         }
-                        }, 
+                        },
                         {
                         "url" : "period",
                         "valuePeriod" : {
@@ -114,7 +114,7 @@
                         }
                         }]
                         }
-                    {% if subject.formData.citizenshipState | trim %}
+                    {% if subject.formData.citizenshipState and (subject.formData.citizenshipState | trim) %}
                     ,
                     {
                         "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
@@ -126,7 +126,7 @@
                             "code" : "{{ subject.formData.citizenshipState | trim}}"
                             }]
                         }
-                        }, 
+                        },
                         {
                         "url" : "period",
                         "valuePeriod" : {
@@ -146,10 +146,10 @@
                     "value": "{{ subject.formData.driversLicense | trim }}"
                     }
                 ],
-                {% elif subject.formData.passportNumber | trim %}
+                {% elif subject.formData.passportNumber and (subject.formData.passportNumber | trim) %}
                 "identifier" : [
                     {
-                    {% if subject.formData.citizenshipCountry | trim %}
+                    {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
                     "extension" : [{
                         "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
                         "extension" : [{
@@ -160,7 +160,7 @@
                             "code" : "{{ subject.formData.citizenshipCountry | trim}}"
                             }]
                         }
-                        }, 
+                        },
                         {
                         "url" : "period",
                         "valuePeriod" : {
@@ -168,7 +168,7 @@
                         }
                         }]
                         }
-                    {% if subject.formData.citizenshipState | trim %}
+                    {% if subject.formData.citizenshipState and (subject.formData.citizenshipState | trim) %}
                     ,
                     {
                         "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
@@ -180,7 +180,7 @@
                             "code" : "{{ subject.formData.citizenshipState | trim}}"
                             }]
                         }
-                        }, 
+                        },
                         {
                         "url" : "period",
                         "valuePeriod" : {
@@ -200,10 +200,10 @@
                     "value": "{{ subject.formData.passportNumber | trim }}"
                     }
                 ],
-                {% elif subject.formData.driversLicense | trim %}
+                {% elif subject.formData.driversLicense and (subject.formData.driversLicense| trim) %}
                 "identifier" : [
                     {
-                    {% if subject.formData.citizenshipCountry | trim %}
+                    {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
                     "extension" : [{
                         "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
                         "extension" : [{
@@ -214,7 +214,7 @@
                             "code" : "{{ subject.formData.citizenshipCountry | trim}}"
                             }]
                         }
-                        }, 
+                        },
                         {
                         "url" : "period",
                         "valuePeriod" : {
@@ -222,7 +222,7 @@
                         }
                         }]
                         }
-                    {% if subject.formData.citizenshipState | trim %}
+                    {% if subject.formData.citizenshipState and (subject.formData.citizenshipState | trim) %}
                     ,
                     {
                         "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
@@ -234,7 +234,7 @@
                             "code" : "{{ subject.formData.citizenshipState | trim}}"
                             }]
                         }
-                        }, 
+                        },
                         {
                         "url" : "period",
                         "valuePeriod" : {
@@ -255,7 +255,7 @@
                     }
                 ],
                 {% endif -%}
-                {% if subject.formData.mobilePhone | trim %}
+                {% if subject.formData.mobilePhone and (subject.formData.mobilePhone | trim) %}
                 "telecom": [{
                     "system": "phone",
                     "value": "{{ subject.formData.mobilePhone | trim }}",
@@ -269,32 +269,36 @@
                     "family": "{{ subject.formData.familyName | trim }}",
                     "given": ["{{ subject.formData.givenName | trim }}"{% if subject.formData.middleName | trim %}, "{{ subject.formData.middleName | trim }}"{% endif %}]
                 }],
-                "gender": "{% if subject.formData.gender | trim %}{{ subject.formData.gender | trim }}{% else %}unknown{% endif %}"
+                "gender": "{% if subject.formData.gender and (subject.formData.gender | trim) %}{{ subject.formData.gender | trim }}{% else %}unknown{% endif %}"
             }
-        }, 
+        },
         {
             "fullUrl": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/1",
             "resource": {
                 "resourceType": "Observation",
                 "status": "final",
+                "extension" : [{
+                    "url" : "http://hl7.org/fhir/StructureDefinition/observation-reagent",
+                    "valueString": "{{subject.formData.tradeName}}"
+                }],
                 "category": [{
                     "coding": [{
                     "system": "http://terminology.hl7.org/CodeSystem/observation-category",
                     "code": "laboratory"
                     }]
                 }],
-                {# https://loinc.org/94558-4/ - COVID-19 Rapid immunoassay #}
+                {# https://loinc.org/94661-6/ - SARS-CoV-2 (COVID-19) Ab [Interpretation] in Serum or Plasma #}
                 "code": {
                     "coding": [{
                     "system": "http://loinc.org",
-                    "code": "94558-4"
+                    "code": "94661-6"
                     }]
                 },
                 "subject": {
                     "reference": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0"
                 },
-                {% if subject.formData.sampleCollectionDate %}
-                "effectiveDateTime": "{{ subject.formData.sampleCollectionDate | date('yyyy-MM-DD') }}",
+                {% if subject.formData.sampleDate %}
+                "effectiveDateTime": "{{ subject.formData.sampleDate | date('yyyy-MM-DD') }}",
                 {% endif -%}
                 "performer": [{
                     "display": "{{ digitalPen.legalName }}"
@@ -327,5 +331,9 @@
             }
         }]
     }
+  },
+  "credentialSchema": {
+    "id": "https://schemas.uat.magnacerta.io/tcp/ab-tst/202104",
+    "type": "JsonSchemaValidator2018"
   }
 }

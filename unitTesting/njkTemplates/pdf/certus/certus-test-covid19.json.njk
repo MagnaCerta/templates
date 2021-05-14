@@ -27,7 +27,7 @@
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
@@ -50,21 +50,46 @@
     ],
     "content": [
       {
-        "alignment": "justify",
         "columns": [
+            [
+                {
+                    "text": "",
+                    "width": "50%"
+                },
+                {% if logo.length > 0 %}
+                {
+                  "image": "{{logo}}",
+                  "width": 120,
+                  "height": 40
+                }
+              {% else %}
+                {
+                  "text": "SIN LOGO",
+                  "width": 120,
+                  "height": 40
+                }
+            {% endif -%}
+            ],
           {
-            "image": "{{logo}}",
-            "width": 120,
-            "height": 40
-          },
-          {
-            "bold": true,
-            "text": "\nVERIFIABLE HEALTH CERTIFICATE",
-            "alignment": "right",
-            "fontSize": 14
+            "text": [
+                {
+                "bold": true,
+                "text": "VERIFIABLE HEALTH CERTIFICATE",
+                "alignment": "left",
+                "fontSize": 14
+                },
+                {
+                "bold": true,
+                "text": "\nCERTIFICADO DE SALUD VERIFICABLE",
+                "alignment": "left",
+                "fontSize": 10
+                }
+            ]
           }
-        ]
-      },"\n",
+        ],
+        "columnGap": 15
+      },
+      "\n",
       {
         "columns": [
           {
@@ -79,34 +104,35 @@
           },
           [
             {
-              "text": "\nSUBJECT DETAILS",
+              "text": "\nSUBJECT DETAILS | DETALLES DEL SUJETO",
               "bold": true,
-              "fontSize": 9
+              "fontSize": 8
             },
             {
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nGIVEN NAME:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nGIVEN NAME | NOMBRE:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "fontSize": 8 },
                     {
-                      "text": "\n\nLAST NAME:\n",
+                      "text": "\n\nLAST NAME | APELLIDO:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
                     { "text": "{{subject.formData.familyName | title}}", "fontSize": 8 }
-                  ]
+                  ],
+                  "width": "50%"
                 },
                 {
                   "text": [
+                    { "text": "\n\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.gender}}", "fontSize": 8 },
                     {
-                      "text": "\n\nDATE OF BIRTH:\n",
+                      "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO::\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 },
-                    { "text": "\n\nGENDER:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.gender}}", "fontSize": 8 }
+                    { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 }
                   ]
                 }
               ],
@@ -129,50 +155,54 @@
           },
           [
             {
-              "text": "\nPROCEDURE DETAILS",
+              "text": "\nPROCEDURE DETAILS | DETALLES DEL PROCEDIMIENTO",
               "bold": true,
-              "fontSize": 9
+              "fontSize": 8
             },
             {
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nPROCEDURE TYPE:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{template.name | safe }}", "fontSize": 8 },
-                    {
-                      "text": "\n\nTRADE NAME:\n",
-                      "fontSize": 5,
-                      "opacity": 0.5
-                    },
-                    { "text": "{{subject.formData.tradeName}}", "fontSize": 8 },
-                    {
-                      "text": "\n\nMANUFACTURER:\n",
-                      "fontSize": 5,
-                      "opacity": 0.5
-                    },
-                    { "text": "{{subject.formData.manufacturer | safe}}", "fontSize": 8 }
-                  ]
+                    { "text": "\n\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{template.name | safe }}", "fontSize": 8 }
+                  ],
+                  "width": "50%"
                 },
                 {
                   "text": [
+                    { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
                     {
-                      "text": "\n\nLOT NUMBER:\n",
+                      {% if subject.formData.observation | trim == "detected" %}
+                        "text": "Detected",
+                      {% elif subject.formData.observation | trim == "undetected" %}
+                        "text": "Not detected",
+                      {% else %}
+                        "text": "No result",
+                      {% endif -%}
+                      "fontSize": 8
+                    }
+                  ]
+                }
+              ],
+              "columnGap": 10
+            },
+            {
+              "columns": [
+                {
+                  "text": [
+                    {
+                      "text": "\nSAMPLE COLLECTION DATE | FECHA DE RECOLECCIÓN DE MUESTRA:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    { "text": "{{subject.formData.lotNumber}}", "fontSize": 8 },
-                    {
-                      "text": "\n\nVACCINE DOSE:\n",
-                      "fontSize": 5,
-                      "opacity": 0.5
-                    },
-                    { "text": "{{subject.formData.dose}}", "fontSize": 8 },
-                    {
-                      "text": "\n\nVACCINE ADMINISTRATION DATE:\n",
-                      "fontSize": 5,
-                      "opacity": 0.5
-                    },
-                    { "text": "{{subject.formData.occurrenceDateTime | date("yyyy-MM-DD") | upper}}", "fontSize": 8 }
+                    { "text": "{{subject.formData.sampleDate | date('yyyy-MM-DD')}}", "fontSize": 8 }
+                  ],
+                  "width": "50%"
+                },
+                {
+                  "text": [
+                    { "text": "\nREAGENT | REACTIVO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.tradeName | safe }}", "fontSize": 8 }
                   ]
                 }
               ],
@@ -182,12 +212,26 @@
         ]
       },
       {
-        "text":
-          "\nPlease be careful not to wrinkle the QR codes when folding so readability is not compromised\n",
-        "fontSize": 5.6
+        "text": [
+          {
+            "text":
+            "\nPlease be careful not to wrinkle the QR codes when folding so readability is not compromised",
+            "fontSize": 5.6
+          },
+          {
+            "text":
+            "\nPor favor, procure no doblar los códigos QR para que la legibilidad no se vea comprometida",
+            "fontSize": 5.6
+          }
+        ]
       },
       {
-        "text": "\n\nCERTIFICATE ISSUANCE DETAILS",
+        "text": "\n",
+        "bold": true,
+        "fontSize": 4
+      },
+      {
+        "text": "\nCERTIFICATE ISSUANCE DETAILS | DETALLES DE EMISIÓN DEL CERTIFICADO",
         "bold": true,
         "fontSize": 9
       },
@@ -195,43 +239,18 @@
         "columns": [
           {
             "text": [
-              { "text": "\n\nISSUED BY:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{digitalPen.legalName}}", "fontSize": 8 }
-            ]
-          },
-          {
-            "text": [
-              { "text": "\n\nORGANIZATION:\n", "fontSize": 5, "opacity": 0.5 },
+              
+              { "text": "\n\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
+              { "text": "\n\nORGANIZATION | ORGANIZACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{organization.name | safe }}", "fontSize": 8 }
-            ]
-          },
-          {
-            "text": [
-              { "text": "\n\nLOCATION:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{subject.formData.location}}", "fontSize": 8 }
-            ]
-          }
-        ],
-        "columnGap": 30
-      },
-      {
-        "columns": [
-          {
-            "text": [
-              { "text": "\nISSUANCE DATE:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
-            ]
-          },
-          {
-            "text": [
-              { "text": "\nCLIA ID:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{subject.formData.cliaId}}", "fontSize": 8 }
-            ]
+            ],
+            "width": "40%"
           },
           {
             "text": [
               {
-                "text": "\nCOUNTRY OF ISSUANCE:\n",
+                "text": "\n\nCOUNTRY OF ISSUANCE | PAÍS DE EMISIÓN:\n",
                 "fontSize": 5,
                 "opacity": 0.5
               },
@@ -241,41 +260,78 @@
                 {% else %}
                   "text": "{{organization.country}}",
                 {% endif -%}
-                  "fontSize": 8 }
+                  "fontSize": 8 },
+              { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+            ]
+          },
+          {
+            "text": [
+              {% if subject.formData.externalReference and (subject.formData.externalReference | trim) %}
+                { "text": "\n\nFOLIO NUMBER | FOLIO:\n", "fontSize": 5, "opacity": 0.5 },
+                { "text": "{{subject.formData.externalReference}}", "fontSize": 8 }
+              {% endif -%}
             ]
           }
         ]
-        ,
-        "columnGap": 30
       },
       {
-        "text": [
+        "columns": [
           {
-            "text": "\n\nWhat can I do with this certificate?\n",
-            "fontSize": 10,
-            "bold": true
+            "text": [
+              {
+                "text": "\n\nWhat can I do with this certificate?\n",
+                "fontSize": 10,
+                "bold": true
+              },
+              {
+                "text":
+                  "\nThis certificate contains data from your diagnostic test or vaccination with elements that make it secure, tamper-proof, verifiable, and does not compromise your privacy. This certificate can be presented to verifying authorities who will scan the QR codes with compatible apps.",
+                "fontSize": 8,
+                "opacity": 0.8
+              },
+              {
+                "text":
+                  "\n\nThese certificates will come in handy now or in the near future in several situations, including traveling to another country, going to school, attending events, accessing corporate buildings, social gatherings, etc. ",
+                "fontSize": 8,
+                "opacity": 0.8
+              }
+            ]
           },
           {
-            "text":
-              "\nThis certificate contains data from your diagnostic test or vaccination with elements that make it secure, tamper-proof, verifiable, and does not compromise your privacy. This certificate can be presented to verifying authorities who will scan the QR codes with compatible apps.",
-            "fontSize": 8,
-            "opacity": 0.8
-          },
-          {
-            "text":
-              "\n\nThese certificates will come in handy now or in the near future in several situations, including traveling to another country, going to school, attending events, accessing corporate buildings, social gatherings, etc. ",
-            "fontSize": 8,
-            "opacity": 0.8
+            "text": [
+              {
+                "text": "\n\n¿Qué puedo hacer con este certificado?\n",
+                "fontSize": 10,
+                "bold": true
+              },
+              {
+                "text":
+                  "\nEste certificado contiene datos de su prueba de diagnóstico o vacunación con elementos de seguridad, verificable, no puede ser falsificado y no compromete su privacidad. Se puede presentar a las autoridades de verificación que escanearán los códigos QR con aplicaciones compatibles.",
+                "fontSize": 8,
+                "opacity": 0.8
+              },
+              {
+                "text":
+                  "\n\nEstos certificados serán útiles ahora o en un futuro cercano en varias situaciones, como viajar a otro país, ir a la escuela, asistir a eventos, acceder a edificios corporativos, reuniones sociales, etc.",
+                "fontSize": 8,
+                "opacity": 0.8
+              }
+            ]
           }
-        ]
+        ],
+        "columnGap": 45
       },
-      "\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      {
+        "text": "\n\n\n\n\n\n\n\n\n\n\n\n",
+        "fontSize": 10
+      },
       {
         "columns": [
           {
             "image": "data:image/png;base64,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",
-            "fit": [80, 80],
-            "width": "45%"
+            "fit": [70, 70],
+            "width": "25%"
           },
           [
             {
@@ -297,7 +353,7 @@
           ],
           {
             "text": [
-              { "text": "DOWNLOAD\n", "fontSize": 7, "bold": true },
+              { "text": "DOWNLOAD | DESCARGA LAS APPS\n", "fontSize": 7, "bold": true },
               { "text": "\n", "fontSize": 2 },
               {
                 "text": "MagnaCerta Wallet ",
@@ -306,7 +362,7 @@
                 "color": "#2665ff"
               },
               {
-                "text": "to store your certificate.\n",
+                "text": "to store your certificate | para guardar tu certificado\n",
                 "fontSize": 7
               },
               { "text": "\n", "fontSize": 2 },
@@ -317,7 +373,7 @@
                 "color": "#002d74"
               },
               {
-                "text": "to travel with your certificate.\n",
+                "text": "to travel with your certificate | para viajar con tu certificado\n",
                 "fontSize": 7
               },
               { "text": "\n", "fontSize": 2 },
@@ -328,11 +384,11 @@
                 "color": "#ff7a56"
               },
               {
-                "text": "to verify the authenticity of this certificate.",
+                "text": "to verify the authenticity of this certificate | para verificar la validez ",
                 "fontSize": 7
               }
             ],
-            "width": "65%"
+            "width": "80%"
           }
         ],
         "columnGap": 5

@@ -163,26 +163,52 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{template.name | safe }}", "fontSize": 8 },
-                    {
-                      "text": "\n\nVACCINE ADMINISTRATION DATE | FECHA VACUNACIÓN:\n",
-                      "fontSize": 5,
-                      "opacity": 0.5
-                    },
-                    { "text": "{{subject.formData.ocurrenceDate | date('yyyy-MM-DD')}}", "fontSize": 8 },
-                    { "text": "\n\nLOT NUMBER | NUMERO DE LOTE:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.lotNumber}}", "fontSize": 8 }
+                    { "text": "\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{template.name | safe }}", "fontSize": 8 }
                   ],
                   "width": "50%"
                 },
                 {
                   "text": [
-                    { "text": "\n\nTRADE NAME | NOMBRE COMERCIAL:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.tradeName}}", "fontSize": 8 },
+                    { "text": "\nTRADE NAME | NOMBRE COMERCIAL:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.tradeName}}", "fontSize": 8 }
+                  ]
+                }
+              ],
+              "columnGap": 10
+            },
+            {
+              "columns": [
+                {
+                  "text": [
+                    {
+                      "text": "\n\nVACCINE ADMINISTRATION DATE | FECHA VACUNACIÓN:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { "text": "{{subject.formData.ocurrenceDate | date('yyyy-MM-DD')}}", "fontSize": 8 }
+                  ],
+                  "width": "50%"
+                },
+                {
+                  "text": [
                     { "text": "\n\nMANUFACTURER | FABRICANTE:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.manufacturer | safe}}", "fontSize": 8 }
                   ]
+                }
+              ],
+              "columnGap": 10
+            },
+            {
+              "columns": [
+                {
+                  "text": [
+                    { "text": "\nLOT NUMBER | NUMERO DE LOTE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.lotNumber}}", "fontSize": 8 }
+                  ],
+                  "width": "50%"
+                },
+                {
                 }
               ],
               "columnGap": 10

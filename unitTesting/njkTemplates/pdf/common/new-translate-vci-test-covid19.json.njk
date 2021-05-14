@@ -163,10 +163,26 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{template.name | safe }}", "fontSize": 8 },
+                    { "text": "\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{template.name | safe }}", "fontSize": 8 }
+                  ],
+                  "width": "50%"
+                },
+                {
+                  "text": [
+                    { "text": "\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
+                  ]
+                }
+              ],
+              "columnGap": 10
+            },
+            {
+              "columns": [
+                {
+                  "text": [
                     {
-                      "text": "\n\nSAMPLE COLLECTION DATE | FECHA DE RECOLECCIÓN DE MUESTRA:\n",
+                      "text": "\nSAMPLE COLLECTION DATE | FECHA DE RECOLECCIÓN DE MUESTRA:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
@@ -174,12 +190,7 @@
                   ],
                   "width": "50%"
                 },
-                {
-                  "text": [
-                    { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
-                  ]
-                }
+                {}
               ],
               "columnGap": 10
             }

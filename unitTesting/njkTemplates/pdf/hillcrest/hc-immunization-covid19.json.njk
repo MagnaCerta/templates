@@ -163,56 +163,16 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{template.name | safe }}", "fontSize": 8 }
-                  ],
-                  "width": "50%"
-                },
-                {
-                  "text": [
+                    { "text": "\n\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{template.name | safe }}", "fontSize": 8 },
                     {
-                      "text": "\nLOT NUMBER:\n",
+                      "text": "\n\nTRADE NAME | NOMBRE COMERCIAL:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    { "text": "{{subject.formData.lotNumber}}", "fontSize": 8 }
-                  ]
-                }
-              ],
-              "columnGap": 10
-            },
-            {
-              "columns": [
-                {
-                  "text": [
+                    { "text": "{{subject.formData.tradeName}}", "fontSize": 8 },
                     {
-                      "text": "\nTRADE NAME:\n",
-                      "fontSize": 5,
-                      "opacity": 0.5
-                    },
-                    { "text": "{{subject.formData.tradeName}}", "fontSize": 8 }
-                  ],
-                  "width": "50%"
-                },
-                {
-                  "text": [
-                    {
-                      "text": "\nVACCINE DOSE:\n",
-                      "fontSize": 5,
-                      "opacity": 0.5
-                    },
-                    { "text": "{{subject.formData.dose}}", "fontSize": 8 }
-                  ]
-                }
-              ],
-              "columnGap": 10
-            },
-            {
-              "columns": [
-                {
-                  "text": [
-                    {
-                      "text": "\nMANUFACTURER:\n",
+                      "text": "\n\nMANUFACTURER | FABRICANTE:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
@@ -221,9 +181,21 @@
                   "width": "50%"
                 },
                 {
-                    "text": [
+                  "text": [
                     {
-                      "text": "\nVACCINE ADMINISTRATION DATE:\n",
+                      "text": "\n\nLOT NUMBER | NUMERO DE LOTE:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { "text": "{{subject.formData.lotNumber}}", "fontSize": 8 },
+                    {
+                      "text": "\n\nVACCINE DOSE | DOSIS DE VACUNA:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { "text": "{{subject.formData.dose}}", "fontSize": 8 },
+                    {
+                      "text": "\n\nVACCINE ADMINISTRATION DATE | FECHA DE ADMINISTRACIÓN:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
@@ -258,25 +230,25 @@
       {
         "text": "\nCERTIFICATE ISSUANCE DETAILS | DETALLES DE EMISIÓN DEL CERTIFICADO",
         "bold": true,
-        "fontSize": 9
+        "fontSize": 8
       },
       {
         "columns": [
           {
             "text": [
-              { "text": "\n\nISSUED BY:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\n\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{digitalPen.legalName}}", "fontSize": 8 }
             ]
           },
           {
             "text": [
-              { "text": "\n\nORGANIZATION:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\n\nORGANIZATION | ORGANIZACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{organization.name | safe }}", "fontSize": 8 }
             ]
           },
           {
             "text": [
-              { "text": "\n\nLOCATION:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\n\nLOCATION | UBICACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{subject.formData.location}}", "fontSize": 8 }
             ]
           }
@@ -287,7 +259,7 @@
         "columns": [
           {
             "text": [
-              { "text": "\nISSUANCE DATE:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
             ]
           },
@@ -300,7 +272,7 @@
           {
             "text": [
               {
-                "text": "\nCOUNTRY OF ISSUANCE:\n",
+                "text": "\nCOUNTRY OF ISSUANCE | PAÍS DE EMISIÓN:\n",
                 "fontSize": 5,
                 "opacity": 0.5
               },

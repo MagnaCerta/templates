@@ -119,20 +119,28 @@
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    { "text": "{{subject.formData.familyName | title}}", "fontSize": 8 }
+                    { "text": "{{subject.formData.familyName | title}}", "fontSize": 8 },
+                    {
+                      "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 }
                   ],
                   "width": "50%"
                 },
                 {
                   "text": [
                     { "text": "\n\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.gender}}", "fontSize": 8 },
-                    {
-                      "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO::\n",
-                      "fontSize": 5,
-                      "opacity": 0.5
-                    },
-                    { "text": "{{subject.formData.birthDate | truncate(10, false, "")}}", "fontSize": 8 }
+                    { "text": "{{subject.formData.gender}}", "fontSize": 8 }
+                    {% if subject.formData.passportNumber and (subject.formData.passportNumber | trim) %}
+                      ,{ "text": "\n\nPASSPORT NUMBER | NÚMERO DE PASAPORTE:\n", "fontSize": 5, "opacity": 0.5 },
+                      { "text": "{{subject.formData.passportNumber}}", "fontSize": 8 }
+                    {% endif -%}
+                    {% if subject.formData.citizenship and (subject.formData.citizenship | trim) %}
+                      ,{ "text": "\n\nCITIZENSHIP | NACIONALIDAD:\n", "fontSize": 5, "opacity": 0.5 },
+                      { "text": "{{subject.formData.citizenship | title}}", "fontSize": 8 }
+                    {% endif -%}
                   ]
                 }
               ],
@@ -164,45 +172,23 @@
                 {
                   "text": [
                     { "text": "\n\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{template.name | safe }}", "fontSize": 8 }
+                    { "text": "{{template.name | safe }}", "fontSize": 8 },
+                    { "text": "\n\nTRADE NAME | NOMBRE COMERCIAL:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.tradeName | safe }}", "fontSize": 8 }
+                    
                   ],
                   "width": "50%"
                 },
                 {
                   "text": [
-                    { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
                     {
-                      {% if subject.formData.observation | trim == "detected" %}
-                        "text": "Detected",
-                      {% elif subject.formData.observation | trim == "undetected" %}
-                        "text": "Not detected",
-                      {% else %}
-                        "text": "No result",
-                      {% endif -%}
-                      "fontSize": 8
-                    }
-                  ]
-                }
-              ],
-              "columnGap": 10
-            },
-            {
-              "columns": [
-                {
-                  "text": [
-                    {
-                      "text": "\nSAMPLE COLLECTION DATE | FECHA DE RECOLECCIÓN DE MUESTRA:\n",
+                      "text": "\n\nSAMPLE COLLECTION DATE | FECHA DE RECOLECCIÓN DE MUESTRA:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    { "text": "{{subject.formData.sampleDate | date('yyyy-MM-DD')}}", "fontSize": 8 }
-                  ],
-                  "width": "50%"
-                },
-                {
-                  "text": [
-                    { "text": "\nREAGENT | REACTIVO:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.tradeName | safe }}", "fontSize": 8 }
+                    { "text": "{{subject.formData.sampleDate | timezone(subject.formData.timezone) | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 },
+                    { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
+                    {"text": "{{subject.formData.observation | trim | title}}", "fontSize": 8}
                   ]
                 }
               ],
@@ -239,13 +225,19 @@
         "columns": [
           {
             "text": [
-              
               { "text": "\n\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
+              { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+            ]
+          },
+          {
+            "text": [
+              { "text": "\n\nISSUANCE TIME ZONE | ZONA HORARIA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{subject.formData.timezone}}", "fontSize": 8 },
               { "text": "\n\nORGANIZATION | ORGANIZACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{organization.name | safe }}", "fontSize": 8 }
-            ],
-            "width": "40%"
+            ]
           },
           {
             "text": [
@@ -256,19 +248,13 @@
               },
               {
                 {% if subject.formData.countryName and (subject.formData.countryName | trim) %}
-                  "text": "{{subject.formData.countryName | trim }}",
+                  "text": "{{subject.formData.countryName | trim | title}}",
                 {% else %}
                   "text": "{{organization.country}}",
                 {% endif -%}
-                  "fontSize": 8 },
-              { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
-            ]
-          },
-          {
-            "text": [
+                  "fontSize": 8 }
               {% if subject.formData.externalReference and (subject.formData.externalReference | trim) %}
-                { "text": "\n\nFOLIO NUMBER | FOLIO:\n", "fontSize": 5, "opacity": 0.5 },
+                ,{ "text": "\n\nFOLIO NUMBER | NÚMERO DE FOLIO:\n", "fontSize": 5, "opacity": 0.5 },
                 { "text": "{{subject.formData.externalReference}}", "fontSize": 8 }
               {% endif -%}
             ]

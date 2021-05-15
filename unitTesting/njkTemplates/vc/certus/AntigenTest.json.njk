@@ -29,7 +29,7 @@
     "honorificSuffix": "{{ subject.formData.honorificSuffix | trim }}",
     {% endif -%}
     {% if subject.formData.externalReference and (subject.formData.externalReference | trim) %}
-    "externalReference": "{{subject.formData.externalReference | trim}}",
+    "identifier": "{{subject.formData.externalReference | trim}}",
     {% endif -%}
     "fhirVersion": "4.0.1",
     "fhirSource": {
@@ -59,7 +59,7 @@
                         {
                         "url" : "period",
                         "valuePeriod" : {
-                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                            "start" : "{{ credential.created | date('yyyy-MM-DD') }}"
                         }
                         }]
                         }
@@ -79,7 +79,7 @@
                         {
                         "url" : "period",
                         "valuePeriod" : {
-                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                            "start" : "{{ credential.created | date('yyyy-MM-DD') }}"
                         }
                         }]
                         }
@@ -110,7 +110,7 @@
                         {
                         "url" : "period",
                         "valuePeriod" : {
-                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                            "start" : "{{ credential.created | date('yyyy-MM-DD') }}"
                         }
                         }]
                         }
@@ -130,7 +130,7 @@
                         {
                         "url" : "period",
                         "valuePeriod" : {
-                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                            "start" : "{{ credential.created | date('yyyy-MM-DD') }}"
                         }
                         }]
                         }
@@ -164,7 +164,7 @@
                         {
                         "url" : "period",
                         "valuePeriod" : {
-                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                            "start" : "{{ credential.created | date('yyyy-MM-DD') }}"
                         }
                         }]
                         }
@@ -184,7 +184,7 @@
                         {
                         "url" : "period",
                         "valuePeriod" : {
-                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                            "start" : "{{ credential.created | date('yyyy-MM-DD') }}"
                         }
                         }]
                         }
@@ -218,7 +218,7 @@
                         {
                         "url" : "period",
                         "valuePeriod" : {
-                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                            "start" : "{{ credential.created | date('yyyy-MM-DD') }}"
                         }
                         }]
                         }
@@ -238,7 +238,7 @@
                         {
                         "url" : "period",
                         "valuePeriod" : {
-                            "start" : "{{ credential.createdAt | date('yyyy-MM-DD') }}"
+                            "start" : "{{ credential.created | date('yyyy-MM-DD') }}"
                         }
                         }]
                         }
@@ -298,7 +298,7 @@
                     "reference": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0"
                 },
                 {% if subject.formData.sampleDate %}
-                "effectiveDateTime": "{{ subject.formData.sampleDate | date('yyyy-MM-DD') }}",
+                "effectiveDateTime": "{{ subject.formData.sampleDate | isodate }}",
                 {% endif -%}
                 "performer": [{
                     "display": "{{ digitalPen.legalName }}"

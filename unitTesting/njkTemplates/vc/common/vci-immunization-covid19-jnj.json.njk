@@ -291,7 +291,7 @@
                     "patient": {
                         "reference": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0"
                     },
-                    "occurrenceDateTime": "{{ subject.formData.ocurrenceDate | date('yyyy-MM-DD') }}",
+                    "occurrenceDateTime": "{{ subject.formData.ocurrenceDate | isodate }}",
                     "performer": [
                     {
                         "actor": {

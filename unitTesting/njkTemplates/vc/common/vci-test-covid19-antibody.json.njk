@@ -294,7 +294,7 @@
                     "reference": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0"
                 },
                 {% if subject.formData.sampleDate %}
-                "effectiveDateTime": "{{ subject.formData.sampleDate | date('yyyy-MM-DD') }}",
+                "effectiveDateTime": "{{ subject.formData.sampleDate | isodate }}",
                 {% endif -%}
                 "performer": [{
                     "display": "{{ digitalPen.legalName }}"

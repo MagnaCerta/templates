@@ -9,58 +9,138 @@
     "pageSize": "A4",
     "pageOrientation": "portrait",
     "background": [
+      "\n\n\n\n\n\n\n\n\n",
+      {
+        "columns":[
+          {"text":"", "width": "55%"},
+          {
+            "image": "{{logo}}",
+            "fit": [170, 170],
+            "opacity": 0.3,
+            "alignment": "left" 
+          }
+        ]
+      },
       {
         "text": [
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n____________________________________________________________             ",
+              "n\n\n\n_________________________________________________________________             ",
+            "fontSize": 7,
+            "alignment": "right",
+            "color": "#2665FF"
+          },
+          {
+            "text": "\n",
+            "fontSize": 7.5,
+            "alignment": "right",
+            "color": "#2665FF"
+          }
+        ]
+      },
+      "\n\n\n",
+      {
+        "columns":[
+          {"text":"", "width": "55%"},
+          {
+            "image": "{{logo}}",
+            "fit": [170, 170],
+            "opacity": 0.3,
+            "alignment": "left" 
+          }
+        ]
+      },
+      {
+        "text": [
+          {
+            "text":
+              "\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
           },
           {
+            "text": "\n",
+            "fontSize": 7.5,
+            "alignment": "right",
+            "color": "#2665FF"
+          }
+        ]
+      },
+      {
+        "text": [
+          {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
           },
           {
-            "text":
-              "\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
+            "text": "\n",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
-          },
+          }
+        ]
+      },
+      {
+        "text": [
+          {
+            "text": "\n",
+            "fontSize": 7.5,
+            "alignment": "right",
+            "color": "#2665FF"
+          }
+        ]
+      },
+      "\n\n\n\n\n",
+      {
+        "image": "{{logo}}",
+        "fit": [300, 300],
+        "opacity": 0.3,
+        "alignment": "center" 
+      },
+      {
+         "text": [
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________             ",
+              "\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________             ",
             "fontSize": 8,
             "alignment": "right",
             "color": "#2665FF"
           },
           {
             "text": "\n",
-            "fontSize": 8,
+            "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
           }
         ]
       }
     ],
+    "watermark": { "text": "test watermark", "fontSize": 40, "angle": -20, "opacity":0.5 },
     "content": [
       {
         "columns": [
             [
-              {
-                  "text": "",
-                  "width": "50%"
-              },
-              {
-                "image": "{{logo}}",
-                "width": 120,
-                "height": 40
-              }
+                {
+                    "text": "",
+                    "width": "50%"
+                },
+                {% if logo.length > 0 %}
+                {
+                  "image": "{{logo}}",
+                  "width": 120,
+                  "height": 40
+                }
+              {% else %}
+                {
+                  "text": "SIN LOGO",
+                  "width": 120,
+                  "height": 40
+                }
+            {% endif -%}
             ],
           {
             "text": [
@@ -83,16 +163,11 @@
       },
       "\n",
       {
-        "columns": [
+        "columns":[
           {
-            "image": "{{chunks[0]}}",
-            "fit": [130, 130],
-            "width": "25%"
-          },
-          {
-            "image": "{{chunks[1]}}",
-            "fit": [130, 130],
-            "width": "28%"
+            "image": "{{canvas}}",
+            "fit": [260,260],
+            "width": "53%"
           },
           [
             {
@@ -118,7 +193,7 @@
                 {
                   "text": [
                     {
-                      "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO:\n",
+                      "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO::\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
@@ -129,23 +204,11 @@
                 }
               ],
               "columnGap": 10
-            }
-          ]
-        ]
-      },
-      {
-        "columns": [
-          {
-            "image": "{{chunks[2]}}",
-            "fit": [130, 130],
-            "width": "25%"
-          },
-          {
-            "image": "{{chunks[3]}}",
-            "fit": [130, 130],
-            "width": "28%"
-          },
-          [
+            },
+            {
+              "text": "\n\n\n\n\n\n",
+              "fontSize": 8
+            },
             {
               "text": "\nPROCEDURE DETAILS | DETALLES DEL PROCEDIMIENTO",
               "bold": true,
@@ -157,25 +220,23 @@
                   "text": [
                     { "text": "\n\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{template.name | safe }}", "fontSize": 8 },
-                    { "text": "\n\nTRADE NAME | NOMBRE COMERCIAL:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.tradeName}}", "fontSize": 8 },
-                    { "text": "\n\nMANUFACTURER | FABRICANTE:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.manufacturer | safe}}", "fontSize": 8 }
-                  ],
-                  "width": "50%"
-                },
-                {
-                  "text": [
-                    { "text": "\n\nLOT NUMBER | NUMERO DE LOTE:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.lotNumber}}", "fontSize": 8 },
-                    { "text": "\n\nVACCINE DOSE | DOSIS DE VACUNA:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.dose}}", "fontSize": 8 },
                     {
                       "text": "\n\nVACCINE ADMINISTRATION DATE | FECHA VACUNACIÓN:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
-                    { "text": "{{subject.formData.ocurrenceDate | date('yyyy-MM-DD')}}", "fontSize": 8 }
+                    { "text": "{{subject.formData.ocurrenceDate | date('yyyy-MM-DD')}}", "fontSize": 8 },
+                    { "text": "\n\nLOT NUMBER | NUMERO DE LOTE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.lotNumber}}", "fontSize": 8 }
+                  ],
+                  "width": "50%"
+                },
+                {
+                  "text": [
+                    { "text": "\n\nTRADE NAME | NOMBRE COMERCIAL:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.tradeName}}", "fontSize": 8 },
+                    { "text": "\n\nMANUFACTURER | FABRICANTE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.manufacturer | safe}}", "fontSize": 8 }
                   ]
                 }
               ],
@@ -240,6 +301,10 @@
         ]
       },
       {
+        "text": "\n",
+        "fontSize": 3
+      },
+      {
         "columns": [
           {
             "text": [
@@ -287,8 +352,8 @@
         "columnGap": 45
       },
       {
-        "text": "\n\n\n\n\n\n\n\n\n\n\n\n",
-        "fontSize": 10
+        "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n",
+        "fontSize": 9
       },
       {
         "columns": [

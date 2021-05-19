@@ -44,15 +44,15 @@
                 {% if (subject.formData.passportNumber and (subject.formData.passportNumber | trim)) and (subject.formData.driversLicense and (subject.formData.driversLicense | trim)) %}
                 "identifier" : [
                     {
-                    {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
+                    {% if subject.formData.nationality and (subject.formData.nationality | trim) %}
                     "extension" : [{
-                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-nationality",
                         "extension" : [{
                         "url" : "code",
                         "valueCodeableConcept" : {
                             "coding" : [{
                             "system" : "urn:iso:std:iso:3166",
-                            "code" : "{{ subject.formData.citizenshipCountry | trim}}"
+                            "code" : "{{ subject.formData.nationality | trim}}"
                             }]
                         }
                         },
@@ -95,15 +95,15 @@
                     "value": "{{ subject.formData.passportNumber | trim }}"
                     },
                     {
-                    {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
+                    {% if subject.formData.nationality and (subject.formData.nationality | trim) %}
                     "extension" : [{
-                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-nationality",
                         "extension" : [{
                         "url" : "code",
                         "valueCodeableConcept" : {
                             "coding" : [{
                             "system" : "urn:iso:std:iso:3166",
-                            "code" : "{{ subject.formData.citizenshipCountry | trim}}"
+                            "code" : "{{ subject.formData.nationality | trim}}"
                             }]
                         }
                         },
@@ -149,15 +149,15 @@
                 {% elif subject.formData.passportNumber and (subject.formData.passportNumber | trim) %}
                 "identifier" : [
                     {
-                    {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
+                    {% if subject.formData.nationality and (subject.formData.nationality | trim) %}
                     "extension" : [{
-                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-nationality",
                         "extension" : [{
                         "url" : "code",
                         "valueCodeableConcept" : {
                             "coding" : [{
                             "system" : "urn:iso:std:iso:3166",
-                            "code" : "{{ subject.formData.citizenshipCountry | trim}}"
+                            "code" : "{{ subject.formData.nationality | trim}}"
                             }]
                         }
                         },
@@ -203,15 +203,15 @@
                 {% elif subject.formData.driversLicense and (subject.formData.driversLicense| trim) %}
                 "identifier" : [
                     {
-                    {% if subject.formData.citizenshipCountry and (subject.formData.citizenshipCountry | trim) %}
+                    {% if subject.formData.nationality and (subject.formData.nationality | trim) %}
                     "extension" : [{
-                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-citizenship",
+                        "url" : "http://hl7.org/fhir/StructureDefinition/patient-nationality",
                         "extension" : [{
                         "url" : "code",
                         "valueCodeableConcept" : {
                             "coding" : [{
                             "system" : "urn:iso:std:iso:3166",
-                            "code" : "{{ subject.formData.citizenshipCountry | trim}}"
+                            "code" : "{{ subject.formData.nationality | trim}}"
                             }]
                         }
                         },
@@ -298,7 +298,7 @@
                     "reference": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0"
                 },
                 {% if subject.formData.sampleDate %}
-                "effectiveDateTime": "{{ subject.formData.sampleDate | isodate}}",
+                "effectiveDateTime": "{{ subject.formData.sampleDate | isodate }}",
                 {% endif -%}
                 "performer": [{
                     "display": "{{ digitalPen.legalName }}"

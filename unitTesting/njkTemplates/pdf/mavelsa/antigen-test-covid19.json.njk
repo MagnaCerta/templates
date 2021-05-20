@@ -335,7 +335,7 @@
           {
             "text": [
               { "text": "\n\nORGANIZATION | ORGANIZACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{organization.name | safe }}", "fontSize": 8 },
+              { "text": "{{organization.commonName | safe }}", "fontSize": 8 },
               { "text": "\n\nLOCATION | UBICACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{subject.formData.location}}", "fontSize": 8 }
             ]
@@ -356,7 +356,7 @@
                   "fontSize": 8 
               },
               { "text": "\n\nFOLIO NUMBER | NÚMERO DE FOLIO:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{subject.formData.folio}}", "fontSize": 8 }
+              { "text": "{{subject.formData.externalReference}}", "fontSize": 8 }
             ]
           }
         ],

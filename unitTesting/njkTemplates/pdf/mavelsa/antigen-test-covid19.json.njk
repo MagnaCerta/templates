@@ -198,17 +198,12 @@
         "columnGap": 15
       },
       "\n",
-      {
-        "columns": [
+       {
+        "columns":[
           {
-            "image": "{{chunks[0]}}",
-            "fit": [130, 130],
-            "width": "25%"
-          },
-          {
-            "image": "{{chunks[1]}}",
-            "fit": [130, 130],
-            "width": "28%"
+            "image": "{{canvas}}",
+            "fit": [260,260],
+            "width": "53%"
           },
           [
             {
@@ -245,27 +240,16 @@
                       ,{ "text": "\n\nID NUMBER | NUMERO DE IDENTIFICACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
                       { "text": "{{subject.formData.id}}", "fontSize": 8 }
                     {% endif -%}
-                  ]
+                  ],
+                  "width": "50%"
                 }
               ],
               "columnGap": 10
-            }
-          ]
-        ]
-      },
-      {
-        "columns": [
-          {
-            "image": "{{chunks[2]}}",
-            "fit": [130, 130],
-            "width": "25%"
-          },
-          {
-            "image": "{{chunks[3]}}",
-            "fit": [130, 130],
-            "width": "28%"
-          },
-          [
+            },
+            {
+              "text": "\n\n\n\n",
+              "fontSize": 8
+            },
             {
               "text": "\nPROCEDURE DETAILS | DETALLES DEL PROCEDIMIENTO",
               "bold": true,
@@ -288,7 +272,8 @@
                     { "text": "{{subject.formData.observation | title}}", "fontSize": 8 },
                     { "text": "\n\nREAGENT | REACTIVO:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.tradeName | title}}", "fontSize": 8 }
-                  ]
+                  ],
+                  "width": "50%"
                 }
               ],
               "columnGap": 10

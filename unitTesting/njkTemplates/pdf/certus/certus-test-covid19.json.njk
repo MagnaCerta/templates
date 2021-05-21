@@ -83,16 +83,11 @@
       },
       "\n",
       {
-        "columns": [
+        "columns":[
           {
-            "image": "{{chunks[0]}}",
-            "fit": [130, 130],
-            "width": "25%"
-          },
-          {
-            "image": "{{chunks[1]}}",
-            "fit": [130, 130],
-            "width": "28%"
+            "image": "{{canvas}}",
+            "fit": [260,260],
+            "width": "53%"
           },
           [
             {
@@ -133,27 +128,23 @@
                       ,{ "text": "\n\nNATIONALITY | NACIONALIDAD:\n", "fontSize": 5, "opacity": 0.5 },
                       { "text": "{{subject.formData.nationality | title}}", "fontSize": 8 }
                     {% endif -%}
-                  ]
+                  ],
+                  "width": "50%"
                 }
               ],
               "columnGap": 10
-            }
-          ]
-        ]
-      },
-      {
-        "columns": [
-          {
-            "image": "{{chunks[2]}}",
-            "fit": [130, 130],
-            "width": "25%"
-          },
-          {
-            "image": "{{chunks[3]}}",
-            "fit": [130, 130],
-            "width": "28%"
-          },
-          [
+            },
+            {% if subject.formData.passportNumber and subject.formData.nationality %}
+              {
+                "text": "\n\n\n\n",
+                "fontSize": 6
+              },
+            {% else %}
+              {
+                "text": "\n\n\n\n\n",
+                "fontSize": 6
+              },
+            {% endif -%}
             {
               "text": "\nPROCEDURE DETAILS | DETALLES DEL PROCEDIMIENTO",
               "bold": true,

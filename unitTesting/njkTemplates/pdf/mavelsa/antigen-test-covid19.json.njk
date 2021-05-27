@@ -269,7 +269,11 @@
                 {
                   "text": [
                     { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.observation | title}}", "fontSize": 8 },
+                    {% if subject.formData.observation | trim | lower == 'positive' or subject.formData.observation | trim | lower == 'negative' %}
+                      { "text": "{{subject.formData.observation | title}}", "fontSize": 8 },
+                    {% else -%}
+                      { "text": "Null", "fontSize": 8 },
+                    {% endif -%}
                     { "text": "\n\nREAGENT | REACTIVO:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.tradeName | title}}", "fontSize": 8 }
                   ],

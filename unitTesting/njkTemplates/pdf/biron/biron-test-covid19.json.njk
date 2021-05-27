@@ -72,7 +72,7 @@
                 },
                 {
                 "bold": true,
-                "text": "\nCERTIFICADO DE SALUD VERIFICABLE",
+                "text": "\nCERTIFICAT DE SANTÉ VÉRIFIABLE",
                 "alignment": "left",
                 "fontSize": 10
                 }
@@ -91,7 +91,7 @@
           },
           [
             {
-              "text": "\nSUBJECT DETAILS | DETALLES DEL SUJETO",
+              "text": "\nSUBJECT DETAILS | DÉTAILS DU SUJET",
               "bold": true,
               "fontSize": 8
             },
@@ -99,10 +99,10 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nGIVEN NAME | NOMBRE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nGIVEN NAME | NOM:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "fontSize": 8 },
                     {
-                      "text": "\n\nLAST NAME | APELLIDO:\n",
+                      "text": "\n\nLAST NAME | NOM DE FAMILLE:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
@@ -113,12 +113,12 @@
                 {
                   "text": [
                     {
-                      "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO:\n",
+                      "text": "\n\nDATE OF BIRTH | DATE DE NAISSANCE:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
                     { "text": "{{subject.formData.birthDate | date("yyyy-MM-DD")}}", "fontSize": 8 },
-                    { "text": "\n\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nGENDER | GENRE:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.gender}}", "fontSize": 8 }
                   ]
                 }
@@ -130,7 +130,7 @@
               "fontSize": 8
             },
             {
-              "text": "\nPROCEDURE DETAILS | DETALLES DEL PROCEDIMIENTO",
+              "text": "\nPROCEDURE DETAILS | DÉTAILS DE LA PROCÉDURE",
               "bold": true,
               "fontSize": 8
             },
@@ -138,16 +138,16 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nPROCEDURE TYPE | TYPE DE PROCÉDURE:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{template.name | safe }}", "fontSize": 8 },
-                    { "text": "\n\nSAMPLE COLLECTION DATE | FECHA DE RECOLECCIÓN DE MUESTRA:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nSAMPLE COLLECTION DATE | DATE DE PRÉLÈVEMENT DE L'ÉCHANTILLON:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.sampleDate | date("yyyy-MM-DD h:mm a") | upper}}", "fontSize": 8 }
                   ],
                   "width": "50%"
                 },
                 {
                   "text": [
-                    { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nDIAGNOSTIC RESULT | RÉSULTAT:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
                   ]
                 }
@@ -166,7 +166,7 @@
           },
           {
             "text":
-            "\nPor favor, procure no doblar los códigos QR para que la legibilidad no se vea comprometida",
+            "\nVeillez à ne pas froisser les codes QR lorsque vous les pliez afin de ne pas compromettre leur lisibilité.",
             "fontSize": 5.6
           }
         ]
@@ -177,7 +177,7 @@
         "fontSize": 4
       },
       {
-        "text": "\nCERTIFICATE ISSUANCE DETAILS | DETALLES DE EMISIÓN DEL CERTIFICADO",
+        "text": "\nCERTIFICATE ISSUANCE DETAILS | DÉTAILS DE L'ÉMISSION DU CERTIFICAT",
         "bold": true,
         "fontSize": 8
       },
@@ -185,18 +185,18 @@
         "columns": [
           {
             "text": [
-              { "text": "\n\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\n\nISSUED BY | PUBLIÉ PAR:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
-              { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\n\nISSUANCE DATE | DATE D'ÉMISSION:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{credential.created | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
             ]
           },
           {
             "text": [
-              { "text": "\n\nORGANIZATION | ORGANIZACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\n\nORGANIZATION | ORGANISATION:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{organization.name | safe }}", "fontSize": 8 },
               {
-                "text": "\n\nCOUNTRY OF ISSUANCE | PAÍS DE EMISIÓN:\n",
+                "text": "\n\nCOUNTRY OF ISSUANCE | PAYS D'ÉMISSION:\n",
                 "fontSize": 5,
                 "opacity": 0.5
               },
@@ -229,7 +229,7 @@
               },
               {
                 "text":
-                  "\n\nThese certificates will come in handy now or in the near future in several situations, including traveling to another country, going to school, attending events, accessing corporate buildings, social gatherings, etc. ",
+                  "\n\nThese certificates will come in handy now or in the near future in several situations, including traveling to another country, going to school, attending events, accessing corporate buildings, social gatherings, etc.",
                 "fontSize": 8,
                 "opacity": 0.8
               }
@@ -239,19 +239,19 @@
           {
             "text": [
               {
-                "text": "\n\n¿Qué puedo hacer con este certificado?\n",
+                "text": "\n\nQue puis-je faire avec ce certificat?\n",
                 "fontSize": 10,
                 "bold": true
               },
               {
                 "text":
-                  "\nEste certificado contiene datos de su prueba de diagnóstico o vacunación con elementos de seguridad, verificable, no puede ser falsificado y no compromete su privacidad. Se puede presentar a las autoridades de verificación que escanearán los códigos QR con aplicaciones compatibles.",
+                  "\nCe certificat contient les données de votre test de diagnostic ou de votre vaccination avec des éléments qui le rendent sûr, inviolable, vérifiable et ne compromet pas votre vie privée. Ce certificat peut être présenté aux autorités de vérification qui scanneront les codes QR avec des applications compatibles.",
                 "fontSize": 8,
                 "opacity": 0.8
               },
               {
                 "text":
-                  "\n\nEstos certificados serán útiles ahora o en un futuro cercano en varias situaciones, como viajar a otro país, ir a la escuela, asistir a eventos, acceder a edificios corporativos, reuniones sociales, etc.",
+                  "\n\nCes certificats seront utiles maintenant ou dans un avenir proche dans plusieurs situations, notamment pour voyager dans un autre pays, aller à l'école, assister à des événements, accéder à des bâtiments d'entreprise, à des réunions sociales, etc.",
                 "fontSize": 8,
                 "opacity": 0.8
               }
@@ -290,7 +290,7 @@
           ],
           {
             "text": [
-              { "text": "DOWNLOAD | DESCARGA LAS APPS\n", "fontSize": 7, "bold": true },
+              { "text": "DOWNLOAD | TÉLÉCHARGER LES APPLICATIONS\n", "fontSize": 7, "bold": true },
               { "text": "\n", "fontSize": 2 },
               {
                 "text": "MagnaCerta Wallet ",
@@ -299,7 +299,7 @@
                 "color": "#2665ff"
               },
               {
-                "text": "to store your certificate | para guardar tu certificado\n",
+                "text": "to store your certificate | pour stocker votre certificat\n",
                 "fontSize": 7
               },
               { "text": "\n", "fontSize": 2 },
@@ -310,7 +310,7 @@
                 "color": "#002d74"
               },
               {
-                "text": "to travel with your certificate | para viajar con tu certificado\n",
+                "text": "to travel with your certificate | voyager avec votre certificat\n",
                 "fontSize": 7
               },
               { "text": "\n", "fontSize": 2 },
@@ -321,7 +321,7 @@
                 "color": "#ff7a56"
               },
               {
-                "text": "to verify the authenticity of this certificate | para verificar la validez ",
+                "text": "to verify the authenticity of this certificate | afin de vérifier la validité",
                 "fontSize": 7
               }
             ],

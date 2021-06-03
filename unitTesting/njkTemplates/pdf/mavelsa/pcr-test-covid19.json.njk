@@ -123,7 +123,7 @@
         "text": [
             {
             "bold": true,
-            "text": "{{subject.formData.observation | title}} :: {{subject.formData.collectionMethod}} :: {{credential.created | date("yyyy-MM-DD h:mm a") | upper}}                                                      ",
+            "text": "{{subject.formData.observation | title}} :: {{subject.formData.collectionMethod}} :: {{credential.createdAt | date("yyyy-MM-DD h:mm a") | upper}}                                                      ",
             "alignment": "right",
             "opacity": 0.2,
             "fontSize": 6
@@ -332,7 +332,7 @@
               { "text": "\n\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
               { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{credential.created | timezone(subject.formData.timezone) | date("yyyy-MM-DD h:mm a") | upper}}", "fontSize": 8 },
+              { "text": "{{credential.createdAt | timezone(subject.formData.timezone) | date("yyyy-MM-DD h:mm a") | upper}}", "fontSize": 8 },
               { "text": "\n\nISSUANCE TIME ZONE | ZONA HORARIA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{subject.formData.timezone}}", "fontSize": 8 }
             ]

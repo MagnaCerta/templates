@@ -34,8 +34,8 @@
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________             ",
-            "fontSize": 8,
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
+            "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
           },
@@ -72,7 +72,7 @@
                 },
                 {
                 "bold": true,
-                "text": "\nCERTIFICAT DE SANTÉ VÉRIFIABLE",
+                "text": "\nCERTIFICADO DE SALUD VERIFICABLE",
                 "alignment": "left",
                 "fontSize": 10
                 }
@@ -91,7 +91,7 @@
           },
           [
             {
-              "text": "\nSUBJECT DETAILS | DÉTAILS DU SUJET",
+              "text": "\nSUBJECT DETAILS | DETALLES DEL SUJETO",
               "bold": true,
               "fontSize": 8
             },
@@ -99,10 +99,10 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nGIVEN NAME | NOM:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nGIVEN NAME | NOMBRE:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "fontSize": 8 },
                     {
-                      "text": "\n\nLAST NAME | NOM DE FAMILLE:\n",
+                      "text": "\n\nLAST NAME | APELLIDO:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
@@ -113,13 +113,17 @@
                 {
                   "text": [
                     {
-                      "text": "\n\nDATE OF BIRTH | DATE DE NAISSANCE:\n",
+                      "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO:\n",
                       "fontSize": 5,
                       "opacity": 0.5
                     },
                     { "text": "{{subject.formData.birthDate | date("yyyy-MM-DD")}}", "fontSize": 8 },
-                    { "text": "\n\nGENDER | GENRE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.gender}}", "fontSize": 8 }
+                    {% if subject.formData.nationality and (subject.formData.nationality | trim) %}
+                      ,{ "text": "\n\nNATIONALITY | NACIONALIDAD:\n", "fontSize": 5, "opacity": 0.5 },
+                      { "text": "{{subject.formData.nationality | country}}", "fontSize": 8 }
+                    {% endif %}
                   ]
                 }
               ],
@@ -130,7 +134,7 @@
               "fontSize": 8
             },
             {
-              "text": "\nPROCEDURE DETAILS | DÉTAILS DE LA PROCÉDURE",
+              "text": "\nPROCEDURE DETAILS | DETALLES DEL PROCEDIMIENTO",
               "bold": true,
               "fontSize": 8
             },
@@ -138,16 +142,16 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nPROCEDURE TYPE | TYPE DE PROCÉDURE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{template.name | safe }}", "fontSize": 8 },
-                    { "text": "\n\nSAMPLE COLLECTION DATE | DATE DE PRÉLÈVEMENT DE L'ÉCHANTILLON:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nSAMPLE COLLECTION DATE | FECHA DE RECOLECCIÓN DE MUESTRA:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.sampleDate | date("yyyy-MM-DD h:mm a") | upper}}", "fontSize": 8 }
                   ],
                   "width": "50%"
                 },
                 {
                   "text": [
-                    { "text": "\n\nDIAGNOSTIC RESULT | RÉSULTAT:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
                   ]
                 }
@@ -189,11 +193,11 @@
         ]
       },
       {
-        "text": "\n\n\n",
+        "text": "\n\n\n\n",
         "fontSize": 3
       },
       {
-        "text": "\nCERTIFICATE ISSUANCE DETAILS | DÉTAILS DE L'ÉMISSION DU CERTIFICAT",
+        "text": "\nCERTIFICATE ISSUANCE DETAILS | DETALLES DE EMISIÓN DEL CERTIFICADO",
         "bold": true,
         "fontSize": 8
       },
@@ -201,28 +205,22 @@
         "columns": [
           {
             "text": [
-              { "text": "\n\nISSUED BY | PUBLIÉ PAR:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\n\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
-              { "text": "\n\nISSUANCE DATE | DATE D'ÉMISSION:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{credential.createdAt | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
             ]
           },
           {
             "text": [
-              { "text": "\n\nORGANIZATION | ORGANISATION:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "\n\nORGANIZATION | ORGANIZACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{organization.name | safe }}", "fontSize": 8 },
               {
-                "text": "\n\nCOUNTRY OF ISSUANCE | PAYS D'ÉMISSION:\n",
+                "text": "\n\nCOUNTRY OF ISSUANCE | PAÍS DE EMISIÓN:\n",
                 "fontSize": 5,
                 "opacity": 0.5
               },
-              {
-                {% if subject.formData.countryName and (subject.formData.countryName | trim) %}
-                  "text": "{{subject.formData.countryName | trim }}",
-                {% else %}
-                  "text": "{{organization.country}}",
-                {% endif -%}
-                  "fontSize": 8 }
+              {"text": "{{organization.country | country}}","fontSize": 8 }
             ]
           },
           {}
@@ -245,7 +243,7 @@
               },
               {
                 "text":
-                  "\n\nThese certificates will come in handy now or in the near future in several situations, including traveling to another country, going to school, attending events, accessing corporate buildings, social gatherings, etc.",
+                  "\n\nThese certificates will come in handy now or in the near future in several situations, including traveling to another country, going to school, attending events, accessing corporate buildings, social gatherings, etc. ",
                 "fontSize": 8,
                 "opacity": 0.8
               }
@@ -255,19 +253,19 @@
           {
             "text": [
               {
-                "text": "\n\nQue puis-je faire avec ce certificat?\n",
+                "text": "\n\n¿Qué puedo hacer con este certificado?\n",
                 "fontSize": 10,
                 "bold": true
               },
               {
                 "text":
-                  "\nCe certificat contient les données de votre test de diagnostic ou de votre vaccination avec des éléments qui le rendent sûr, inviolable, vérifiable et ne compromet pas votre vie privée. Ce certificat peut être présenté aux autorités de vérification qui scanneront les codes QR avec des applications compatibles.",
+                  "\nEste certificado contiene datos de su prueba de diagnóstico o vacunación con elementos de seguridad, verificable, no puede ser falsificado y no compromete su privacidad. Se puede presentar a las autoridades de verificación que escanearán los códigos QR con aplicaciones compatibles.",
                 "fontSize": 8,
                 "opacity": 0.8
               },
               {
                 "text":
-                  "\n\nCes certificats seront utiles maintenant ou dans un avenir proche dans plusieurs situations, notamment pour voyager dans un autre pays, aller à l'école, assister à des événements, accéder à des bâtiments d'entreprise, à des réunions sociales, etc.",
+                  "\n\nEstos certificados serán útiles ahora o en un futuro cercano en varias situaciones, como viajar a otro país, ir a la escuela, asistir a eventos, acceder a edificios corporativos, reuniones sociales, etc.",
                 "fontSize": 8,
                 "opacity": 0.8
               }
@@ -306,7 +304,7 @@
           ],
           {
             "text": [
-              { "text": "DOWNLOAD | TÉLÉCHARGER LES APPLICATIONS\n", "fontSize": 7, "bold": true },
+              { "text": "DOWNLOAD | DESCARGA LAS APPS\n", "fontSize": 7, "bold": true },
               { "text": "\n", "fontSize": 2 },
               {
                 "text": "MagnaCerta Wallet ",
@@ -315,7 +313,7 @@
                 "color": "#2665ff"
               },
               {
-                "text": "to store your certificate | pour stocker votre certificat\n",
+                "text": "to store your certificate | para guardar tu certificado\n",
                 "fontSize": 7
               },
               { "text": "\n", "fontSize": 2 },
@@ -326,7 +324,7 @@
                 "color": "#002d74"
               },
               {
-                "text": "to travel with your certificate | voyager avec votre certificat\n",
+                "text": "to travel with your certificate | para viajar con tu certificado\n",
                 "fontSize": 7
               },
               { "text": "\n", "fontSize": 2 },
@@ -337,7 +335,7 @@
                 "color": "#ff7a56"
               },
               {
-                "text": "to verify the authenticity of this certificate | afin de vérifier la validité",
+                "text": "to verify the authenticity of this certificate | para verificar la validez ",
                 "fontSize": 7
               }
             ],

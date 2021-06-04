@@ -283,23 +283,23 @@
                     "code": "laboratory"
                     }]
                 }],
-                {# https://loinc.org/94661-6/ - SARS-CoV-2 (COVID-19) Ab [Interpretation] in Serum or Plasma #}
+                {# https://loinc.org/94558-4/ - SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory specimen by Rapid immunoassay #}
                 "code": {
                     "coding": [{
                     "system": "http://loinc.org",
-                    "code": "94661-6"
+                    "code": "94558-4"
                     }]
                 },
                 "subject": {
                     "reference": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0"
                 },
                 {% if subject.formData.sampleDate %}
-                "effectiveDateTime": "{{ subject.formData.sampleDate | isodate }}",
+                "effectiveDateTime": "{{ subject.formData.sampleDate | isodate}}",
                 {% endif -%}
                 "performer": [{
                     "display": "{{ digitalPen.legalName }}"
                 }],
-                {% if (subject.formData.observation | trim | lower) == "detected" %}
+                {% if (subject.formData.observation | trim | lower)  == "positif" %}
                 {# https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=260373001 #}
                 "valueCodeableConcept": {
                     "coding": [{
@@ -307,7 +307,7 @@
                     "code": "260373001"
                     }]
                 }
-                {% elif (subject.formData.observation | trim | lower) == "undetected" %}
+                {% elif (subject.formData.observation | trim | lower) == "negatif" %}
                 {# https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=260415000 #}
                 "valueCodeableConcept": {
                     "coding": [{
@@ -329,7 +329,7 @@
     }
   },
   "credentialSchema": {
-    "id": "https://schemas.uat.magnacerta.io/tcp/ab-tst/202104",
+    "id": "https://schemas.uat.magnacerta.io/tcp/ag-tst/202104",
     "type": "JsonSchemaValidator2018"
   }
 }

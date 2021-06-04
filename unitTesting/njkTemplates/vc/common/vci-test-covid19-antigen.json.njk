@@ -299,7 +299,7 @@
                 "performer": [{
                     "display": "{{ digitalPen.legalName }}"
                 }],
-                {% if subject.formData.observation | trim == "detected" %}
+                {% if (subject.formData.observation | trim | lower) == "detected" %}
                 {# https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=260373001 #}
                 "valueCodeableConcept": {
                     "coding": [{
@@ -307,7 +307,7 @@
                     "code": "260373001"
                     }]
                 }
-                {% elif subject.formData.observation | trim == "undetected" %}
+                {% elif (subject.formData.observation | trim | lower) == "undetected" %}
                 {# https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=260415000 #}
                 "valueCodeableConcept": {
                     "coding": [{

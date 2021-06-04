@@ -153,7 +153,7 @@
                     { "text": "\n\nPROCEDURE TYPE | TÉCNICA:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{template.name | safe }}", "fontSize": 8 },
                     { "text": "\n\nSAMPLE COLLECTION DATE | FECHA DE RECOLECCIÓN DE MUESTRA:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.sampleDate | date("yyyy-MM-DD h:mm a") | upper}}", "fontSize": 8 },
+                    { "text": "{{subject.formData.sampleDate | timezone(subject.formData.timezone) | date("yyyy-MM-DD h:mm a") | upper}}", "fontSize": 8 },
                     { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
                     {% if subject.formData.observation | trim | lower == 'positive' or subject.formData.observation | trim | lower == 'negative' %}
                       { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
@@ -242,7 +242,7 @@
           {
             "text": [
               { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{credential.createdAt | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 },
+              { "text": "{{credential.createdAt | timezone(subject.formData.timezone) | date("yyyy-MM-DD h:mm a") | upper}}", "fontSize": 8 },
               { "text": "\n\nUNIT | UNIDAD:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{subject.formData.unit}}", "fontSize": 8 }  
             ]

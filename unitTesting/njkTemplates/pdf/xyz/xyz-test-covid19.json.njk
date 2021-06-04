@@ -153,7 +153,7 @@
                 {
                   "text": [
                     { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
-                    {% if (subject.formData.observation | trim | lower) == 'detected' or (subject.formData.observation | trim | lower) == 'undetected' %}
+                    {% if subject.formData.observation | trim | lower == 'positive' or subject.formData.observation | trim | lower == 'negative' %}
                       { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
                     {% else -%}
                       { "text": "Unknown", "fontSize": 8 }
@@ -176,7 +176,7 @@
           {
             "text": [
               {
-                "text": "AUTHORITIES: MUST DOWNLOAD THE ",
+                "text": "AUTHORITIES MUST DOWNLOAD THE ",
                 "bold": true,
                 "fontSize": 7
               },

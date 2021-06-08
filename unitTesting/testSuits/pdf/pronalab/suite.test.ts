@@ -10,13 +10,13 @@ import { validate } from "../../../utils/schemaValidator";
 describe("Templates Unit Tests", () => {
   const resourcesBaseDir = "../../..";
   const vcTemplatesPath =
-    resourcesBaseDir + "/njkTemplates/verifierApp/" + path.basename(__dirname);
+    resourcesBaseDir + "/njkTemplates/pdf/" + path.basename(__dirname);
   const vcFixturesPath =
-    resourcesBaseDir + "/fixtures/verifierApp/" + path.basename(__dirname);
+    resourcesBaseDir + "/fixtures/pdf/" + path.basename(__dirname);
   const templatesFullPaths = templatesLoader(
     path.join(__dirname, vcTemplatesPath)
   );
-    console.log(templatesFullPaths)
+
   // Nunjucks instance
   const loader = new FileSystemLoader(path.join(__dirname, vcTemplatesPath));
   const env = new Environment(loader, { autoescape: true });
@@ -31,9 +31,8 @@ describe("Templates Unit Tests", () => {
       test.each(fixturesFullPaths)("Test for fixture %s", (fixturePath) => {
         const now = new Date();
         const credential = JSON.parse(fs.readFileSync(fixturePath, "utf8"));
-
         // Render template
-        const rawVc = env.render(templatePath, { credential });
+        const rawVc = env.render(templatePath,  credential );
 
         // Parse generated vc
         const parsedVc = JSON.parse(rawVc);

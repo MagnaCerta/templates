@@ -120,10 +120,6 @@
                     { "text": "{{subject.formData.birthDate | date("yyyy-MM-DD")}}", "fontSize": 8 },
                     { "text": "\n\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.gender}}", "fontSize": 8 }
-                    {% if subject.formData.nationality and (subject.formData.nationality | trim) %}
-                      ,{ "text": "\n\nNATIONALITY | NACIONALIDAD:\n", "fontSize": 5, "opacity": 0.5 },
-                      { "text": "{{subject.formData.nationality | country}}", "fontSize": 8 }
-                    {% endif %}
                   ]
                 }
               ],
@@ -170,7 +166,7 @@
           {
             "text": [
               {
-                "text": "AUTHORITIES: MUST DOWNLOAD THE ",
+                "text": "AUTHORITIES MUST DOWNLOAD THE ",
                 "bold": true,
                 "fontSize": 7
               },
@@ -220,7 +216,13 @@
                 "fontSize": 5,
                 "opacity": 0.5
               },
-              {"text": "{{organization.country | country}}","fontSize": 8 }
+              {
+                {% if subject.formData.countryName and (subject.formData.countryName | trim) %}
+                  "text": "{{subject.formData.countryName | trim }}",
+                {% else %}
+                  "text": "{{organization.country}}",
+                {% endif -%}
+                  "fontSize": 8 }
             ]
           },
           {}

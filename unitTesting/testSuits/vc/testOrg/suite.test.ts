@@ -16,7 +16,7 @@ describe("Templates Unit Tests", () => {
   const templatesFullPaths = templatesLoader(
     path.join(__dirname, vcTemplatesPath)
   );
-
+    console.log(vcFixturesPath)
   // Nunjucks instance
   const loader = new FileSystemLoader(path.join(__dirname, vcTemplatesPath));
   const env = new Environment(loader, { autoescape: true });
@@ -86,8 +86,6 @@ describe("Templates Unit Tests", () => {
         // vc schema validation
         //@ts-ignore
         validate(parsedVc, schemas[fileName]);
-
-        console.log(parsedVc);
       });
     }
   });

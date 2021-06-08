@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
 import { Environment } from "nunjucks";
+import moment from 'moment-timezone';
 
 let defaultFormat = "yyyy";
 export const setDefaultFormat = (format: string) => (defaultFormat = format);
@@ -24,7 +25,9 @@ const isoDateFilter = (date: Date | string) => {
   }
 };
 
+
 export default (env: Environment) => {
   env.addFilter("date", dateFilter);
   env.addFilter("isodate", isoDateFilter);
+  env.addFilter('timezone', (date: Date | string, timezone: string) => moment(date).tz(timezone));
 };

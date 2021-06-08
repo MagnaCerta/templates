@@ -41,6 +41,12 @@
             "fullUrl": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0",
             "resource": {
                 "resourceType": "Patient",
+                {% if subject.formData.photoUrl and (subject.formData.photoUrl | trim) %}
+                "photo":{
+                    "contentType": "image/jpeg",
+                    "url":"{{subject.formData.photoUrl}}"
+                },
+                {% endif -%}
                 {% if (subject.formData.passportNumber and (subject.formData.passportNumber | trim)) and (subject.formData.driversLicense and (subject.formData.driversLicense | trim)) %}
                 "identifier" : [
                     {

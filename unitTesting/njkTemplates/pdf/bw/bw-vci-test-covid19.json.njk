@@ -1,0 +1,363 @@
+{
+  "fonts": {
+    "Montserrat": {
+      "normal": "https://cdn.jsdelivr.net/npm/pstpn-webfont-montserrat@0.0.5/fonts/Regular/Montserrat-Regular.otf",
+      "bold": "https://cdn.jsdelivr.net/npm/pstpn-webfont-montserrat@0.0.5/fonts/Bold/Montserrat-Bold.otf"
+    }
+  },
+  "documentDefinition": {
+    "pageSize": "A4",
+    "pageOrientation": "portrait",
+    "background": [
+      {
+        "text": [
+          {
+            "text":
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n____________________________________________________________             ",
+            "fontSize": 7.5,
+            "alignment": "right",
+            "color": "#2665FF"
+          },
+          {
+            "text":
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
+            "fontSize": 7.5,
+            "alignment": "right",
+            "color": "#2665FF"
+          },
+          {
+            "text":
+              "\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
+            "fontSize": 7.5,
+            "alignment": "right",
+            "color": "#2665FF"
+          },
+          {
+            "text":
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
+            "fontSize": 7.5,
+            "alignment": "right",
+            "color": "#2665FF"
+          },
+          {
+            "text": "\n",
+            "fontSize": 8,
+            "alignment": "right",
+            "color": "#2665FF"
+          }
+        ]
+      }
+    ],
+    "content": [
+      {
+        "columns": [
+            [
+                {
+                    "text": "",
+                    "width": "50%"
+                },
+                {
+                  "image": "{{logo}}",
+                  "width": 120,
+                  "height": 40
+                }
+            ],
+          {
+            "text": [
+                {
+                "bold": true,
+                "text": "VERIFIABLE HEALTH CERTIFICATE",
+                "alignment": "left",
+                "fontSize": 14
+                },
+                {
+                "bold": true,
+                "text": "\nCERTIFICADO DE SALUD VERIFICABLE",
+                "alignment": "left",
+                "fontSize": 10
+                }
+            ]
+          }
+        ],
+        "columnGap": 15
+      },
+      "\n",
+      {
+        "columns":[
+          {
+            "image": "{{canvas}}",
+            "fit": [260,260],
+            "width": "53%"
+          },
+          [
+            {
+              "text": "\nSUBJECT DETAILS | DETALLES DEL SUJETO",
+              "bold": true,
+              "fontSize": 8
+            },
+            {
+              "columns": [
+                {
+                  "text": [
+                    { "text": "\n\nGIVEN NAME | NOMBRE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "fontSize": 8 },
+                    {
+                      "text": "\n\nLAST NAME | APELLIDO:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { "text": "{{subject.formData.familyName | title}}", "fontSize": 8 }
+                  ],
+                  "width": "50%"
+                },
+                {
+                  "text": [
+                    {
+                      "text": "\n\nDATE OF BIRTH | FECHA DE NACIMIENTO:\n",
+                      "fontSize": 5,
+                      "opacity": 0.5
+                    },
+                    { "text": "{{subject.formData.birthDate | date("yyyy-MM-DD")}}", "fontSize": 8 },
+                    { "text": "\n\nGENDER | GÉNERO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.gender}}", "fontSize": 8 }
+                  ]
+                }
+              ],
+              "columnGap": 10
+            },
+            {
+              "text": "\n\n\n\n\n\n",
+              "fontSize": 8
+            },
+            {
+              "text": "\nPROCEDURE DETAILS | DETALLES DEL PROCEDIMIENTO",
+              "bold": true,
+              "fontSize": 8
+            },
+            {
+              "columns": [
+                {
+                  "text": [
+                    { "text": "\n\nPROCEDURE TYPE | TIPO DE PROCEDIMIENTO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{template.name | safe }}", "fontSize": 8 },
+                    { "text": "\n\nSAMPLE COLLECTION DATE | FECHA DE RECOLECCIÓN DE MUESTRA:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.sampleDate | date("yyyy-MM-DD h:mm a") | upper}}", "fontSize": 8 }
+                  ],
+                  "width": "50%"
+                },
+                {
+                  "text": [
+                    { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
+                  ]
+                }
+              ],
+              "columnGap": 10
+            }
+          ]
+        ]
+      },
+      {
+        "columns":[
+          {
+            "text":"",
+            "width": "2%"
+          },
+          {
+            "text": [
+              {
+                "text": "AUTHORITIES MUST DOWNLOAD THE ",
+                "bold": true,
+                "fontSize": 7
+              },
+              {
+                "text": "MAGNACERTA VERIFIER APP",
+                "bold": true,
+                "fontSize": 7,
+                "decoration": "underline"
+              },
+              {
+                "text": " TO SCAN ENCRYPTED QR CODES.",
+                "bold": true,
+                "fontSize": 7
+              }
+            ]
+          },
+          {
+            "text":""
+          }
+        ]
+      },
+      {
+        "text": "\n\n\n\n",
+        "fontSize": 3
+      },
+      {
+        "text": "\nCERTIFICATE ISSUANCE DETAILS | DETALLES DE EMISIÓN DEL CERTIFICADO",
+        "bold": true,
+        "fontSize": 8
+      },
+      {
+        "columns": [
+          {
+            "text": [
+              { "text": "\n\nISSUED BY | EMITIDO POR:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
+              { "text": "\n\nISSUANCE DATE | FECHA DE EMISIÓN:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{credential.createdAt | date("yyyy-MM-DD hh:mm a") | upper}}", "fontSize": 8 }
+            ]
+          },
+          {
+            "text": [
+              { "text": "\n\nORGANIZATION | ORGANIZACIÓN:\n", "fontSize": 5, "opacity": 0.5 },
+              { "text": "{{organization.name | safe }}", "fontSize": 8 },
+              {
+                "text": "\n\nCOUNTRY OF ISSUANCE | PAÍS DE EMISIÓN:\n",
+                "fontSize": 5,
+                "opacity": 0.5
+              },
+              {
+                {% if subject.formData.countryName and (subject.formData.countryName | trim) %}
+                  "text": "{{subject.formData.countryName | trim }}",
+                {% else %}
+                  "text": "{{organization.country}}",
+                {% endif -%}
+                  "fontSize": 8 }
+            ]
+          },
+          {}
+        ]
+      },
+      {
+        "columns": [
+          {
+            "text": [
+              {
+                "text": "\n\nWhat can I do with this certificate?\n",
+                "fontSize": 10,
+                "bold": true
+              },
+              {
+                "text":
+                  "\nThis certificate contains data from your diagnostic test or vaccination with elements that make it secure, tamper-proof, verifiable, and does not compromise your privacy. This certificate can be presented to verifying authorities who will scan the QR codes with compatible apps.",
+                "fontSize": 8,
+                "opacity": 0.8
+              },
+              {
+                "text":
+                  "\n\nThese certificates will come in handy now or in the near future in several situations, including traveling to another country, going to school, attending events, accessing corporate buildings, social gatherings, etc. ",
+                "fontSize": 8,
+                "opacity": 0.8
+              }
+            ],
+            "alignment": "justify"
+          },
+          {
+            "text": [
+              {
+                "text": "\n\n¿Qué puedo hacer con este certificado?\n",
+                "fontSize": 10,
+                "bold": true
+              },
+              {
+                "text":
+                  "\nEste certificado contiene datos de su prueba de diagnóstico o vacunación con elementos de seguridad, verificable, no puede ser falsificado y no compromete su privacidad. Se puede presentar a las autoridades de verificación que escanearán los códigos QR con aplicaciones compatibles.",
+                "fontSize": 8,
+                "opacity": 0.8
+              },
+              {
+                "text":
+                  "\n\nEstos certificados serán útiles ahora o en un futuro cercano en varias situaciones, como viajar a otro país, ir a la escuela, asistir a eventos, acceder a edificios corporativos, reuniones sociales, etc.",
+                "fontSize": 8,
+                "opacity": 0.8
+              }
+            ],
+            "alignment": "justify"
+          }
+        ],
+        "columnGap": 45
+      },
+      {
+        "text": "\n\n\n\n\n\n\n\n\n\n\n",
+        "fontSize": 9
+      },
+      {
+        "columns": [
+          {
+            "image": "data:image/png;base64,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",
+            "fit": [65, 65],
+            "width": "13%"
+          },
+          [
+            { "text": "\n\n", "fontSize": 4 },
+            {
+              "image": "data:image/png;base64,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",
+              "fit": [70, 70]
+            }
+          ],
+          [
+            { "text": "\n\n", "fontSize": 4 },
+            {
+              "image": "data:image/png;base64,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",
+              "link":
+                "https://apps.apple.com/de/app/magnacerta-wallet/id1539812356?l=en",
+              "fit": [55, 55],
+              "alignment": "right"
+            },
+            { "text": "\n", "fontSize": 3 },
+            {
+              "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABDCAYAAADK+ApxAAAACXBIWXMAAC4jAAAuIwF4pT92AAAGX2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDYgNzkuMTY0NzUzLCAyMDIxLzAyLzE1LTExOjUyOjEzICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIuMyAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjEtMDUtMjBUMTM6Mzg6MzUtMDU6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDIxLTA1LTIwVDEzOjM5OjE1LTA1OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIxLTA1LTIwVDEzOjM5OjE1LTA1OjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOmU0YzI0NTMzLTU2NzktNDY3MC1hMGE0LTc0MzYyNmE5MjhiMyIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmVmMjlmOGVmLTU0ZDAtYWQ0My05YzNiLTJhNmZiOTBkMDFkMSIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOmYwY2RlMGViLWFiZWQtNDlmNC05NWQwLTA1Y2VlNzQ3OTExNCI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNyZWF0ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6ZjBjZGUwZWItYWJlZC00OWY0LTk1ZDAtMDVjZWU3NDc5MTE0IiBzdEV2dDp3aGVuPSIyMDIxLTA1LTIwVDEzOjM4OjM1LTA1OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjIuMyAoTWFjaW50b3NoKSIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY29udmVydGVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJmcm9tIGFwcGxpY2F0aW9uL3ZuZC5hZG9iZS5waG90b3Nob3AgdG8gaW1hZ2UvcG5nIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDplNGMyNDUzMy01Njc5LTQ2NzAtYTBhNC03NDM2MjZhOTI4YjMiIHN0RXZ0OndoZW49IjIwMjEtMDUtMjBUMTM6Mzk6MTUtMDU6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyMi4zIChNYWNpbnRvc2gpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtMjB2EAAAo1SURBVHic7Z3rlZvIEoA/++z/2zeCZSNYbgSLI1jdCIwjWDmC1UQgOwKNI5i5EUgbgXAEwhFIG4Huj6K3HzQvCZBmpr9zOJKgHwVUQXV1gd6dz2cikbfK+1sLEInckncDyibV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",
+              "link": "https://play.google.com/store/apps/details?id=com.magnacerta.wallet",
+              "fit": [55, 55],
+              "alignment": "right"
+            }
+          ],
+          {
+            "text": [
+              { "text": "\n\n", "fontSize": 4 },
+              { "text": "DOWNLOAD | DESCARGA LAS APPS\n", "fontSize": 7, "bold": true },
+              { "text": "\n", "fontSize": 2 },
+              {
+                "text": "MagnaCerta Wallet ",
+                "fontSize": 7,
+                "bold": true,
+                "color": "#2665ff"
+              },
+              {
+                "text": "to store your certificate | para guardar tu certificado\n",
+                "fontSize": 7
+              },
+              { "text": "\n", "fontSize": 2 },
+              {
+                "text": "CommonPass ",
+                "fontSize": 7,
+                "bold": true,
+                "color": "#002d74"
+              },
+              {
+                "text": "to travel with your certificate | para viajar con tu certificado\n",
+                "fontSize": 7
+              },
+              { "text": "\n", "fontSize": 2 },
+              {
+                "text": "MagnaCerta Verifier ",
+                "fontSize": 7,
+                "bold": true,
+                "color": "#ff7a56"
+              },
+              {
+                "text": "to verify the authenticity of this certificate | para verificar la validez ",
+                "fontSize": 7
+              }
+            ],
+            "width": "75%"
+          }
+        ],
+        "columnGap": 5
+      }
+    ],
+    "defaultStyle": {
+      "font": "Montserrat"
+    }
+  }
+}

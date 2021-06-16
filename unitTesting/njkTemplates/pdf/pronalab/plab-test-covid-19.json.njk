@@ -13,15 +13,15 @@
         "text": [
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________             ",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
-            "fontSize": 7.5,
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n______________________________________________________________________________________________________________________________________________________________             ",
+            "fontSize": 6,
             "alignment": "right",
             "color": "#2665FF"
           },
@@ -84,10 +84,44 @@
       "\n",
       {
         "columns":[
+          [
+            {
+              "image": "{{canvas}}",
+              "fit": [260,260]
+            },
+            {
+              "columns":[
+                {
+                  "text":"",
+                  "width": "2%"
+                },
+                {
+                  "text": [
+                    {
+                      "text": "AUTHORITIES MUST DOWNLOAD THE ",
+                      "bold": true,
+                      "fontSize": 7
+                    },
+                    {
+                      "text": "MAGNACERTA VERIFIER APP",
+                      "bold": true,
+                      "fontSize": 7,
+                      "decoration": "underline"
+                    },
+                    {
+                      "text": " TO SCAN ENCRYPTED QR CODES.",
+                      "bold": true,
+                      "fontSize": 7
+                    }
+                  ]
+                }
+              ],
+              "width": "5%"
+            }
+          ],
           {
-            "image": "{{canvas}}",
-            "fit": [260,260],
-            "width": "52%"
+            "text":"",
+            "width": "4%"
           },
           [
             {
@@ -131,14 +165,7 @@
               ],
               "columnGap": 10
             },
-            {
-              {% if subject.formData.passportNumber and (subject.formData.passportNumber | trim) %}
-                "text": "\n\n\n\n",
-              {% else -%}
-                "text": "\n\n\n\n",
-              {% endif -%}
-              "fontSize": 8
-            },
+            { "text": "\n\n\n", "fontSize": 4},
             {
               "text": "\nPROCEDURE DETAILS | DETALLES DEL PROCEDIMIENTO",
               "bold": true,
@@ -152,14 +179,12 @@
                     { "text": "{{subject.formData.procedure }}", "fontSize": 8 },
                     { "text": "\n\nPROCEDURE TYPE | TÉCNICA:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{template.name | safe }}", "fontSize": 8 },
+                    { "text": "\n\nTEST NAME | NOMBRE DEL TEST:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.testName }}", "fontSize": 8 },
+                    { "text": "\n\nMANUFACTURER | FABRICANTE:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "{{subject.formData.manufacturer }}", "fontSize": 8 },
                     { "text": "\n\nSAMPLE COLLECTION DATE | FECHA DE RECOLECCIÓN DE MUESTRA:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.sampleDate | timezone(subject.formData.timezone) | date("yyyy-MM-DD h:mm a") | upper}}", "fontSize": 8 },
-                    { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
-                    {% if subject.formData.observation | trim | lower == 'positive' or subject.formData.observation | trim | lower == 'negative' %}
-                      { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
-                    {% else -%}
-                      { "text": "Unknown", "fontSize": 8 }
-                    {% endif -%}
+                    { "text": "{{subject.formData.sampleDate | timezone(subject.formData.timezone) | date("yyyy-MM-DD h:mm a") | upper}}", "fontSize": 8 }
                   ],
                   "width": "50%"
                 },
@@ -168,16 +193,21 @@
                     { "text": "\n\nSPECIMEN COLLECTION METHOD | TIPO DE MUESTRA:\n", "fontSize": 5, "opacity": 0.5 },
                     { "text": "{{subject.formData.collectionMethod}}", "fontSize": 8 },
                     { "text": "\n\nSAMPLE QUALITY | CALIDAD DE LA MUESTRA:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.quality}}", "fontSize": 8 }
+                    { "text": "{{subject.formData.quality}}", "fontSize": 8 },
                     {% if subject.formData.ct and (subject.formData.ct | trim) %}
-                      ,{ "text": "\n\nCT (1-38):\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.ct}}", "fontSize": 8 }
+                      { "text": "\n\nCT (1-38):\n", "fontSize": 5, "opacity": 0.5 },
+                      { "text": "{{subject.formData.ct}}", "fontSize": 8 },
                     {% endif -%}
                     {% if subject.formData.analyzer and (subject.formData.analyzer | trim) %}
-                      ,{ "text": "\n\nANALYZED BY | ANALIZÓ:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.analyzer | title}}", "fontSize": 8 }
+                      { "text": "\n\nANALYZED BY | ANALIZÓ:\n", "fontSize": 5, "opacity": 0.5 },
+                      { "text": "{{subject.formData.analyzer | title}}", "fontSize": 8 },
                     {% endif -%}
-                    
+                    { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
+                    {% if subject.formData.observation | trim | lower == 'positive' or subject.formData.observation | trim | lower == 'negative' %}
+                      { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
+                    {% else -%}
+                      { "text": "Unknown", "fontSize": 8 }
+                    {% endif -%}
                   ],
                   "width": "50%"
                 }
@@ -185,37 +215,6 @@
               "columnGap": 15
             }
           ]
-        ]
-      },
-      {
-        "columns":[
-          {
-            "text":"",
-            "width": "2%"
-          },
-          {
-            "text": [
-              {
-                "text": "AUTHORITIES MUST DOWNLOAD THE ",
-                "bold": true,
-                "fontSize": 7
-              },
-              {
-                "text": "MAGNACERTA VERIFIER APP",
-                "bold": true,
-                "fontSize": 7,
-                "decoration": "underline"
-              },
-              {
-                "text": " TO SCAN ENCRYPTED QR CODES.",
-                "bold": true,
-                "fontSize": 7
-              }
-            ]
-          },
-          {
-            "text":""
-          }
         ]
       },
       {
@@ -346,7 +345,7 @@
         "fontSize": 4.5
       },
       {
-        "text": "R01PD 10 V00    ",
+        "text": "R04PD 10 V00    ",
         "fontSize": 7.5,
         "opacity": 0.6,
         "alignment": "right"

@@ -3,6 +3,14 @@
     "Montserrat": {
       "normal": "https://cdn.jsdelivr.net/npm/pstpn-webfont-montserrat@0.0.5/fonts/Regular/Montserrat-Regular.otf",
       "bold": "https://cdn.jsdelivr.net/npm/pstpn-webfont-montserrat@0.0.5/fonts/Bold/Montserrat-Bold.otf"
+    },
+    "Raleway": {
+      "bold": "https://cdn.jsdelivr.net/npm/raleway-webfont@3.0.1/fonts/Raleway-Bold.ttf",
+      "normal": "https://cdn.jsdelivr.net/npm/raleway-webfont@3.0.1/fonts/Raleway-Medium.ttf"
+    },
+    "SpaceMono": {
+      "normal": "https://cdn.jsdelivr.net/npm/typeface-space-mono@1.1.13/files/space-mono-latin-400.woff",
+      "bold": "https://cdn.jsdelivr.net/npm/typeface-space-mono@1.1.13/files/space-mono-latin-700.woff"
     }
   },
   "documentDefinition": {
@@ -13,34 +21,39 @@
         "text": [
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n____________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n____________________________________________________________             ",
+            "style": "Mon",
             "fontSize": 7.5,
             "alignment": "right",
             "color": "#2665FF"
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_________________________________________________________________________________________________________________________________________________             ",
-            "fontSize": 6.5,
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________________________________             ",
+            "style": "Mon",
+            "fontSize": 6.3,
             "alignment": "right",
             "color": "#2665FF"
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________             ",
-            "fontSize": 7.5,
+              "\n\n\n\n\n\n\n\n\n\n\n\n___________________________________________________________________________________________________________________________________________________________             ",
+            "style": "Mon",
+            "fontSize": 6.1,
             "alignment": "right",
             "color": "#2665FF"
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________________             ",
-            "fontSize": 7,
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n________________________________________________________________________________________________________________________________________             ",
+            "style": "Mon",
+            "fontSize": 6.9,
             "alignment": "right",
             "color": "#2665FF"
           },
           {
             "text": "\n",
+            "style": "Mon",
             "fontSize": 8,
             "alignment": "right",
             "color": "#2665FF"
@@ -54,6 +67,7 @@
           [
             {
                 "text": "",
+                "style": "Mon",
                 "width": "50%"
             },
             {
@@ -67,12 +81,14 @@
               {
                 "bold": true,
                 "text": "VERIFIABLE HEALTH CERTIFICATE",
+                "style": "Ral",
                 "alignment": "left",
                 "fontSize": 14
               },
               {
                 "bold": true,
                 "text": "\nVERIFIEERBAAR GEZONDHEIDSCERTIFICAAT",
+                "style": "Ral",
                 "alignment": "left",
                 "fontSize": 10
               }
@@ -81,7 +97,10 @@
         ],
         "columnGap": 15
       },
-      "\n",
+      {
+        "text": "\n",
+        "style": "Mon"
+      },
       {
         "columns":[
           {
@@ -92,6 +111,7 @@
           [
             {
               "text": "\nSUBJECT DETAILS | ONDERWERPDETAILS",
+              "style": "Ral",
               "bold": true,
               "fontSize": 8
             },
@@ -99,44 +119,50 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nFIRST NAME | VOORNAAM:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "fontSize": 8 },
+                    { "text": "\n\nFIRST NAME | VOORNAAM:\n", "style": "Spa", "fontSize": 5},
+                    { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "style": "Ral", "fontSize": 8 },
                     {
                       "text": "\n\nLAST NAME | ACHTERNAAM:\n",
-                      "fontSize": 5,
-                      "opacity": 0.5
+                      "style": "Ral",
+                      "fontSize": 5
                     },
-                    { "text": "{{subject.formData.familyName | title}}", "fontSize": 8 }
+                    { "text": "{{subject.formData.familyName | title}}", "style": "Ral", "fontSize": 8 },
+                    {
+                      "text": "\n\nDATE OF BIRTH | GEBOORTEDATUM:\n",
+                      "style": "Spa",
+                      "fontSize": 5
+                    },
+                    { "text": "{{subject.formData.birthDate | date("yyyy-MM-DD")}}", "style": "Ral", "fontSize": 8 }
                   ],
                   "width": "50%"
                 },
                 {
                   "text": [
-                    {
-                      "text": "\n\nDATE OF BIRTH | GEBOORTEDATUM:\n",
-                      "fontSize": 5,
-                      "opacity": 0.5
-                    },
-                    { "text": "{{subject.formData.birthDate | date("yyyy-MM-DD")}}", "fontSize": 8 },
-                    { "text": "\n\nGENDER | GESLACHT:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nGENDER | GESLACHT:\n", "style": "Spa", "fontSize": 5},
                     {% if (subject.formData.gender | trim | lower) == "male" %}
-                      { "text": "Male - Mannetje", "fontSize": 8 }
+                      { "text": "Male - Mannetje", "style": "Ral", "fontSize": 8 },
                     {% elseif (subject.formData.gender | trim | lower) == "female" %}
-                      { "text": "Female - Vrouw", "fontSize": 8 }
+                      { "text": "Female - Vrouw", "style": "Ral", "fontSize": 8 },
                     {% else %}
-                      { "text": "Other - Andere", "fontSize": 8 }
+                      { "text": "Other - Andere", "style": "Ral", "fontSize": 8 },
                     {% endif %}
+                    { "text": "\n\nGOVERNMENT-ISSUED ID TYPE | DOOR DE OVERHEID UITGEGEVEN IDENTITEITSBEWIJS:\n", "style": "Spa", "fontSize": 5 },
+                    { "text": "{{subject.formData.sampleDate}}", "style": "Ral", "fontSize": 8 },
+                    { "text": "\n\nGOVERNMENT-ISSUED ID NUMBER | DOOR DE OVERHEID UITGEGEVEN IDENTIFICATIENUMMER:\n", "style": "Spa", "fontSize": 5 },
+                    { "text": "{{subject.formData.sampleDate}}", "style": "Ral", "fontSize": 8 }
                   ]
                 }
               ],
               "columnGap": 10
             },
             {
-              "text": "\n\n\n\n\n\n",
+              "text": "\n\n",
+              "style": "Mon",
               "fontSize": 8
             },
             {
               "text": "\nPROCEDURE DETAILS | PROCEDURE DETAILS",
+              "style": "Ral",
               "bold": true,
               "fontSize": 8
             },
@@ -144,22 +170,24 @@
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nPROCEDURE TYPE | PROCEDURETYPE:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{template.name | safe }}", "fontSize": 8 },
-                    { "text": "\n\nSAMPLE COLLECTION DATE | DATUM MONSTERAFNAME:\n", "fontSize": 5, "opacity": 0.5 },
-                    { "text": "{{subject.formData.sampleDate | date("yyyy-MM-DD H:mm")}}", "fontSize": 8 }
+                    { "text": "\n\nPROCEDURE TYPE | PROCEDURETYPE:\n", "style": "Spa", "fontSize": 5 },
+                    { "text": "{{template.name | safe }}", "style": "Ral", "fontSize": 8 },
+                    { "text": "\n\nSAMPLE COLLECTION DATE | DATUM MONSTERAFNAME:\n", "style": "Spa", "fontSize": 5 },
+                    { "text": "{{subject.formData.sampleDate | date("yyyy-MM-DD H:mm")}}", "style": "Ral", "fontSize": 8 }
                   ],
                   "width": "50%"
                 },
                 {
                   "text": [
-                    { "text": "\n\nDIAGNOSTIC RESULT | DIAGNOSTISCH RESULTAAT:\n", "fontSize": 5, "opacity": 0.5 },
+                    { "text": "\n\nSAMPLE NUMBER | VOORBEELD NUMMER:\n", "style": "Spa", "fontSize": 5 },
+                    { "text": "{{subject.formData.sampleDate}}", "style": "Ral", "fontSize": 8 },
+                    { "text": "\n\nDIAGNOSTIC RESULT | DIAGNOSTISCH RESULTAAT:\n", "style": "Spa", "fontSize": 5 },
                     {% if (subject.formData.observation | trim | lower) == "negative" %}
-                      { "text": "Negative - Negatief", "fontSize": 8 }
+                      { "text": "Negative - Negatief", "style": "Ral", "fontSize": 8 }
                     {% elseif (subject.formData.observation | trim | lower) == "positive" %}
-                      { "text": "Positive - Positief", "fontSize": 8 }
+                      { "text": "Positive - Positief", "style": "Ral", "fontSize": 8 }
                     {% else %}
-                      { "text": "Invalid - Ongeldig", "fontSize": 8 }
+                      { "text": "Invalid - Ongeldig", "style": "Ral", "fontSize": 8 }
                     {% endif %}
                   ]
                 }
@@ -173,6 +201,7 @@
         "columns":[
           {
             "text":"",
+            "style": "Spa",
             "width": "2%"
           },
           {
@@ -185,31 +214,35 @@
                 "decoration": "underline"
               },
               {
-                "text": " TO SCAN ENCRYPTED QR CODES AND VALIDATE AUTHENTICITY - AUTORITEITEN MOETEN DE "
+                "text": " TO SCAN ENCRYPTED QR CODES AND VALIDATE AUTHENTICITY - DE AUTORITEITEN MOETEN DE "
               },
               {
                 "text": "MAGNACERTA VERIFIER-APP",
                 "decoration": "underline"
               },
               {
-                "text": " DOWNLOADEN TOSCAN GECODEERDE QR-CODES"
+                "text": " DOWNLOADEN OM VERSLEUTELDE QR-CODES TE SCANNEN EN DE AUTHENTICITEIT TE VALIDEREN"
               }
             ],
-            "fontSize": 6,
-            "bold": true
+            "bold": true,
+            "style": "Spa",
+            "fontSize": 6
           },
           {
             "text":"",
-            "width": "45%"
+            "style": "Spa",
+            "width": "50%"
           }
         ]
       },
       {
         "text": "\n\n\n",
+        "style": "Mon",
         "fontSize": 3
       },
       {
         "text": "\nCERTIFICATE ISSUANCE DETAILS | DETAILS VAN DE UITGIFTE VAN HET CERTIFICAAT",
+        "style": "Ral",
         "bold": true,
         "fontSize": 8
       },
@@ -217,28 +250,22 @@
         "columns": [
           {
             "text": [
-              { "text": "\n\nISSUED BY | UITGEGEVEN DOOR:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{digitalPen.legalName}}", "fontSize": 8 },
-              { "text": "\n\nISSUANCE DATE | DATUM VAN UITGIFTE:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{credential.createdAt | date("yyyy-MM-DD H:mm")}}", "fontSize": 8 }
+              { "text": "\n\nISSUED BY | UITGEGEVEN DOOR:\n", "style": "Spa", "fontSize": 5 },
+              { "text": "{{digitalPen.legalName}}", "style": "Ral","fontSize": 8 },
+              { "text": "\n\nISSUANCE DATE | DATUM VAN UITGIFTE:\n", "style": "Spa", "fontSize": 5},
+              { "text": "{{credential.createdAt | date("yyyy-MM-DD H:mm")}}", "style": "Ral", "fontSize": 8 }
             ]
           },
           {
             "text": [
-              { "text": "\n\nORGANIZATION | ORGANISATIE:\n", "fontSize": 5, "opacity": 0.5 },
-              { "text": "{{organization.commonName | safe }}", "fontSize": 8 },
+              { "text": "\n\nORGANIZATION | ORGANISATIE:\n", "style": "Spa", "fontSize": 5 },
+              { "text": "{{organization.commonName | safe }}", "style": "Ral", "fontSize": 8 },
               {
                 "text": "\n\nCOUNTRY OF ISSUANCE | HET LAND VAN AFGIFTE:\n",
-                "fontSize": 5,
-                "opacity": 0.5
+                "style": "Spa",
+                "fontSize": 5
               },
-              {
-                {% if subject.formData.countryName and (subject.formData.countryName | trim) %}
-                  "text": "{{subject.formData.countryName | trim }}",
-                {% else %}
-                  "text": "{{organization.country | country}}",
-                {% endif -%}
-                  "fontSize": 8 }
+              { "text": "{{organization.country | country}}", "style": "Ral", "fontSize": 8 }
             ]
           },
           {}
@@ -256,16 +283,15 @@
               {
                 "text":
                   "\nThis certificate contains data from your diagnostic test with elements that make it secure, tamper-proof, verifiable, and does not compromise your privacy. This can be presented to verifying authorities who will scan the QR codes with compatible apps.",
-                "fontSize": 8,
-                "opacity": 0.8
+                "fontSize": 8
               },
               {
                 "text":
                   "\n\nThis document can be utilized as proof of certified test results for any entity that requires such documentation, including airlines, schools, workplaces, public forums, sporting events and much more.",
-                "fontSize": 8,
-                "opacity": 0.8
+                "fontSize": 8
               }
             ],
+            "style": "Ral",
             "alignment": "justify"
           },
           {
@@ -278,16 +304,15 @@
               {
                 "text":
                   "\nDit certificaat bevat gegevens van uw diagnostische test met elementen die het veilig, fraudebestendig en verifieerbaar maken en uw privacy niet in gevaar brengen. Dit kan worden voorgelegd aan controlerende autoriteiten die de QR-codes zullen scannen met compatibele apps.",
-                "fontSize": 8,
-                "opacity": 0.8
+                "fontSize": 8
               },
               {
                 "text":
                   "\n\nDit document kan worden gebruikt als bewijs van gecertificeerde testresultaten voor elke entiteit die dergelijke documentatie nodig heeft, inclusief luchtvaartmaatschappijen, scholen, werkplekken, openbare fora, sportevenementen en nog veel meer.",
-                "fontSize": 8,
-                "opacity": 0.8
+                "fontSize": 8
               }
             ],
+            "style": "Ral",
             "alignment": "justify"
           }
         ],
@@ -295,6 +320,7 @@
       },
       {
         "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n",
+        "style": "Mon",
         "fontSize": 8
       },
       {
@@ -331,10 +357,11 @@
                 "fontSize": 7
               }
             ],
+            "style": "Mon",
             "width": "57%"
           },
           [
-            { "text": "\n\n", "fontSize": 4 },
+            { "text": "\n\n", "style": "Mon", "fontSize": 4 },
             {
               "image": "data:image/png;base64,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",
               "fit": [60, 60]
@@ -344,8 +371,16 @@
         "columnGap": 13
       }
     ],
-    "defaultStyle": {
-      "font": "Montserrat"
+    "styles": {
+      "Ral":{
+        "font": "Raleway"
+      },
+      "Spa":{
+        "font": "SpaceMono"
+      },
+      "Mon":{
+        "font": "Montserrat"
+      }
     }
   }
 }

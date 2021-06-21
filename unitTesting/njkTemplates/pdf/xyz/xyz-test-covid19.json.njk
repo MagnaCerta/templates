@@ -251,13 +251,7 @@
                 "fontSize": 5,
                 "opacity": 0.5
               },
-              {
-                {% if subject.formData.countryName and (subject.formData.countryName | trim) %}
-                  "text": "{{subject.formData.countryName | trim }}",
-                {% else %}
-                  "text": "{{organization.country}}",
-                {% endif -%}
-                  "fontSize": 8 }
+              { "text": "{{organization.country | country}}", "fontSize": 8 }
             ]
           }
         ]

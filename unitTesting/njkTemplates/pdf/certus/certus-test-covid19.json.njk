@@ -249,13 +249,7 @@
                 "fontSize": 5,
                 "opacity": 0.5
               },
-              {
-                {% if subject.formData.countryName and (subject.formData.countryName | trim) %}
-                  "text": "{{subject.formData.countryName | trim | title}}",
-                {% else %}
-                  "text": "{{organization.country}}",
-                {% endif -%}
-                  "fontSize": 8 }
+              { "text": "{{organization.country | country}}", "fontSize": 8 }
               {% if subject.formData.externalReference and (subject.formData.externalReference | trim) %}
                 ,{ "text": "\n\nFOLIO NUMBER | NÚMERO DE FOLIO:\n", "fontSize": 5, "opacity": 0.5 },
                 { "text": "{{subject.formData.externalReference}}", "fontSize": 8 }

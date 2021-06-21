@@ -106,7 +106,7 @@
         "text": [
             {
             "bold": true,
-            "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %} :: {{subject.formData.familyName | trim | title}} :: {{subject.formData.birthDate | date("yyyy-MM-DD")}} :: {{subject.formData.gender}} :: {{subject.formData.id}} :: {{template.name | safe }} :: {{subject.formData.sampleDate | date("yyyy-MM-DD h:mm a") | upper}}                                  ",
+            "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %} :: {{subject.formData.familyName | trim | title}} :: {{subject.formData.birthDate | date("yyyy-MM-DD")}} :: {{subject.formData.gender}} :: {{subject.formData.id}} :: {{template.name | safe }} :: {{{{subject.formData.sampleDate | timezone(subject.formData.timezone) | date("yyyy-MM-DD h:mm a") | upper}}                                  ",
             "alignment": "right",
             "opacity": 0.2,
             "fontSize": 6
@@ -123,7 +123,7 @@
         "text": [
             {
             "bold": true,
-            "text": "{{subject.formData.observation | title}} :: {{subject.formData.collectionMethod}} :: {{credential.createdAt | date("yyyy-MM-DD h:mm a") | upper}}                                                      ",
+            "text": "{{subject.formData.observation | title}} :: {{subject.formData.collectionMethod}} :: {{credential.createdAt | timezone(subject.formData.timezone) | date("yyyy-MM-DD h:mm a") | upper}}                                                      ",
             "alignment": "right",
             "opacity": 0.2,
             "fontSize": 6
@@ -352,14 +352,7 @@
                 "fontSize": 5,
                 "opacity": 0.5
               },
-              {
-                {% if subject.formData.countryName and (subject.formData.countryName | trim) %}
-                  "text": "{{subject.formData.countryName | trim }}",
-                {% else %}
-                  "text": "{{organization.country}}",
-                {% endif -%}
-                  "fontSize": 8 
-              },
+              { "text": "{{organization.country | country}}", "fontSize": 8 },
               { "text": "\n\nFOLIO NUMBER | NÚMERO DE FOLIO:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{subject.formData.externalReference}}", "fontSize": 8 }
             ]

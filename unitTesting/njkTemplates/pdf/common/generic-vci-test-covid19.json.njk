@@ -149,7 +149,7 @@
                   "text": [
                     { "text": "\n\nDIAGNOSTIC RESULT | RESULTADO:\n", "fontSize": 5, "opacity": 0.5 },
                     {% if subject.formData.observation | trim | lower == 'positive' or subject.formData.observation | trim | lower == 'negative' %}
-                      { "text": "{{subject.formData.observation | title}}", "fontSize": 8 },
+                      { "text": "{{subject.formData.observation | title}}", "fontSize": 8 }
                     {% else -%}
                       { "text": "Null", "fontSize": 8 }
                     {% endif -%}
@@ -219,14 +219,7 @@
                 "text": "\n\nCOUNTRY OF ISSUANCE | PAÍS DE EMISIÓN:\n",
                 "fontSize": 5,
                 "opacity": 0.5
-              },
-              {
-                {% if subject.formData.countryName and (subject.formData.countryName | trim) %}
-                  "text": "{{subject.formData.countryName | trim }}",
-                {% else %}
-                  "text": "{{organization.country}}",
-                {% endif -%}
-                  "fontSize": 8 }
+              }
             ]
           },
           {}

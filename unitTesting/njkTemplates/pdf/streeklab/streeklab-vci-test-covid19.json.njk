@@ -4,13 +4,12 @@
       "normal": "https://cdn.jsdelivr.net/npm/pstpn-webfont-montserrat@0.0.5/fonts/Regular/Montserrat-Regular.otf",
       "bold": "https://cdn.jsdelivr.net/npm/pstpn-webfont-montserrat@0.0.5/fonts/Bold/Montserrat-Bold.otf"
     },
-    "Raleway": {
-      "bold": "https://cdn.jsdelivr.net/npm/raleway-webfont@3.0.1/fonts/Raleway-Bold.ttf",
-      "normal": "https://cdn.jsdelivr.net/npm/raleway-webfont@3.0.1/fonts/Raleway-Medium.ttf"
+    "Aeonik": {
+      "bold": "https://uat.magnacerta.io/fonts/bw/aeonik-bold.otf",
+      "normal": "https://uat.magnacerta.io/fonts/bw/aeonik-medium.otf"
     },
-    "SpaceMono": {
-      "normal": "https://cdn.jsdelivr.net/npm/typeface-space-mono@1.1.13/files/space-mono-latin-400.woff",
-      "bold": "https://cdn.jsdelivr.net/npm/typeface-space-mono@1.1.13/files/space-mono-latin-700.woff"
+    "Decima": {
+      "normal": "https://uat.magnacerta.io/fonts/bw/decima-mono-pro-400.otf"
     }
   },
   "documentDefinition": {
@@ -29,9 +28,9 @@
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_____________________________________________________________________________________________________________________________________________________________             ",
             "style": "Mon",
-            "fontSize": 6.3,
+            "fontSize": 6,
             "alignment": "right",
             "color": "#2665FF"
           },
@@ -45,9 +44,9 @@
           },
           {
             "text":
-              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n________________________________________________________________________________________________________________________________________             ",
+              "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n______________________________________________________________________________________________________________________________________________________             ",
             "style": "Mon",
-            "fontSize": 6.9,
+            "fontSize": 6.3,
             "alignment": "right",
             "color": "#2665FF"
           },
@@ -81,18 +80,16 @@
               {
                 "bold": true,
                 "text": "VERIFIABLE HEALTH CERTIFICATE",
-                "style": "Ral",
-                "alignment": "left",
-                "fontSize": 14
+                "fontSize": 16
               },
               {
                 "bold": true,
                 "text": "\nVERIFIEERBAAR GEZONDHEIDSCERTIFICAAT",
-                "style": "Ral",
-                "alignment": "left",
-                "fontSize": 10
+                "fontSize": 12
               }
-            ]
+            ],
+            "style": "Aeo",
+            "alignment": "left"
           }
         ],
         "columnGap": 15
@@ -101,7 +98,7 @@
         "text": "\n",
         "style": "Mon"
       },
-      {
+       {
         "columns":[
           {
             "image": "{{canvas}}",
@@ -111,83 +108,93 @@
           [
             {
               "text": "\nSUBJECT DETAILS | ONDERWERPDETAILS",
-              "style": "Ral",
+              "style": "Aeo",
               "bold": true,
-              "fontSize": 8
+              "fontSize": 10
             },
             {
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nFIRST NAME | VOORNAAM:\n", "style": "Spa", "fontSize": 5},
-                    { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "style": "Ral", "fontSize": 8 },
+                    { "text": "\n\nFIRST NAME | VOORNAAM:\n", "style": "Dec", "fontSize": 6},
+                    { "text": "{{subject.formData.givenName | trim | title}}{% if subject.formData.middleName and (subject.formData.middleName | trim) %} {{subject.formData.middleName | trim | title}}{% endif %}", "style": "Aeo", "fontSize": 9.5 },
                     {
                       "text": "\n\nLAST NAME | ACHTERNAAM:\n",
-                      "style": "Ral",
-                      "fontSize": 5
+                      "style": "Dec",
+                      "fontSize": 6
                     },
-                    { "text": "{{subject.formData.familyName | title}}", "style": "Ral", "fontSize": 8 },
+                    { "text": "{{subject.formData.familyName | title}}", "style": "Aeo", "fontSize": 9.5 },
                     {
                       "text": "\n\nDATE OF BIRTH | GEBOORTEDATUM:\n",
-                      "style": "Spa",
-                      "fontSize": 5
+                      "style": "Dec",
+                      "fontSize": 6
                     },
-                    { "text": "{{subject.formData.birthDate | date("yyyy-MM-DD")}}", "style": "Ral", "fontSize": 8 }
+                    { "text": "{{subject.formData.birthDate | date("yyyy-MM-DD")}}", "style": "Aeo", "fontSize": 9.5 }
                   ],
                   "width": "50%"
                 },
                 {
                   "text": [
-                    { "text": "\n\nGENDER | GESLACHT:\n", "style": "Spa", "fontSize": 5},
+                    { "text": "\n\nGENDER | GESLACHT:\n", "style": "Dec", "fontSize": 6},
                     {% if (subject.formData.gender | trim | lower) == "male" %}
-                      { "text": "Male - Mannetje", "style": "Ral", "fontSize": 8 },
+                      { "text": "Male - Mannetje", "style": "Aeo", "fontSize": 9.5 },
                     {% elseif (subject.formData.gender | trim | lower) == "female" %}
-                      { "text": "Female - Vrouw", "style": "Ral", "fontSize": 8 },
+                      { "text": "Female - Vrouw", "style": "Aeo", "fontSize": 9.5 },
                     {% else %}
-                      { "text": "Other - Andere", "style": "Ral", "fontSize": 8 },
+                      { "text": "Other - Andere", "style": "Aeo", "fontSize": 9.5 },
                     {% endif %}
-                    { "text": "\n\nGOVERNMENT-ISSUED ID TYPE | DOOR DE OVERHEID UITGEGEVEN IDENTITEITSBEWIJS:\n", "style": "Spa", "fontSize": 5 },
-                    { "text": "{{subject.formData.sampleDate}}", "style": "Ral", "fontSize": 8 },
-                    { "text": "\n\nGOVERNMENT-ISSUED ID NUMBER | DOOR DE OVERHEID UITGEGEVEN IDENTIFICATIENUMMER:\n", "style": "Spa", "fontSize": 5 },
-                    { "text": "{{subject.formData.sampleDate}}", "style": "Ral", "fontSize": 8 }
+                    { "text": "\n\nGOVERNMENT-ISSUED ID TYPE | DOOR DE OVERHEID UITGEGEVEN IDENTITEITSBEWIJS:\n", "style": "Dec", "fontSize": 6 },
+                    { "text": "{{subject.formData.idType}}", "style": "Aeo", "fontSize": 9.5 }
+                    {% if subject.formData.idNumber and subject.formData.idNumber | trim %}
+                      ,{ "text": "\n\nGOVERNMENT-ISSUED ID NUMBER | DOOR DE OVERHEID UITGEGEVEN IDENTIFICATIENUMMER:\n", "style": "Dec", "fontSize": 6 },
+                      { "text": "{{subject.formData.idNumber}}", "style": "Aeo", "fontSize": 9.5 }
+                    {% endif %}
                   ]
                 }
               ],
               "columnGap": 10
             },
-            {
-              "text": "\n\n",
-              "style": "Mon",
-              "fontSize": 8
-            },
+            {% if subject.formData.idNumber and subject.formData.idNumber | trim %}
+              {
+                "text": "\n\n",
+                "style": "Mon",
+                "fontSize": 8
+              },
+            {% else %}
+              {
+                "text": "\n\n\n\n",
+                "style": "Mon",
+                "fontSize": 8
+              },
+            {% endif %}
             {
               "text": "\nPROCEDURE DETAILS | PROCEDURE DETAILS",
-              "style": "Ral",
+              "style": "Aeo",
               "bold": true,
-              "fontSize": 8
+              "fontSize": 10
             },
             {
               "columns": [
                 {
                   "text": [
-                    { "text": "\n\nPROCEDURE TYPE | PROCEDURETYPE:\n", "style": "Spa", "fontSize": 5 },
-                    { "text": "{{template.name | safe }}", "style": "Ral", "fontSize": 8 },
-                    { "text": "\n\nSAMPLE COLLECTION DATE | DATUM MONSTERAFNAME:\n", "style": "Spa", "fontSize": 5 },
-                    { "text": "{{subject.formData.sampleDate | date("yyyy-MM-DD H:mm")}}", "style": "Ral", "fontSize": 8 }
+                    { "text": "\n\nPROCEDURE TYPE | PROCEDURETYPE:\n", "style": "Dec", "fontSize": 6 },
+                    { "text": "{{template.name | safe }}", "style": "Aeo", "fontSize": 9.5 },
+                    { "text": "\n\nSAMPLE COLLECTION DATE | DATUM MONSTERAFNAME:\n", "style": "Dec", "fontSize": 6 },
+                    { "text": "{{subject.formData.sampleDate | date("yyyy-MM-DD H:mm")}}", "style": "Aeo", "fontSize": 9.5 }
                   ],
                   "width": "50%"
                 },
                 {
                   "text": [
-                    { "text": "\n\nSAMPLE NUMBER | VOORBEELD NUMMER:\n", "style": "Spa", "fontSize": 5 },
-                    { "text": "{{subject.formData.sampleDate}}", "style": "Ral", "fontSize": 8 },
-                    { "text": "\n\nDIAGNOSTIC RESULT | DIAGNOSTISCH RESULTAAT:\n", "style": "Spa", "fontSize": 5 },
+                    { "text": "\n\nSAMPLE NUMBER | VOORBEELD NUMMER:\n", "style": "Dec", "fontSize": 6 },
+                    { "text": "{{subject.formData.sampleNumber}}", "style": "Aeo", "fontSize": 9.5 },
+                    { "text": "\n\nDIAGNOSTIC RESULT | DIAGNOSTISCH RESULTAAT:\n", "style": "Dec", "fontSize": 6 },
                     {% if (subject.formData.observation | trim | lower) == "negative" %}
-                      { "text": "Negative - Negatief", "style": "Ral", "fontSize": 8 }
+                      { "text": "Negative - Negatief", "style": "Aeo", "fontSize": 9.5 }
                     {% elseif (subject.formData.observation | trim | lower) == "positive" %}
-                      { "text": "Positive - Positief", "style": "Ral", "fontSize": 8 }
+                      { "text": "Positive - Positief", "style": "Aeo", "fontSize": 9.5 }
                     {% else %}
-                      { "text": "Invalid - Ongeldig", "style": "Ral", "fontSize": 8 }
+                      { "text": "Invalid - Ongeldig", "style": "Aeo", "fontSize": 9.5 }
                     {% endif %}
                   ]
                 }
@@ -201,37 +208,18 @@
         "columns":[
           {
             "text":"",
-            "style": "Spa",
+            "style": "Dec",
             "width": "2%"
           },
           {
-            "text": [
-              {
-                "text": "AUTHORITIES MUST DOWNLOAD THE "
-              },
-              {
-                "text": "MAGNACERTA VERIFIER APP",
-                "decoration": "underline"
-              },
-              {
-                "text": " TO SCAN ENCRYPTED QR CODES AND VALIDATE AUTHENTICITY - DE AUTORITEITEN MOETEN DE "
-              },
-              {
-                "text": "MAGNACERTA VERIFIER-APP",
-                "decoration": "underline"
-              },
-              {
-                "text": " DOWNLOADEN OM VERSLEUTELDE QR-CODES TE SCANNEN EN DE AUTHENTICITEIT TE VALIDEREN"
-              }
-            ],
-            "bold": true,
-            "style": "Spa",
-            "fontSize": 6
+            "text": "Authorities must download MagnaCerta Verifier app to scan encrypted qr codes and validate authenticity | De autoriteiten moeten de MagnaCerta Verifier-app downloaden om versleutelde qr-codes te scannen en de authenticiteit te valideren",
+            "style": "Aeo",
+            "fontSize": 6.5
           },
           {
             "text":"",
-            "style": "Spa",
-            "width": "50%"
+            "style": "Dec",
+            "width": "49%"
           }
         ]
       },
@@ -242,30 +230,30 @@
       },
       {
         "text": "\nCERTIFICATE ISSUANCE DETAILS | DETAILS VAN DE UITGIFTE VAN HET CERTIFICAAT",
-        "style": "Ral",
+        "style": "Aeo",
         "bold": true,
-        "fontSize": 8
+        "fontSize": 10
       },
       {
         "columns": [
           {
             "text": [
-              { "text": "\n\nISSUED BY | UITGEGEVEN DOOR:\n", "style": "Spa", "fontSize": 5 },
-              { "text": "{{digitalPen.legalName}}", "style": "Ral","fontSize": 8 },
-              { "text": "\n\nISSUANCE DATE | DATUM VAN UITGIFTE:\n", "style": "Spa", "fontSize": 5},
-              { "text": "{{credential.createdAt | date("yyyy-MM-DD H:mm")}}", "style": "Ral", "fontSize": 8 }
+              { "text": "\n\nISSUED BY | UITGEGEVEN DOOR:\n", "style": "Dec", "fontSize": 6 },
+              { "text": "{{digitalPen.legalName}}", "style": "Aeo","fontSize": 9.5 },
+              { "text": "\n\nISSUANCE DATE | DATUM VAN UITGIFTE:\n", "style": "Dec", "fontSize": 6 },
+              { "text": "{{credential.createdAt | date("yyyy-MM-DD H:mm")}}", "style": "Aeo", "fontSize": 9.5 }
             ]
           },
           {
             "text": [
-              { "text": "\n\nORGANIZATION | ORGANISATIE:\n", "style": "Spa", "fontSize": 5 },
-              { "text": "{{organization.commonName | safe }}", "style": "Ral", "fontSize": 8 },
+              { "text": "\n\nORGANIZATION | ORGANISATIE:\n", "style": "Dec", "fontSize": 6 },
+              { "text": "{{organization.commonName | safe }}", "style": "Aeo", "fontSize": 9.5 },
               {
                 "text": "\n\nCOUNTRY OF ISSUANCE | HET LAND VAN AFGIFTE:\n",
-                "style": "Spa",
-                "fontSize": 5
+                "style": "Dec",
+                "fontSize": 6
               },
-              { "text": "{{organization.country | country}}", "style": "Ral", "fontSize": 8 }
+              { "text": "{{organization.country | country}}", "style": "Aeo", "fontSize": 9.5 }
             ]
           },
           {}
@@ -291,7 +279,7 @@
                 "fontSize": 8
               }
             ],
-            "style": "Ral",
+            "style": "Aeo",
             "alignment": "justify"
           },
           {
@@ -312,7 +300,7 @@
                 "fontSize": 8
               }
             ],
-            "style": "Ral",
+            "style": "Aeo",
             "alignment": "justify"
           }
         ],
@@ -372,11 +360,11 @@
       }
     ],
     "styles": {
-      "Ral":{
-        "font": "Raleway"
+      "Aeo":{
+        "font": "Aeonik"
       },
-      "Spa":{
-        "font": "SpaceMono"
+      "Dec":{
+        "font": "Decima"
       },
       "Mon":{
         "font": "Montserrat"

@@ -200,10 +200,43 @@
       "\n",
        {
         "columns":[
+          [
+            {
+              "image": "{{canvas}}",
+              "fit": [260,260]
+            },
+            {
+              "columns":[
+                {
+                  "text":"",
+                  "width": "2%"
+                },
+                {
+                  "text": [
+                    {
+                      "text": "AUTHORITIES MUST DOWNLOAD THE ",
+                      "bold": true,
+                      "fontSize": 7
+                    },
+                    {
+                      "text": "MAGNACERTA VERIFIER APP",
+                      "bold": true,
+                      "fontSize": 7,
+                      "decoration": "underline"
+                    },
+                    {
+                      "text": " TO SCAN ENCRYPTED QR CODES.",
+                      "bold": true,
+                      "fontSize": 7
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
           {
-            "image": "{{canvas}}",
-            "fit": [260,260],
-            "width": "53%"
+            "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+            "width": "6%"
           },
           [
             {
@@ -285,37 +318,6 @@
           ]
         ]
       },
-     {
-        "columns":[
-          {
-            "text":"",
-            "width": "2%"
-          },
-          {
-            "text": [
-              {
-                "text": "AUTHORITIES MUST DOWNLOAD THE ",
-                "bold": true,
-                "fontSize": 7
-              },
-              {
-                "text": "MAGNACERTA VERIFIER APP",
-                "bold": true,
-                "fontSize": 7,
-                "decoration": "underline"
-              },
-              {
-                "text": " TO SCAN ENCRYPTED QR CODES.",
-                "bold": true,
-                "fontSize": 7
-              }
-            ]
-          },
-          {
-            "text":""
-          }
-        ]
-      },
       {
         "text": "\n\n",
         "fontSize": 3
@@ -352,7 +354,11 @@
                 "fontSize": 5,
                 "opacity": 0.5
               },
-              { "text": "{{organization.country | country}}", "fontSize": 8 },
+              {% if subject.formData.countryName and (subject.formData.countryName | trim) %} 
+                { "text": "{{subject.formData.countryName}}", "fontSize": 8 },
+              {% else %}
+                { "text": "{{organization.country}}", "fontSize": 8 },
+              {% endif %}
               { "text": "\n\nFOLIO NUMBER | NÚMERO DE FOLIO:\n", "fontSize": 5, "opacity": 0.5 },
               { "text": "{{subject.formData.externalReference}}", "fontSize": 8 }
             ]

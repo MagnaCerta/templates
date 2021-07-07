@@ -31,6 +31,7 @@
         "columns": [
           {
             "text": [
+              { "text": "\n", "fontSize": 2 },
               {
               "bold": true,
               "text": "VERIFIABLE HEALTH CERTIFICATE",
@@ -254,12 +255,17 @@
               "height": 140
             },
             {
-              "table": {
-                "widths": [250],
-                "body": [
-                  [{ "text": "Authorities must download MagnaCerta Verifier app to scan encrypted QR Code and validate authenticity", "fontSize": 7}]
-                ]
-              }
+              "columns" : [
+                { "text": "", "width": 5 },
+                {
+                  "table": {
+                    "widths": [240],
+                    "body": [
+                      [{ "text": "Authorities must download MagnaCerta Verifier app to scan encrypted QR Code and validate authenticity", "fontSize": 7, "alignment": "center"}]
+                    ]
+                  }
+                }
+              ]
             }
           ]
         ]
@@ -270,6 +276,7 @@
       },
       {
         "columns": [
+          { "text": "", "width": 5 },
           {
             "text": [
               {
@@ -291,6 +298,7 @@
               }
             ]
           },
+          { "text": "", "width": 40 },
           {
             "text": [
               {
@@ -312,8 +320,7 @@
               }
             ]
           }
-        ],
-        "columnGap": 45
+        ]
       },
       {
         "text": "\n\n",

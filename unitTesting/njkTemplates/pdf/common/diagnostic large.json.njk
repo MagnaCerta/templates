@@ -31,6 +31,7 @@
         "columns": [
           {
             "text": [
+              { "text": "\n", "fontSize": 2 },
               {
               "bold": true,
               "text": "VERIFIABLE HEALTH CERTIFICATE",
@@ -172,7 +173,8 @@
               { "text": "PROCEDURE TYPE |\n", "fontSize": 6, "opacity": 0.8 },
               { "text": "TIPO DE PROCEDIMIENTO:\n", "fontSize": 6, "opacity": 0.8 },
               { "text": "{{template.name | safe }}", "fontSize": 9 }
-            ]
+            ],
+            "width": "49%"
           },
           {
             "table": {
@@ -338,12 +340,17 @@
               "fit": [155,155]
             },
             {
-              "table": {
-                "widths": [145],
-                "body": [
-                  [{ "text": "Authorities must download MagnaCerta Verifier app to scan encrypted QR Code and validate authenticity", "fontSize": 7}]
-                ]
-              }
+              "columns" : [
+                { "text": "", "width": 5 },
+                {
+                  "table": {
+                    "widths": [135],
+                    "body": [
+                      [{ "text": "Authorities must download MagnaCerta Verifier app to scan encrypted QR Code and validate authenticity", "fontSize": 7, "alignment": "center"}]
+                    ]
+                  }
+                }
+              ]
             }
           ]
         ]
@@ -354,6 +361,7 @@
       },
       {
         "columns": [
+          { "text": "", "width": 5 },
           {
             "text": [
               {
@@ -375,6 +383,7 @@
               }
             ]
           },
+          { "text": "", "width": 40 },
           {
             "text": [
               {
@@ -396,8 +405,7 @@
               }
             ]
           }
-        ],
-        "columnGap": 45
+        ]
       },
       {
         "text": "\n\n",

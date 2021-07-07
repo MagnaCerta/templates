@@ -31,6 +31,7 @@
         "columns": [
           {
             "text": [
+              { "text": "\n", "fontSize": 2 },
               {
               "bold": true,
               "text": "VERIFIABLE HEALTH CERTIFICATE",
@@ -67,8 +68,10 @@
                 "border": [false, false, false, false],
                 "fillColor": "#f3f3f3",
                 "text": [
+                  { "text": "\n", "fontSize": 1 },
                   { "text": "SUBJECT DETAILS", "bold": true, "fontSize": 9 },
-                  { "text": "\nDETALLES DEL SUJETO", "bold": true, "fontSize": 7 }
+                  { "text": "\nDETALLES DEL SUJETO", "bold": true, "fontSize": 7 },
+                  { "text": "\n", "fontSize": 1 }
                 ]
               }
             ]
@@ -77,6 +80,7 @@
       },
       {
         "columns": [
+          { "text": "", "width": 5 },
           {
             "text": [
               { "text": "\n\nGIVEN NAME |\n", "fontSize": 6, "opacity": 0.8 },
@@ -109,6 +113,7 @@
       },
       {
         "columns": [
+          { "text": "", "width": 5 },
           {
             "text": [
               { "text": "\n\nPHONE |\n", "fontSize": 6, "opacity": 0.8 },
@@ -146,8 +151,10 @@
                 "border": [false, false, false, false],
                 "fillColor": "#f3f3f3",
                 "text": [
+                  { "text": "\n", "fontSize": 1 },
                   { "text": "PROCEDURE DETAILS", "bold": true, "fontSize": 9 },
-                  { "text": "\nDETALLES DEL PROCEDIMIENTO", "bold": true, "fontSize": 7 }
+                  { "text": "\nDETALLES DEL PROCEDIMIENTO", "bold": true, "fontSize": 7 },
+                  { "text": "\n", "fontSize": 1 }
                 ]
               }
             ]
@@ -160,6 +167,7 @@
       },
       {
         "columns": [
+          { "text": "", "width": 1 },
           {
             "text": [
               { "text": "PROCEDURE TYPE |\n", "fontSize": 6, "opacity": 0.8 },
@@ -190,6 +198,7 @@
       },
       {
         "columns" : [
+          { "text": "", "width": 5 },
           {
             "text": [
               { "text": "\nSAMPLE COLLECTION DATE |\n", "fontSize": 6, "opacity": 0.8 },
@@ -225,6 +234,7 @@
           [
             {
               "columns" : [
+                { "text": "", "width": 5 },
                 {
                   "text": [
                     { "text": "\nANALYSIS DATE |\n", "fontSize": 6, "opacity": 0.8 },
@@ -243,6 +253,7 @@
             },
             {
               "columns" : [
+                { "text": "", "width": 5 },
                 {
                   "text": [
                     { "text": "\nPROCESS NUMBER |\n", "fontSize": 6, "opacity": 0.8 },
@@ -266,8 +277,10 @@
                       "border": [false, false, false, false],
                       "fillColor": "#f3f3f3",
                       "text": [
+                        { "text": "\n", "fontSize": 1 },
                         { "text": "CERTIFICATE ISSUANCE DETAILS", "bold": true, "fontSize": 9 },
-                        { "text": "\nDETALLES DE EMISIÓN DEL CERTIFICADO", "bold": true, "fontSize": 7 }
+                        { "text": "\nDETALLES DE EMISIÓN DEL CERTIFICADO", "bold": true, "fontSize": 7 },
+                        { "text": "\n", "fontSize": 1 }
                       ]
                     }
                   ]
@@ -276,6 +289,7 @@
             },
             {
               "columns" : [
+                { "text": "", "width": 5 },
                 {
                   "text": [
                     { "text": "\nISSUED BY |\n", "fontSize": 6, "opacity": 0.8 },
@@ -294,6 +308,7 @@
             },
             {
               "columns" : [
+                { "text": "", "width": 5 },
                 {
                   "text": [
                     { "text": "\nISSUANCE DATE |\n", "fontSize": 6, "opacity": 0.8 },
@@ -318,18 +333,24 @@
               "height": 140
             },
             {
-              "table": {
-                "widths": [250],
-                "body": [
-                  [{ "text": "Authorities must download MagnaCerta Verifier app to scan encrypted QR Code and validate authenticity", "fontSize": 7}]
-                ]
-              }
+              "columns" : [
+                { "text": "", "width": 5 },
+                {
+                  "table": {
+                    "widths": [240],
+                    "body": [
+                      [{ "text": "Authorities must download MagnaCerta Verifier app to scan encrypted QR Code and validate authenticity", "fontSize": 7, "alignment": "center"}]
+                    ]
+                  }
+                }
+              ]
             }
           ]
         ]
       },
       {
         "columns" : [
+          { "text": "", "width": 5 },
           {
             "text": [
               { "text": "\nCOUNTRY OF ISSUANCE |\n", "fontSize": 6, "opacity": 0.8 },
@@ -361,18 +382,24 @@
         ]
       },
       {
-        "text": [
-          { "text": "\nLOCATION |\n", "fontSize": 6, "opacity": 0.8 },
-          { "text": "UBICACIÓN:\n", "fontSize": 6, "opacity": 0.8 },
-          { "text": "{{subject.formData.location}}", "fontSize": 9 }
+        "columns" : [
+          { "text": "", "width": 5 },
+          {
+            "text": [
+              { "text": "\nLOCATION |\n", "fontSize": 6, "opacity": 0.8 },
+              { "text": "UBICACIÓN:\n", "fontSize": 6, "opacity": 0.8 },
+              { "text": "{{subject.formData.location}}", "fontSize": 9 }
+            ]
+          }
         ]
       },
       {
-        "text": "\n\n",
+        "text": "\n",
         "fontSize": 8
       },
       {
         "columns": [
+          { "text": "", "width": 5 },
           {
             "text": [
               {
@@ -394,6 +421,7 @@
               }
             ]
           },
+          { "text": "", "width": 40 },
           {
             "text": [
               {
@@ -415,8 +443,7 @@
               }
             ]
           }
-        ],
-        "columnGap": 45
+        ]
       },
       {
         "text": "\n\n",

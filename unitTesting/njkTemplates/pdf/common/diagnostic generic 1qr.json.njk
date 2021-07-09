@@ -2,7 +2,8 @@
   "fonts": {
     "Montserrat": {
       "normal": "https://cdn.jsdelivr.net/npm/pstpn-webfont-montserrat@0.0.5/fonts/Regular/Montserrat-Regular.otf",
-      "bold": "https://cdn.jsdelivr.net/npm/pstpn-webfont-montserrat@0.0.5/fonts/Bold/Montserrat-Bold.otf"
+      "bold": "https://cdn.jsdelivr.net/npm/pstpn-webfont-montserrat@0.0.5/fonts/Bold/Montserrat-Bold.otf",
+      "medium": "https://cdn.jsdelivr.net/npm/@typopro/web-montserrat@3.7.5/TypoPRO-Montserrat-Medium.ttf"
     }
   },
   "documentDefinition": {
@@ -160,7 +161,13 @@
                      "text": [
                       { "text": "DIAGNOSTIC RESULT |\n", "fontSize": 6, "opacity": 0.8 },
                       { "text": "RESULTADO:\n", "fontSize": 6, "opacity": 0.8 },
-                      { "text": "{{subject.formData.observation}}", "fontSize": 9 }
+                      {% if subject.formData.observation | trim | lower == 'positive' or subject.formData.observation | trim | lower == 'detected' %}
+                        { "text": "Positve", "fontSize": 9 }
+                      {% elif subject.formData.observation | trim | lower == 'undetected' or subject.formData.observation | trim | lower == 'negative' %}
+                        { "text": "Negative", "fontSize": 9 }
+                      {% else -%}
+                        { "text": "Unknown", "fontSize": 9 },
+                      {% endif -%}
                     ]
                   }
                 ]
@@ -262,7 +269,32 @@
                   "table": {
                     "widths": [135],
                     "body": [
-                      [{ "text": "Authorities must download MagnaCerta Verifier app to scan encrypted QR Code and validate authenticity", "fontSize": 7, "alignment": "center"}]
+                      [
+                        {
+                          "text": [
+                            {
+                              "text": "To scan encrypted QR code and validate the authenticity of this certificate, you must download the "
+                            },
+                            {
+                              "text": "MagnaCerta Verifier",
+                              "bold": true
+                            },
+                            {
+                              "text": " app."
+                            },
+                            {
+                              "text": "\n\nPara escanear el código QR cifrado y validar la autenticidad de este certificado, debe descargar la aplicación "
+                            },
+                            {
+                              "text": "MagnaCerta Verifier.",
+                              "bold": true
+                            }
+                          ],
+                          "fontSize": 6,
+                          "medium": true,
+                          "opacity": 0.8
+                        }
+                      ]
                     ]
                   }
                 }
@@ -272,7 +304,7 @@
         ]
       },
       {
-        "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+        "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
         "fontSize": 8
       },
       {

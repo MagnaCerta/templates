@@ -3,21 +3,42 @@
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
     "https://schema.opencerta.org/proof",
-    {"@vocab":"https://smarthealth.cards#","fhirBundle":{"@id":"https://smarthealth.cards#fhirBundle","@type":"@json"}}
+    "https://schema.opencerta.org/fhir/202009"
   ],
-  "type": ["VerifiableCredential", "https://smarthealth.cards#health-card"],
+  "type": ["VerifiableCredential", "FHIRCredential"],
   "id": "urn:uuid:{{ credential.id }}",
+  "issuer": "https://issuers.{{baseUrl}}/{{certificate.authorityKeyIdentifier | trim}}/{{certificate.subjectKeyIdentifier | trim }}",
   "credentialSubject": {
+    "type": "FHIRCredential",
+    "id": "urn:uuid:{{ subject.id }}",
+    "givenName": "{{ subject.formData.givenName | trim }}",
+    {% if subject.formData.middleName and (subject.formData.middleName | trim) %}
+    "additionalName": "{{ subject.formData.middleName | trim }}",
+    {% endif -%}
+    "familyName": "{{ subject.formData.familyName | trim }}",
+    {% if subject.formData.birthDate %}
+    "birthDate": "{{ subject.formData.birthDate | date('yyyy-MM-DD') }}",
+    {% endif -%}
+    {% if subject.formData.gender and (subject.formData.gender | trim) %}
+    "gender": "{{ subject.formData.gender | trim }}",
+    {% endif -%}
+    {% if subject.formData.honorificPrefix and (subject.formData.honorificPrefix | trim) %}
+    "honorificPrefix": "{{ subject.formData.honorificPrefix | trim }}",
+    {% endif -%}
+    {% if subject.formData.honorificSuffix and (subject.formData.honorificSuffix | trim) %}
+    "honorificSuffix": "{{ subject.formData.honorificSuffix | trim }}",
+    {% endif -%}
     {% if subject.formData.externalReference and (subject.formData.externalReference | trim) %}
     "identifier": "{{subject.formData.externalReference | trim}}",
     {% endif -%}
     "fhirVersion": "4.0.1",
     "fhirSource": {
         "resourceType": "Bundle",
+        "id": "https://creds.magnacerta.com/{{ credential.id }}/bundle",
         "type": "collection",
         "entry": [
             {
-                "fullUrl": "res:0",
+                "fullUrl": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0",
                 "resource": {
                     "resourceType": "Patient",
                     {% if (subject.formData.passportNumber and (subject.formData.passportNumber | trim)) and (subject.formData.driversLicense and (subject.formData.driversLicense | trim)) %}
@@ -252,7 +273,7 @@
                 }
             },
             {
-                "fullUrl": "res:1",
+                "fullUrl": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/immunization/1/dose/1",
                 "resource": {
                     "resourceType": "Immunization",
                     "status": "completed",
@@ -265,7 +286,7 @@
                     ]
                     },
                     "manufacturer": {
-                        "display": "Pfizer-BioNTech"
+                        "display": "Moderna, Inc"
                     },
                     "patient": {
                         "reference": "https://creds.magnacerta.com/{{ credential.id }}/bundle/resource/0"
